@@ -164,23 +164,23 @@
 		pagestyle = {hfmain}
 	},
 	section={
-		number = {\arabic{chapter}．\arabic{section}},
+% 		number = {\arabic{chapter}．\arabic{section}},
 		format = {\zihao{-4}\bfseries},
 		beforeskip = {20bp plus 1ex minus 0.2ex},
 		afterskip = {6bp plus 0.2ex}
 	},
 	subsection={
 		format = {\zihao{-4}\bfseries},
-		number = {\arabic{chapter}．\arabic{section}．\arabic{subsection}},
-		beforeskip = {12bp plus 1ex minus 0.2ex},
-		afterskip = {6bp plus 0.2ex}
-	},
-	subsubsection={
-		format = {\zihao{-4}\bfseries},
-		%number = {\arabic{chapter}．\arabic{section}．\arabic{subsection}．\arabic{subsubsection}},
+% 		number = {\arabic{chapter}．\arabic{section}．\arabic{subsection}},
 		beforeskip = {12bp plus 1ex minus 0.2ex},
 		afterskip = {6bp plus 0.2ex}
 	}
+% 	subsubsection={
+% 		format = {\zihao{-4}\bfseries},
+		%number = {\arabic{chapter}．\arabic{section}．\arabic{subsection}．\arabic{subsubsection}},
+% 		beforeskip = {12bp plus 1ex minus 0.2ex},
+% 		afterskip = {6bp plus 0.2ex}
+% 	}
 }
 
 % Internal command to set up headers and footers.
@@ -342,9 +342,9 @@
 	\@restonecolfalse
       \fi
       \chapter*{\contentsname}%
-      \markboth{\contentsname}{}%页眉显示'目录'
-      \thispagestyle{plain}
       \pdfbookmark[1]{\contentsname}{table}
+      \markboth{\contentsname}{}%页眉显示'目录'
+      \thispagestyle{plain}    
       \@starttoc{toc}%
       \if@restonecol\twocolumn\fi
   }
@@ -386,14 +386,34 @@
 % Provides control over the format of toc, lof, lot
 \@ifpackageloaded{tocloft}{%
   \renewcommand{\cftchapfont}{\zihao{-4}\songti\bfseries}
+%   \renewcommand{\cftdot}{,}
+%   \renewcommand{\cftdotsep}{\cftnodots}
+  \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+  \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+  \renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+%   \renewcommand{\cftsubsubsecleader}{\bfseries\cftdotfill{\cftdotsep}}
+  \renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}}
+  
 }{
   \RequirePackage[titles]{tocloft}
   \renewcommand{\cftchapfont}{\zihao{-4}\songti\bfseries}
+%   \renewcommand{\cftdot}{,}
+%   \renewcommand{\cftdotsep}{\cftnodots}
+  \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+  \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+  \renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+%   \renewcommand{\cftsubsubsecleader}{\bfseries\cftdotfill{\cftdotsep}}
+  \renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}}
 }
 
-% hyperref setup
+% hyperref setup: extract the left bar of pdf viewer
 \hypersetup{
   bookmarksnumbered = true,
   bookmarksopen = true
 }
+
+% Show subsubsection numbering
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
 \endinput
