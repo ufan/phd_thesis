@@ -1,0 +1,47 @@
+% vim:ts=4:sw=4
+% Copyright (c) 2014 Casper Ti. Vector
+% Public domain.
+
+\begin{cabstract}
+	% 中文测试文字。
+	\pkuthssffaq
+	电子排版系统的出现给印刷出版业带来了一场革命，利用电子计算机及各种辅助设备，可以完成从文稿、图表的录入、编辑、修改、组版，直至得到各种不同用途、不同质量的输出结果。利用电子排版系统，可以减轻劳动强度，缩短出版周期。
+
+　　目前世界上有许多电子排版系统。这些系统各有特点，也各有自己的适用范围。TeX 就是一种优秀的电子排版系统。
+
+　　TeX 提供了一套功能强大并且十分灵活的排版语言，它多达 900 多条指令，并且 TeX 有宏功能，用户可以不断地定义自己适用的新命令来扩展 TeX 系统的功能。许多人利用 TeX 提供的宏定义功能对 TeX 进行了二次开发，其中比较著名的有美国数学学会推荐的非常适合于数学家使用的 AMS-TeX 以及适合于一般文章、报告、书籍的 LaTeX 系统。
+
+　　TeX 系统是公认的数学公式排得最好的系统。美国数学学会（AMS） 鼓励数学家们使用 TeX 系统向它的期刊投稿。世界上许多一流的出版社如 Kluwer、Addison-Wesley、牛津大学出版社等也利用 TeX 系统出版书籍和期刊。
+
+　　大部分的 TeX 系统都是免费的。Knuth 教授还公开了他的全部源程序。TeX 系统目前已经在数百种计算机系统上得到实现。TeX 系统的排版结果 DVI（DeVice Independent）文件与输出设备无关。DVI 文件可以显示、打印、照排，几乎可以在所有的输出设备上输出。TeX 排版源文件及结果在各种计算机系统上互相兼容。
+
+\end{cabstract}
+
+% \cleardoublepage
+\begin{eabstract}
+	Test of the English abstract.version 1.3c of this license or (at your option) any later
+    version. This version of this license is in
+       http://www.latex-project.org/lppl/lppl-1-3c.txt
+    and the latest version of this license is in
+       
+       http://www.latex-project.org/lppl.txt
+    and version 1.3 or later is part of all distributions of
+    LaTeX version 2005/12/01 or later.
+    If LaTeX decides to introduce at a point in the document where a  is specified, then no white space is produced. To ensure that white space is produced even at points in the document where page breaking takes place, one should replartain features of LaTeX relating to blank spaces and paragraph indentation which will improve the appearance of the final document. Experienced users of LaTeX will improve the appearance of their documents if they bear these remarks in mind.
+
+First note that, as a general rule, you should never put a blank space after a left parenthesis or before a right parenthesis. If you were to put a blank space in these places, then you run the risk that LaTeX might start a new line immediately after the left parenthesis or before the right parenthesis, leaving the parenthesis marooned at the beginning or end of a line.
+
+LaTeX has its own rules for deciding the lengths of blank spaces. For instance, LaTeX will put an extra amount of space after a full stop if it considers that the full stop marks the end of a sentence.
+
+The rule adopted by LaTeX is to regard a period (full stop) as the end of a sentence if it is preceded by a lowercase letter. If the period is preceded by an uppercase letter then LaTeX assumes that it is not a full stop but follows the initials of somebody's name.
+
+This works very well in most cases. However LaTeX occasionally gets things wrong. This happens with a number of common abbreviations (as in `Mn `etc.'), and, in particular, in the names of journals given in abbreviated form (e.g., `Proc.
+
+oc.'). The way to overcome this problem is to put a backslash before the blank space in question. Thus we should type
+
+
+LaTeX determines itself how to break up a paragraph into lines, and will occasionally hyphenate long words where this is desirable. However it is sometimes necessary to tell LaTeX not to break at a particular blank space. The special character used for this purpose is ~. It represents a blank space at which LaTeX is not allowed to break between lines. It is often desirable to use ~ in names where the forenames are represented by initials. Thus to obtain `W. R. Hamilton' it is best to type W.~R.~Hamilton. It is also desirable in phrases like `Example 7' and `the length l of the rod', obtained by typing
+
+
+\end{eabstract}
+
