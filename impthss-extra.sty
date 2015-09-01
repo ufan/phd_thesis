@@ -1,9 +1,11 @@
 % vim:ft=tex:ts=2:sw=2
 %
-% Peking University dissertation document class
+% Dissertation document class for the Institute of Modern Physics, Chinese Academy of Scieneces.
+% It is modified from the Peking University dissertation document class "impthss"
 %
 % Copyright (c) 2008-2009 solvethis
 % Copyright (c) 2010-2015 Casper Ti. Vector
+% Copyright (c) 2015      ufan
 %
 % This work may be distributed and/or modified under the conditions of the
 % LaTeX Project Public License, either version 1.3 of this license or (at
@@ -17,60 +19,60 @@
 % The current maintainer of this work is Casper Ti. Vector.
 %
 % This work consists of the following files:
-%   pkuthss.cls
-%   pkuthss-gbk.def
-%   pkuthss-utf8.def
-%   pkuthss-extra.sty
+%   impthss.cls
+%   impthss-gbk.def
+%   impthss-utf8.def
+%   impthss-extra.sty
 %   pkulogo.eps
 %   pkuword.eps
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesPackage{pkuthss-extra}
-	[2015/06/30 v1.6.3 Common extra settings for the pkuthss document class]
+\ProvidesPackage{impthss-extra}
+	[2015/06/30 v1.6.3 Common extra settings for the impthss document class]
 
-% Check the dependency of pkuthss.
-\@ifclassloaded{pkuthss}{}{
-	\PackageError{pkuthss-extra}%
-		{The pkuthss document class is not loaded}%
-		{The pkuthss-extra package depends on the pkuthss document class.}
+% Check the dependency of impthss.
+\@ifclassloaded{impthss}{}{
+	\PackageError{impthss-extra}%
+		{The impthss document class is not loaded}%
+		{The impthss-extra package depends on the impthss document class.}
 }
 
-% eg. `\pkuthssextra@int@boolopt{spacing}{true}' will expand to:
-%   \newif\ifpkuthssextra@opt@spacing \pkuthssextra@opt@spacingtrue
-%   \DeclareOption{spacing}{\pkuthssextra@opt@spacingtrue}
-%   \DeclareOption{nospacing}{\pkuthssextra@opt@spacingfalse}
-\def\pkuthssextra@int@boolopt#1#2{
-	\expandafter\newif\csname ifpkuthssextra@opt@#1\endcsname
-	\@nameuse{pkuthssextra@opt@#1#2}
-	\DeclareOption{#1}{\@nameuse{pkuthssextra@opt@#1true}}
-	\DeclareOption{no#1}{\@nameuse{pkuthssextra@opt@#1false}}
+% eg. `\impthssextra@int@boolopt{spacing}{true}' will expand to:
+%   \newif\ifimpthssextra@opt@spacing \impthssextra@opt@spacingtrue
+%   \DeclareOption{spacing}{\impthssextra@opt@spacingtrue}
+%   \DeclareOption{nospacing}{\impthssextra@opt@spacingfalse}
+\def\impthssextra@int@boolopt#1#2{
+	\expandafter\newif\csname ifimpthssextra@opt@#1\endcsname
+	\@nameuse{impthssextra@opt@#1#2}
+	\DeclareOption{#1}{\@nameuse{impthssextra@opt@#1true}}
+	\DeclareOption{no#1}{\@nameuse{impthssextra@opt@#1false}}
 }
 % Whethet to modify footnote format.
-\pkuthssextra@int@boolopt{footfmt}{true}
+\impthssextra@int@boolopt{footfmt}{true}
 % Whethet to modify spacing according to school regulation.
-\pkuthssextra@int@boolopt{pkuspace}{true}
+\impthssextra@int@boolopt{pkuspace}{true}
 % Whethet to use some common settings for adjusting spacing.
-\pkuthssextra@int@boolopt{spacing}{true}
+\impthssextra@int@boolopt{spacing}{true}
 % Add PDF bookmark for table of contents.
-\pkuthssextra@int@boolopt{pdftoc}{true}
+\impthssextra@int@boolopt{pdftoc}{true}
 % Whether to enable the `\spacialchap' command.
-\pkuthssextra@int@boolopt{spechap}{true}
+\impthssextra@int@boolopt{spechap}{true}
 % Whether to automatically set up properties for generated PDF from user
 % defined document information (author, title, etc.).
-\pkuthssextra@int@boolopt{pdfprop}{true}
+\impthssextra@int@boolopt{pdfprop}{true}
 % Whether to use coloured hyperlinks in generated PDF.
-\pkuthssextra@int@boolopt{colorlinks}{true}
+\impthssextra@int@boolopt{colorlinks}{true}
 % Process all class options now.
 \ProcessOptions\relax
 
-\ifpkuthssextra@opt@footfmt
+\ifimpthssextra@opt@footfmt
 	% Handle the `Unparsed material' issue with latex/dvipdfmx compilation.
 	\unless\ifxetex\unless\ifpdf
 		\newcommand*\pgfsysdriver{pgfsys-dvipdfm.def}
 	\fi\fi
 	% Circled text, cf. <https://tex.stackexchange.com/questions/7032/>.
 	\RequirePackage{tikz}
-	\newcommand*\pkuthssextra@int@circled[1]{%
+	\newcommand*\impthssextra@int@circled[1]{%
 		\scalebox{0.8}{\tikz[baseline = (char.base)]{
 			\node[
 				shape = circle, draw = black, minimum size = 1.25em, inner sep = 0pt
@@ -80,7 +82,7 @@
 	% Use circled numbers as footnote symbols. Does not affect title page, but
 	% footnote is rarely used in dissertation covers ;)
 	\renewcommand\thefootnote%
-		{\protect\pkuthssextra@int@circled{\arabic{footnote}}}
+		{\protect\impthssextra@int@circled{\arabic{footnote}}}
 	% Provides utility to modify footnote spacing.
 	% Option used to make sure it does not render interleaf pages totally blank.
 	\RequirePackage[cleardoublepage = current]{scrextend}
@@ -89,7 +91,7 @@
 	\deffootnote{2\ccwd}{3.5\ccwd}{\thefootnotemark\hspace{0.75\ccwd}}
 \fi
 
-\ifpkuthssextra@opt@pkuspace
+\ifimpthssextra@opt@pkuspace
 	% lineskip / baselineskip = 20 bp / (12 bp * (6 / 5)).
 	\linespread{1.39}\selectfont
 	% Quite harmless and frequently used package. Loaded together with `tocloft'
@@ -108,7 +110,7 @@
 	\captionsetup{font = cfive, labelsep = quad}
 \fi
 
-\ifpkuthssextra@opt@spacing
+\ifimpthssextra@opt@spacing
 	% Automatically ignore spaces between CJK characters, or otherwise preserve
 	% spaces. XeCJK itself will handle this issue, therefore we do not use
 	% `CJKspace' when using XeLaTeX.
@@ -121,17 +123,17 @@
 	\setlist{nolistsep}
 \fi
 
-\ifpkuthssextra@opt@pdftoc
+\ifimpthssextra@opt@pdftoc
 	% Add PDF bookmark for table of contents.
-	\let\pkuthssextra@tmp@tableofcontents\tableofcontents
+	\let\impthssextra@tmp@tableofcontents\tableofcontents
 	\renewcommand{\tableofcontents}{%
-		\pkuthss@int@pdfmark{\contentsname}{contents}
-		\pkuthssextra@tmp@tableofcontents%
+		\impthss@int@pdfmark{\contentsname}{contents}
+		\impthssextra@tmp@tableofcontents%
 	}
 \fi
 
 \AtBeginDocument{
-	\ifpkuthssextra@opt@pkuspace
+	\ifimpthssextra@opt@pkuspace
 		% Kludge for `tocloft' used with `ctex'.
 		% <http://bbs.ctex.org/forum.php?mod=redirect&goto=findpost&ptid=43535&pid=310238>.
 		\renewcommand{\numberline}[1]{%
@@ -143,7 +145,7 @@
 		}%
 	\fi
 
-	\ifpkuthssextra@opt@pdfprop
+	\ifimpthssextra@opt@pdfprop
 		% Automatically generate properties for generated PDF.
 		% Use English properties to avoid problems with character encodings.
 		\newcommand*{\setpdfproperties}{%
@@ -154,13 +156,13 @@
 		}
 		% Set up the properties when generating the title page because the document
 		% information should have been all defined before this.
-		\let\pkuthssextra@tmp@maketitle\maketitle
+		\let\impthssextra@tmp@maketitle\maketitle
 		% NOTE: `\hypersetup' must appear before `\maketitle', otherwise it might not
 		% act as wished.
-		\renewcommand\maketitle{\setpdfproperties\pkuthssextra@tmp@maketitle}
+		\renewcommand\maketitle{\setpdfproperties\impthssextra@tmp@maketitle}
 	\fi
 
-	\ifpkuthssextra@opt@colorlinks
+	\ifimpthssextra@opt@colorlinks
 		% Use coloured hyperlinks in generated PDF.
 		\hypersetup{colorlinks = true, allcolors = blue}
 	\else

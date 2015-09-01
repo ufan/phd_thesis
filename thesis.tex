@@ -4,10 +4,10 @@
 % Copyright (c) 2010-2015 Casper Ti. Vector
 % Public domain.
 %
-% 使用前请先仔细阅读 pkuthss 和 biblatex-caspervector 的文档，
+% 使用前请先仔细阅读 impthss 和 biblatex-caspervector 的文档，
 % 特别是其中的 FAQ 部分和用红色强调的部分。
 % 两者可在终端/命令提示符中用
-%   texdoc pkuthss
+%   texdoc impthss
 %   texdoc biblatex-caspervector
 % 调出。
 
@@ -18,7 +18,7 @@
 % 图书馆要求电子版论文的目录必须为黑色，
 % 且某些教务要求打印版论文的文字部分为纯黑色而非灰度打印，
 % 【因此最终打印和提交论文前，请将“colorlinks”改为“nocolorlinks”。】
-\documentclass[UTF8, nocolorlinks, openany, spacing, pdftoc, pkuspace]{pkuthss}
+\documentclass[UTF8, nocolorlinks, openany, spacing, pdftoc, pkuspace]{impthss}
 \linespread{1.5}
 % 使用 biblatex 排版参考文献，并规定其格式（详见 biblatex-caspervector 的文档）。
 % 这里按照英文文献在前，中文文献在后排序（“sorting = ecnty”）；
@@ -33,12 +33,12 @@
 
 % 按学校要求设定参考文献列表中的条目之内及之间的距离。
 \setlength{\bibitemsep}{3bp}
-% 对于 linespread 值的计算过程有兴趣的同学可以参考 pkuthss-extra.sty。
+% 对于 linespread 值的计算过程有兴趣的同学可以参考 impthss-extra.sty。
 \renewcommand*{\bibfont}{\zihao{5}\linespread{1.27}\selectfont}
 
 % 设定文档的基本信息。
 % \ctexset{today=big}
-\pkuthssinfo{
+\impthssinfo{
 	cthesisname = {博士研究生学位论文}, ethesisname = {Doctor Thesis},
 	ctitle = {中国科学院近代物理研究所博士论文模版},
 	etitle = {Doctor Thesis \LaTeX{} Template for the Institute of Modern Physics of Chineses Academy of Sciences},
@@ -57,11 +57,11 @@
 
 % 普通用户可删除此段。
 \usepackage{color}
-\def\pkuthssffaq{%
-	\emph{\textcolor{red}{pkuthss 文档模版最常见问题：}}
+\def\impthssffaq{%
+	\emph{\textcolor{red}{impthss 文档模版最常见问题：}}
 
 	在最终打印和提交论文之前，
-	请将 pkuthss 文档类选项中的 %
+	请将 impthss 文档类选项中的 %
 	\texttt{colorlinks} 替换为 \texttt{nocolorlinks}，
 	因为图书馆要求电子版论文的目录必须为黑色，
 	且某些教务要求打印版论文的文字部分为纯黑色而非灰度打印。
@@ -71,10 +71,10 @@
 	未格式化的、带方括号的和上标且带方括号的引用标记：%
 	\cite{test-en}，\parencite{test-zh}、\supercite{test-en, test-zh}。
 
-	若要避免章末空白页，请在调用 pkuthss 文档类时加入 \texttt{openany} 选项。
+	若要避免章末空白页，请在调用 impthss 文档类时加入 \texttt{openany} 选项。
 
 	如果编译时不出参考文献，
-	请参考 \texttt{texdoc pkuthss}“问题及其解决”一章
+	请参考 \texttt{texdoc impthss}“问题及其解决”一章
 	“其它可能存在的问题”一节中关于 biber 的说明。
 }
 

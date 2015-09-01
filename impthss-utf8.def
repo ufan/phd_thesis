@@ -17,16 +17,16 @@
 % The current maintainer of this work is Casper Ti. Vector.
 %
 % This work consists of the following files:
-%   pkuthss.cls
-%   pkuthss-gbk.def
-%   pkuthss-utf8.def
-%   pkuthss-extra.sty
+%   impthss.cls
+%   impthss-gbk.def
+%   impthss-utf8.def
+%   impthss-extra.sty
 %   pkulogo.eps
 %   pkuword.eps
 
-\ProvidesFile{pkuthss-utf8.def}
+\ProvidesFile{impthss-utf8.def}
 	[2015/06/30 v1.6.3 Labels and captions in UTF-8 encoding
-		for the pkuthss document class]
+		for the impthss document class]
 
 \def\label@ctitle{题目：}
 \def\label@cauthor{姓\hphantom{汉字}名：}

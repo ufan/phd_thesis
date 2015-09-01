@@ -1,9 +1,11 @@
 % vim:ft=tex:ts=2:sw=2
 %
-% Peking University dissertation document class
+% Dissertation document class for the Institute of Modern Physics, Chinese Academy of Scieneces.
+% It is modified from the Peking University dissertation document class "impthss"
 %
 % Copyright (c) 2008-2009 solvethis
 % Copyright (c) 2010-2015 Casper Ti. Vector
+% Copyright (c) 2015      ufan
 %
 % This work may be distributed and/or modified under the conditions of the
 % LaTeX Project Public License, either version 1.3 of this license or (at
@@ -17,53 +19,53 @@
 % The current maintainer of this work is Casper Ti. Vector.
 %
 % This work consists of the following files:
-%   pkuthss.cls
-%   pkuthss-gbk.def
-%   pkuthss-utf8.def
-%   pkuthss-extra.sty
-%   pkulogo.eps
-%   pkuword.eps
+%   impthss.cls
+%   impthss-gbk.def
+%   impthss-utf8.def
+%   impthss-extra.sty
+%   implogo.eps
+%   impword.eps
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{pkuthss}
+\ProvidesClass{impthss}
 	[2015/06/30 v1.6.3 Peking University dissertation document class]
 
 % Process the encoding options.
-\newif\ifpkuthss@opt@gbk \pkuthss@opt@gbktrue
-\DeclareOption{GBK}{\pkuthss@opt@gbktrue\PassOptionsToClass{GBK}{ctexbook}}
+\newif\ifimpthss@opt@gbk \impthss@opt@gbktrue
+\DeclareOption{GBK}{\impthss@opt@gbktrue\PassOptionsToClass{GBK}{ctexbook}}
 \DeclareOption{UTF8}%
-	{\pkuthss@opt@gbkfalse\PassOptionsToClass{UTF8}{ctexbook}}
+	{\impthss@opt@gbkfalse\PassOptionsToClass{UTF8}{ctexbook}}
 % Whether to enable `\Uppercase' (works problematically) in heading marks.
-\newif\ifpkuthss@opt@uppermark \pkuthss@opt@uppermarkfalse
-\DeclareOption{uppermark}{\pkuthss@opt@uppermarktrue}
-\DeclareOption{nouppermark}{\pkuthss@opt@uppermarkfalse}
+\newif\ifimpthss@opt@uppermark \impthss@opt@uppermarkfalse
+\DeclareOption{uppermark}{\impthss@opt@uppermarktrue}
+\DeclareOption{nouppermark}{\impthss@opt@uppermarkfalse}
 % Whether to enable the default extra settings.
-\newif\ifpkuthss@opt@extra \pkuthss@opt@extratrue
-\DeclareOption{extra}{\pkuthss@opt@extratrue}
-\DeclareOption{noextra}{\pkuthss@opt@extrafalse}
+\newif\ifimpthss@opt@extra \impthss@opt@extratrue
+\DeclareOption{extra}{\impthss@opt@extratrue}
+\DeclareOption{noextra}{\impthss@opt@extrafalse}
 
-% eg. `\pkuthss@int@extraopt{spacing}' will expand to:
-%   \DeclareOption{spacing}{\PassOptionsToPackage{spacing}{pkuthss-extra}}
-%   \DeclareOption{nospacing}{\PassOptionsToPackage{nospacing}{pkuthss-extra}}
-\def\pkuthss@int@extraopt#1{
-	\DeclareOption{#1}{\PassOptionsToPackage{#1}{pkuthss-extra}}
-	\DeclareOption{no#1}{\PassOptionsToPackage{no#1}{pkuthss-extra}}
+% eg. `\impthss@int@extraopt{spacing}' will expand to:
+%   \DeclareOption{spacing}{\PassOptionsToPackage{spacing}{impthss-extra}}
+%   \DeclareOption{nospacing}{\PassOptionsToPackage{nospacing}{impthss-extra}}
+\def\impthss@int@extraopt#1{
+	\DeclareOption{#1}{\PassOptionsToPackage{#1}{impthss-extra}}
+	\DeclareOption{no#1}{\PassOptionsToPackage{no#1}{impthss-extra}}
 }
-% Pass options to `pkuthss-extra'.
-% See pkuthss-extra.sty for an explanation of the options.
-\pkuthss@int@extraopt{footfmt}
-\pkuthss@int@extraopt{pkuspace}
-\pkuthss@int@extraopt{spacing}
-\pkuthss@int@extraopt{pdftoc}
-\pkuthss@int@extraopt{spechap}
-\pkuthss@int@extraopt{pdfprop}
-\pkuthss@int@extraopt{colorlinks}
+% Pass options to `impthss-extra'.
+% See impthss-extra.sty for an explanation of the options.
+\impthss@int@extraopt{footfmt}
+\impthss@int@extraopt{pkuspace}
+\impthss@int@extraopt{spacing}
+\impthss@int@extraopt{pdftoc}
+\impthss@int@extraopt{spechap}
+\impthss@int@extraopt{pdfprop}
+\impthss@int@extraopt{colorlinks}
 % Pass all other options to `ctexbook' document class.
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 % Process all class options now.
 \ProcessOptions\relax
 
-% pkuthss is based on ctexbook; we use `xiao 4' as default font size.
+% impthss is based on ctexbook; we use `xiao 4' as default font size.
 % CJKfntef provides `\CJKunderline' used in `\maketitle'.
 % fancyhdr provides utilities for setting up headers and footers.
 \LoadClass[zihao=-4]{ctexbook}[2011/03/11]
@@ -79,12 +81,12 @@
 \RequirePackage{geometry}
 
 % Whether to enable the default extra settings.
-\ifpkuthss@opt@extra\RequirePackage{pkuthss-extra}\fi
+\ifimpthss@opt@extra\RequirePackage{impthss-extra}\fi
 
-\ifpkuthss@opt@gbk
+\ifimpthss@opt@gbk
 	\ifxetex
 		% No support for XeLaTeX compilation in non-unicode encoding, i.e. GBK.
-		\ClassError{pkuthss}%
+		\ClassError{impthss}%
 			{XeLaTeX compilation is not supported without UTF-8}%
 			{%
 				XeLaTeX compilation without UTF-8 is very problematic.\MessageBreak
@@ -100,46 +102,46 @@
 
 \AtEndOfClass{
 	% Set up chinese captions and labels.
-	\ifpkuthss@opt@gbk\input{pkuthss-gbk.def}
-	\else\input{pkuthss-utf8.def}
+	\ifimpthss@opt@gbk\input{impthss-gbk.def}
+	\else\input{impthss-utf8.def}
 	\fi
 }
 
-% eg. `\pkuthss@int@infoitema{ctitle}' will expand to:
+% eg. `\impthss@int@infoitema{ctitle}' will expand to:
 %   \def\ctitle#1{\def\@ctitle{#1}}
-%   \define@key{pkuthss@info}{ctitle}{\ctitle{#1}}
-\def\pkuthss@int@infoitema#1{
+%   \define@key{impthss@info}{ctitle}{\ctitle{#1}}
+\def\impthss@int@infoitema#1{
 	\@namedef{#1}##1{\@namedef{@#1}{##1}}
-	\define@key{pkuthss@info}{#1}{\@nameuse{#1}{##1}}
+	\define@key{impthss@info}{#1}{\@nameuse{#1}{##1}}
 }
-% eg. `\pkuthss@int@infoitemb{cuniversity}' will expand to:
-%   \define@key{pkuthss@info}{cuniversity}{\def\cuniversity{#1}}
-\def\pkuthss@int@infoitemb#1{
-	\define@key{pkuthss@info}{#1}{\@namedef{#1}{##1}}
+% eg. `\impthss@int@infoitemb{cuniversity}' will expand to:
+%   \define@key{impthss@info}{cuniversity}{\def\cuniversity{#1}}
+\def\impthss@int@infoitemb#1{
+	\define@key{impthss@info}{#1}{\@namedef{#1}{##1}}
 }
 % Set up document information entries.
-\pkuthss@int@infoitema{ctitle}
-\pkuthss@int@infoitema{etitle}
-\pkuthss@int@infoitema{cauthor}
-\pkuthss@int@infoitema{eauthor}
-\pkuthss@int@infoitema{studentid}
-\pkuthss@int@infoitema{date}
-\pkuthss@int@infoitema{school}
-\pkuthss@int@infoitema{cmajor}
-\pkuthss@int@infoitema{emajor}
-\pkuthss@int@infoitema{direction}
-\pkuthss@int@infoitema{cmentor}
-\pkuthss@int@infoitema{ementor}
-\pkuthss@int@infoitema{ckeywords}
-\pkuthss@int@infoitema{ekeywords}
-\pkuthss@int@infoitemb{cuniversity}
-\pkuthss@int@infoitemb{euniversity}
-\pkuthss@int@infoitemb{cthesisname}
-\pkuthss@int@infoitemb{ethesisname}
-\pkuthss@int@infoitemb{cabstractname}
-\pkuthss@int@infoitemb{eabstractname}
+\impthss@int@infoitema{ctitle}
+\impthss@int@infoitema{etitle}
+\impthss@int@infoitema{cauthor}
+\impthss@int@infoitema{eauthor}
+\impthss@int@infoitema{studentid}
+\impthss@int@infoitema{date}
+\impthss@int@infoitema{school}
+\impthss@int@infoitema{cmajor}
+\impthss@int@infoitema{emajor}
+\impthss@int@infoitema{direction}
+\impthss@int@infoitema{cmentor}
+\impthss@int@infoitema{ementor}
+\impthss@int@infoitema{ckeywords}
+\impthss@int@infoitema{ekeywords}
+\impthss@int@infoitemb{cuniversity}
+\impthss@int@infoitemb{euniversity}
+\impthss@int@infoitemb{cthesisname}
+\impthss@int@infoitemb{ethesisname}
+\impthss@int@infoitemb{cabstractname}
+\impthss@int@infoitemb{eabstractname}
 % Set up document information using the `key = value' grammar.
-\newcommand*{\pkuthssinfo}[1]{\setkeys{pkuthss@info}{#1}}
+\newcommand*{\impthssinfo}[1]{\setkeys{impthss@info}{#1}}
 
 % Set up page layout.
 \geometry{
@@ -184,7 +186,7 @@
 }
 
 % Internal command to set up headers and footers.
-\def\pkuthss@int@setpagestyle{
+\def\impthss@int@setpagestyle{
 	% Footer/Header for the abstract pages
 	\fancypagestyle{plain}{
 		\fancyhf{}
@@ -214,52 +216,52 @@
 % `\MakeUppercase' works problematically.
 % eg. it converts `\cite{ctex}' into `\cite{CTEX}'.
 % This option can disable `\MakeUppercase' in left/right heading marks.
-\ifpkuthss@opt@uppermark
-	\def\pkuthss@int@setcase#1{#1}
-	\pkuthss@int@setpagestyle
+\ifimpthss@opt@uppermark
+	\def\impthss@int@setcase#1{#1}
+	\impthss@int@setpagestyle
 \else
 	% Code copied from fancyhdr's `\nouppercase', with the redefinition of
 	% `\uppercase' dropped to avoid disrupting CJKutf8.
 	% cf. <https://code.google.com/p/ctex-kit/issues/detail?id=147>.
-	\def\pkuthss@int@setcase#1{%
+	\def\impthss@int@setcase#1{%
 		\let\MakeUppercase\relax%
 		\expandafter\let\csname MakeUppercase \endcsname\relax%
 		#1%
 	}
-	\pkuthss@int@setpagestyle
+	\impthss@int@setpagestyle
 \fi
 
 % This places a bookmark pointing to somewhere near the page header;
 % Result of simple `\chapter{...} \pdfbookmark{...}' does not look nice,
 % because the bookmark will point to somewhere below the chapter mark.
-\def\pkuthss@int@pdfmark#1#2{%
+\def\impthss@int@pdfmark#1#2{%
 	\if@openright\cleardoublepage\else\clearpage\fi
 	\pdfbookmark[1]{#1}{#2}%
 }
 
-% Usage: \pkuthss@int@fillinblank{(number of lines)}{(line width)}{(contents)}
-\def\pkuthss@int@fillinblank#1#2#3{%
+% Usage: \impthss@int@fillinblank{(number of lines)}{(line width)}{(contents)}
+\def\impthss@int@fillinblank#1#2#3{%
 	\makebox[0pt][l]{\parbox[t]{#2}{\centering{#3}}}\mbox{}%
 	\parbox[t]{#2}{%
-		\newcount\pkuthss@tmp@linecount
-		\pkuthss@tmp@linecount=#1
-		\loop\ifnum\pkuthss@tmp@linecount>0
+		\newcount\impthss@tmp@linecount
+		\impthss@tmp@linecount=#1
+		\loop\ifnum\impthss@tmp@linecount>0
 			% Fill specified space with underline on the bottom line. `\underline'
 			% draws line on the baseline (not the bottom line), and this is why
 			% `\CJKunderline' is used here instead.
-			\ifnum\pkuthss@tmp@linecount=1
+			\ifnum\impthss@tmp@linecount=1
 				\CJKunderline{\makebox[#2]{}}
 			\else
 				\CJKunderline{\makebox[#2]{}}\\
 			\fi
-		\advance\pkuthss@tmp@linecount by -1\relax
+		\advance\impthss@tmp@linecount by -1\relax
 		\repeat%
 	}%
 }
 
 % Set up format of the title page (cover).
 \renewcommand{\maketitle}{%
-	\pkuthss@int@pdfmark{\titlepagename}{titlepage}
+	\impthss@int@pdfmark{\titlepagename}{titlepage}
 	\begin{titlepage}
 		% It will be nicer to use this line skip level in the title page.
 		\linespread{1.6}\selectfont
@@ -276,27 +278,27 @@
 			% Title of the thesis.
 			{%
 				\zihao{2}{\label@ctitle}%
-				\pkuthss@int@fillinblank{2}{0.64\textwidth}{\textbf{\@ctitle}}%
+				\impthss@int@fillinblank{2}{0.64\textwidth}{\textbf{\@ctitle}}%
 			}
 			\vfill
 			% Information about the author.
 			{%
 				% Slightly adjust the line skip when using new font size.
 				\zihao{3}\linespread{1.75}\selectfont
-				\def\pkuthss@tmp@len{0.56\textwidth}
+				\def\impthss@tmp@len{0.56\textwidth}
 				\begin{tabular}{l@{\extracolsep{0.2em}}c}
 					{\bfseries\label@cauthor}		&
-					\pkuthss@int@fillinblank{1}{\pkuthss@tmp@len}{\fangsong\@cauthor}		\\
+					\impthss@int@fillinblank{1}{\impthss@tmp@len}{\fangsong\@cauthor}		\\
 					{\bfseries\label@studentid}	&
-					\pkuthss@int@fillinblank{1}{\pkuthss@tmp@len}{\fangsong\@studentid}	\\
+					\impthss@int@fillinblank{1}{\impthss@tmp@len}{\fangsong\@studentid}	\\
 					{\bfseries\label@school}		&
-					\pkuthss@int@fillinblank{1}{\pkuthss@tmp@len}{\fangsong\@school}		\\
+					\impthss@int@fillinblank{1}{\impthss@tmp@len}{\fangsong\@school}		\\
 					{\bfseries\label@cmajor}		&
-					\pkuthss@int@fillinblank{1}{\pkuthss@tmp@len}{\fangsong\@cmajor}		\\
+					\impthss@int@fillinblank{1}{\impthss@tmp@len}{\fangsong\@cmajor}		\\
 					{\bfseries\label@direction}	&
-					\pkuthss@int@fillinblank{1}{\pkuthss@tmp@len}{\fangsong\@direction}	\\
+					\impthss@int@fillinblank{1}{\impthss@tmp@len}{\fangsong\@direction}	\\
 					{\bfseries\label@cmentor}		&
-					\pkuthss@int@fillinblank{1}{\pkuthss@tmp@len}{\fangsong\@cmentor}		\\
+					\impthss@int@fillinblank{1}{\impthss@tmp@len}{\fangsong\@cmentor}		\\
 				\end{tabular}%
 			}
 			\vfill
@@ -309,7 +311,7 @@
 
 % Typeset the Chinese abstract.
 \newenvironment{cabstract}{%
-	\pkuthss@int@pdfmark{\cabstractname}{cabstract}
+	\impthss@int@pdfmark{\cabstractname}{cabstract}
 	\chapter*{\cabstractname}
 	\markboth{\cabstractname}{}%
 	\thispagestyle{plain}
@@ -319,7 +321,7 @@
 
 % Typeset the English abstract.
 \newenvironment{eabstract}{%
-	\pkuthss@int@pdfmark{\eabstractname}{eabstract}
+	\impthss@int@pdfmark{\eabstractname}{eabstract}
 	\chapter*{\eabstractname}
 	\markboth{\eabstractname}{}
 	\thispagestyle{plain}
