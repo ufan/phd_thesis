@@ -80,32 +80,33 @@
 
 % my packages
 \usepackage[absolute, overlay]{textpos} %封面制作
+\usepackage{import}
 
 \begin{document}
 	%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%% 封面,版权,声明,致谢 %%%
 	\covermatter
 	% 自动生成封面。
-	\maketitle
+%	\maketitle
 	% 从pdf载入封面
-% 	\input{cover/cover_cn.tex}
-% 	\null\newpage
-% 	\input{cover/cover_en.tex}
-% 	\null\newpage
+ 	\input{cover/cover_cn.tex}
+ 	\null\newpage
+ 	\input{cover/cover_en.tex}
+ 	\null\newpage
 
 	% 版权声明。
-	\include{chap/copyright}
+	\input{cover/copyright}
 	% 原创性声明和使用授权说明。
-	\include{chap/originauth}
+	\input{cover/originauth}
 	% 致谢。
-	\include{chap/acknowledge}
+	\subimport{chap/acknowledge/}{acknowledge}
 	
 	%%%%%%%%%%%%%%%%%%%%%
 	%%% 中英文摘要,目录 %%%
 	% 简单页眉页脚.此后内容都加入目录,并双面打印
 	\frontmatter
 	% 中英文摘要。
-	\include{chap/abstract}
+	\subimport{chap/abstract/}{abstract.tex}
 	% 自动生成目录。	
 	\tableofcontents
 
@@ -113,11 +114,19 @@
 	%%% 正文各章节 %%%
 	\mainmatter
 	% 各章节。
-	\include{chap/chap1}
+	\subimport*{chap/chap1/}{introduction.tex}
+	% 各章节。
+	\subimport*{chap/chap2/}{chap2.tex}
+	% 各章节
+	\subimport*{chap/chap3/}{chap3.tex}
+	% 各章节。
+	\subimport*{chap/chap4/}{chap4.tex}
+	% 各章节。
+	\subimport*{chap/chap5/}{chap5.tex}
 	% 结论。
-	\include{chap/conclusion}
+	\subimport*{chap/conclusion/}{conclusion.tex}
 	% special chapter没有章节编号，在目录中显示
-	\include{chap/special}
+% 	\subimport*{chap/special}{}
 	
 	% 正文中的附录部分。
 	\appendix
@@ -136,8 +145,9 @@
 		sorting = ecnty
 	]
 	% 各附录。
-	\include{chap/encl1}
-
+	\subimport*{chap/appendix/}{app1.tex}
+	\subimport*{chap/appendix/}{app2.tex}
+	
 	% 以下为正文之后的部分，默认不进行章节编号。
 	\backmatter
 	
