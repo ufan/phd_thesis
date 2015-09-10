@@ -19,6 +19,8 @@
 % 且某些教务要求打印版论文的文字部分为纯黑色而非灰度打印，
 % 【因此最终打印和提交论文前，请将“colorlinks”改为“nocolorlinks”。】
 \documentclass[UTF8, nocolorlinks, openany, spacing, pdftoc, pkuspace]{impthss}
+% 设置行距为1.5。ctex说明文档中说linespread也可以作为选项传入，但测试结果显示不起效果。
+% 因此在此处显示调用\linespread命令设置行距，测试显示有效果。
 \linespread{1.5}
 % 使用 biblatex 排版参考文献，并规定其格式（详见 biblatex-caspervector 的文档）。
 % 这里按照英文文献在前，中文文献在后排序（“sorting = ecnty”）；
@@ -47,40 +49,20 @@
 	studentid = {0123456789},
 	date = {\today},
 	school = {某某学院},
-	cmajor = {某某专业}, emajor = {Some Major},
-	direction = {某某方向},
-	cmentor = {某某教授}, ementor = {Prof.\ Somebody},
+	cmajor = {粒子物理与原子核物理}, emajor = {Nuclear and Particle Physics},
+	direction = {实验核物理},
+	cmentor = {孙志宇教授}, ementor = {Prof.\ Sun Zhiyu},
 	ckeywords = {其一，其二}, ekeywords = {KeywdOne, KeywdTwo}
 }
 % 载入参考文献数据库（注意不要省略“.bib”）。
 \addbibresource{thesis.bib}
 
-% 普通用户可删除此段。
-\usepackage{color}
-\def\impthssffaq{%
-	\emph{\textcolor{red}{impthss 文档模版最常见问题：}}
-
-	在最终打印和提交论文之前，
-	请将 impthss 文档类选项中的 %
-	\texttt{colorlinks} 替换为 \texttt{nocolorlinks}，
-	因为图书馆要求电子版论文的目录必须为黑色，
-	且某些教务要求打印版论文的文字部分为纯黑色而非灰度打印。
-
-	\texttt{\string\cite}、\texttt{\string\parencite} %
-	和 \texttt{\string\supercite} 三个命令分别产生%
-	未格式化的、带方括号的和上标且带方括号的引用标记：%
-	\cite{test-en}，\parencite{test-zh}、\supercite{test-en, test-zh}。
-
-	若要避免章末空白页，请在调用 impthss 文档类时加入 \texttt{openany} 选项。
-
-	如果编译时不出参考文献，
-	请参考 \texttt{texdoc impthss}“问题及其解决”一章
-	“其它可能存在的问题”一节中关于 biber 的说明。
-}
-
-% my packages
+% extra packages
 \usepackage[absolute, overlay]{textpos} %封面制作
-\usepackage{import}
+\usepackage{import} % 使用\import,\subimport命令模块化文档结构，可以用相对路径载入文档
+\usepackage{blindtext}
+\usepackage{comment}
+\usepackage{siunitx}
 
 \begin{document}
 	%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -114,17 +96,22 @@
 	%%% 正文各章节 %%%
 	\mainmatter
 	% 各章节。
-	\subimport*{chap/chap1/}{introduction.tex}
+	\subimport{chap/introduction/}{introduction.tex}
 	% 各章节。
-	\subimport*{chap/chap2/}{chap2.tex}
+	\subimport{chap/description/}{description.tex}
+	\begin{comment}
 	% 各章节
-	\subimport*{chap/chap3/}{chap3.tex}
+	\subimport{chap/dynamic_range/}{dynamic_range.tex}
 	% 各章节。
-	\subimport*{chap/chap4/}{chap4.tex}
+	\subimport{chap/pmt_test/}{pmt_test.tex}
 	% 各章节。
-	\subimport*{chap/chap5/}{chap5.tex}
-	% 结论。
-	\subimport*{chap/conclusion/}{conclusion.tex}
+	\subimport{chap/construction/}{construction.tex}
+	%
+	\subimport{chap/cosmic_ray/}{cosmic_ray.tex}
+	% 各章节。
+	\subimport{chap/heavy_ion/}{heavy_ion.tex}
+	% 结论
+	\subimport{chap/conclusion/}{conclusion.tex}
 	% special chapter没有章节编号，在目录中显示
 % 	\subimport*{chap/special}{}
 	
@@ -147,6 +134,7 @@
 	% 各附录。
 	\subimport*{chap/appendix/}{app1.tex}
 	\subimport*{chap/appendix/}{app2.tex}
+	\end{comment}
 	
 	% 以下为正文之后的部分，默认不进行章节编号。
 	\backmatter
