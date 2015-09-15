@@ -63,6 +63,12 @@
 \usepackage{blindtext}
 \usepackage{comment}
 \usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{tabulary}
+% 设置表格字体大小
+\usepackage[font=normalsize]{caption}
+\let\oldtabular\tabular 
+\renewcommand{\tabular}{\small\oldtabular}
 
 \begin{document}
 	%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -114,7 +120,7 @@
 	\subimport{chap/conclusion/}{conclusion.tex}
 	% special chapter没有章节编号，在目录中显示
 % 	\subimport*{chap/special}{}
-	
+	\end{comment}
 	% 正文中的附录部分。
 	\appendix
 	% 排版参考文献列表。
@@ -134,7 +140,7 @@
 	% 各附录。
 	\subimport*{chap/appendix/}{app1.tex}
 	\subimport*{chap/appendix/}{app2.tex}
-	\end{comment}
+	
 	
 	% 以下为正文之后的部分，默认不进行章节编号。
 	\backmatter
