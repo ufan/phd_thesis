@@ -56,7 +56,8 @@ DAMPE粒子探测器本身是一个高空间分辨和能量分辨的伽玛射线
 	\centering
 	\caption{DAMPE与其它同类探测器的性能比较}
 	\label{tab:ch1:dampe_comparison}
-	\begin{tabu} to \textwidth{lcccc}
+	\begin{threeparttable}
+	\begin{tabulary}{\linewidth}{LCCCC}
 		\toprule[1.5pt]
 		  & DAMPE & AMS-02 & FERMI-LAT & CALET \\ 
 		\midrule[1pt]
@@ -65,11 +66,15 @@ DAMPE粒子探测器本身是一个高空间分辨和能量分辨的伽玛射线
 		$e/\gamma$ Angular res.@\si{GeV}(\si{\degree}) & 0.1 & 0.3 & 0.1 & 0.1 \\ 
 		$e/p$ Discrimination& $10^5$ & $10^5\sim10^6$ & $10^3$ & $10^5$ \\ 
 		Calorimeter thickness($\Psi_0$) & 31 & 17 & 8.6 & 30 \\ 
-		Geometric accep.(\si{\meter\squared\steradian}) & 0.4 & 0.09 & 1 & 0.12 \\ 
+		Geometric accep.(\si{\meter\squared\steradian}) & 0.4 & 0.09 & 1 & 0.12\tnote{*} \\ 
 		\bottomrule[1.5pt] 
-	\end{tabu} 
+	\end{tabulary}
+	\begin{tablenotes}
+		\item[*] DAMPE
+	\end{tablenotes}
+	\end{threeparttable}
 \end{table}
-
+    
 \subsection{性能指标}
 DAMPE卫星将运行于\SI{500}{\kilo\meter}的太阳同步轨道，设计寿命大于三年。
 卫星观测能段覆盖5GeV-10TeV，能量分辨优于1.5%，超过国际上所有类似探测器。可望在暗物质粒子探测和宇宙线物理这两大科学难题上取得突破！同时更好的研究伽玛射线天文学等相关重要科学问题。
