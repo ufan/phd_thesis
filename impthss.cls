@@ -69,6 +69,14 @@
 % CJKfntef provides `\CJKunderline' used in `\maketitle'.
 % fancyhdr provides utilities for setting up headers and footers.
 \LoadClass[zihao=-4]{ctexbook}[2011/03/11]
+% Tables
+\RequirePackage{tablefootnote}
+\RequirePackage{booktabs}
+\RequirePackage{tabulary}
+\RequirePackage{longtable}
+\RequirePackage{tabu}
+\AtBeginEnvironment{longtabu}{\small}{}{}
+\AtBeginEnvironment{tabu}{\small}{}{}
 % Provide hyperlinks of references
 \RequirePackage{hyperref}
 % For customized header/footer

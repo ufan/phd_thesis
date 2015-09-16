@@ -1,10 +1,11 @@
 \chapter{塑闪阵列探测器分系统简介}
 \section{工作原理}
+\label{sec:psd_principle}
 塑闪阵列探测器（以下将简称PSD）是暗物质粒子探测卫星的关键子探测器之一。
 它的功能有两个：一是协助 BGO量能器,区分电子和光子事件;二是鉴别入射重离子(Z=1~20)的种类。
+PSD选择了\SI{10}{\milli\meter}厚的有机塑料闪烁体作为探测器介质材料，通过测量入射粒子在其中的量沉积能量来实现以上两个功能需求。
+下面简要介绍一下其工作原理。
 
-PSD选择了\SI{10}{\milli\meter}厚的有机塑料闪烁体EJ-200~\parencite{ej-200}作为分系统的探测介质材料，通过测量入射粒子在其中的量沉积能量来实现以上两个功能需求。
-有机塑料闪烁体由于具有强的抗辐照特性、快的时间响应性、好的均匀性、长的光衰减长度、光输出高且易于加工等属性,在空间探测系统中常被用于提供系统的触发信号、能量测量及飞行时间测量。
 \subsection{重离子鉴别的原理}
 粒子在物质中的能量损失与其能量有紧密的关系。
 对于重带电粒子（质量大于电子），其平均能量损失率与入射粒子能量的关系如图~\ref{fig:ch2:energyloss_vs_velocity}所示。
@@ -63,7 +64,7 @@ ${\sigma}_{g.d.r}$是光致核反应的反应截面。
 在光子能量较低时光电效应占主导作用，中等能量时康普顿散射占主导作用，而高能光子一般只通过电子对效应损失能量.
 从图~\ref{fig:ch2:photon_energyloss}中可以看到电子对效应的反应截面非常小，再加上PSD使用的塑料闪烁体材料密度小、厚度薄，高能$\gamma$射线在PSD中发生反应的概率非常小，因此基本不会有能量沉积。
 
-\begin{figure*}
+\begin{figure*}[t]
 	\centering
 	\includegraphics[width=0.9\linewidth,angle=270]{chap/description/fig/photon_energyloss}
 	\caption{光子与物质各种相互作用的反应截面，上图是在碳中的，下图是在铅中的，引自~\parencite{pdg_book}。}
@@ -79,7 +80,7 @@ ${\sigma}_{g.d.r}$是光致核反应的反应截面。
 然而，高能电子/正电子轫致辐射产生的光子能量也比较高，一般不在PSD中沉积能量。
 另一方面，电离相互作用虽然不占据主导作用，但它是一个连续过程，会一直在PSD中沉积能量，其大小大概与MIPs粒子的能量沉积差不多。
 
-\begin{figure*}
+\begin{figure*}[t]
 \centering
 \includegraphics[width=0.8\linewidth]{chap/description/fig/electron_energyloss}
 \caption{电子/正电子在铅中的单位辐射长度能损比例与能量的关系，引自~\parencite{pdg_book}。}
@@ -89,10 +90,53 @@ ${\sigma}_{g.d.r}$是光致核反应的反应截面。
 综上所述，高能光子在PSD中没有能量沉积，高能电子/正电子在PSD中有能量沉积。
 根据入射粒子是否在PSD中有能量沉积，可以将光子和带电粒子区分开来；进一步结合BGO量能器，可以将电子/正电子和其它带电的强子区分开来。
 
-\section{PSD的性能要求}
+\section{性能要求}
+\label{sec:psd_requirements}
+结合DAMPE探测器整体的物理需求，PSD子探测器需要达到的性能指标如下：
+\begin{enumerate}
+	\item 有效探测面积$\SI{820}{\milli\meter}\times\SI{820}{\milli\meter}$。DAMPE是单方向的探测器，即它只关心从顶部入射的粒子。由于PSD位于DAMPE探测器最顶端，它的有效探测面积决定了DAMPE的视场大小。PSD是DAMPE中面积最大的子探测器。
+	\item 探测单元实现电子和重离子（$Z=1\sim20$）的测量。根据~\ref{sec:psd_principle}节的描述，重离子在PSD中的能量沉积相差巨大，这就对PSD探测单元提出了大动态范围的要求。另外，为了有效区分电子信号和噪声本底（光子不在PSD中产生信号），探测单元还需要由较高的信噪比（Signal to Noise Ratio，简称SNR）。因此PSD的探测单元需要进行认真地设计和验证以满足这些要求，这将在第三章进行详细讨论。
+	\item 探测单元电荷分辨优于\SI{25}{\percent}（$\sigma$,Z=1）。为了对不同种类的重离子进行有效鉴别，探测器分辨率需要满足一定条件。由于塑料闪烁体材料本身的限制，PSD探测探测单元的分辨率确定为对$Z=1$的粒子（对于$Z>1$的重离子，探测器响应很难在实验室条件下进行验证）的$\sigma$好于\SI{25}{\percent}。在相对论能区，所有$Z=1$的粒子与MIPs粒子具有类似的能量沉积，这个要求可以简化为对MIPs粒子的能量分辨好于\SI{25}{\percent}。
+	\item 空间分辨好于\SI{2}{\centi\meter}。迳迹探测不是PSD的主要功能，DAMPE的主要迳迹探测器是STK。但在迳迹寻找和重建过程中，STK需要BGO和PSD提供额外的位置信息以便其更有效地找到并验证真实迳迹。因此，PSD的位置信息不需要特别精确，最终被确定为\SI{2}{\centi\meter}。
+	\item 对MIPs粒子的探测效率高于\SI{95}{\percent}。这是$e/\gamma$鉴别提出的要求，包含两部分内容：一是对带电粒子的探测器效率高于\SI{95}{\percent}，二是对光子的误判率低于\SI{5}{\percent}。
+\end{enumerate}
 
-\section{探测器组成}
+\section{探测器设计和组成}
+\label{sec:psd_composition}
+有机塑料闪烁体由于具有强的抗辐照特性、快的时间响应性、好的均匀性、长的光衰减长度、光输出高且易于加工等属性,在空间探测系统中常被用于提供系统的触发信号、能量测量及飞行时间测量。
+PSD选择了Eljeng公司的EJ-200~\parencite{ej-200}作为探测器介质材料，其主要性能参数参看表
+
+\begin{longtabu} to 0.8\linewidth{lX}
+	\caption{EJ-200的主要性能参数\label{tab:ch2:ej200}}\\
+	\toprule[1.5pt]
+	\textbf{性能参数} & \textbf{典型值} \\ 
+	\midrule
+	\endfirsthead
+	
+	\toprule[1.5pt]
+	\multicolumn{2}{ c }{续表~\ref{tab:ch2:ej200}}\\
+	%性能参数 & 典型值 \\ 
+	\midrule
+	\endhead
+	
+	H/C原子比 & 1.10 \\
+	原子密度 & H： \SI{5.523E22}{\per\cubic\centi\meter}， C：\SI{4.740E22}{\per\cubic\centi\meter} \\
+	光输出 & \SI{64}{\percent}（相对蒽）\footnote{\SI{60}{\celsius}时的光输出是\SI{20}{\celsius}时的\SI{95}{\percent}，\SI{-60}{\celsius}$\sim$\SI{20}{\celsius}时光输出不依赖于温度} \\
+	上升时间 & \SI{0.9}{\nano\second} \\
+	衰减时间 & \SI{2.1}{\nano\second} \\
+	光谱峰位 & \SI{425}{\nano\meter} \\
+	衰减长度 & \SI{210}{\centi\meter} \\
+	折射率   & 1.58 \\
+	密度    &  \SI{1.032}{\g\per\cubic\centi\meter} \\
+	膨胀系数 & \SI{7.8E-5}{\per\celsius} \\
+	软化温度 & \SI{70}{\celsius} \\
+	蒸气压   & 能用于真空 \\
+	溶解性  &  可溶于芳香族溶剂、氯化溶剂及丙酮等,不溶于水、稀酸、低浓度酒精、碱及硅脂等 \\
+	\bottomrule[1.5pt]
+\end{longtabu}
 
 \section{前端电子学}
+\label{sec:psd_electronics}
 
 \section{支撑结构}
+\label{sec:psd_support}
