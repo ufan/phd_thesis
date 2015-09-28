@@ -63,6 +63,8 @@
 \usepackage{blindtext}
 \usepackage{comment}
 \usepackage{siunitx}
+\usepackage{float}
+\usepackage{mdwlist}
 
 % 表格内角注
 \usepackage{threeparttable}
@@ -71,6 +73,17 @@
 \usepackage[font=normalsize]{caption}
 \let\oldtabular\tabular 
 \renewcommand{\tabular}{\small\oldtabular}
+
+\raggedbottom
+\begin{comment}
+	\usepackage{etoolbox}
+	\newskip\mfilskip
+	\mfilskip=0pt plus 3cm\relax
+	\newcommand{\mfilbreak}{\vspace{\mfilskip}\penalty -200%
+	\ifdim\lastskip<\mfilskip\vspace{-\lastskip}\else\vspace{-\mfilskip}\fi}
+	\pretocmd{\section}{\mfilbreak}{}{}content...
+\end{comment}
+
 
 \begin{document}
 	%%%%%%%%%%%%%%%%%%%%%%%%%

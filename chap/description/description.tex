@@ -10,6 +10,20 @@ PSD选择了\SI{10}{\milli\meter}厚的有机塑料闪烁体作为探测器介�
 通过测量入射粒子在塑料闪烁体中的沉积能量，可以实现PSD粒子鉴别的功能，下面简要介绍一下其原理。
 
 \subsection{重离子鉴别的原理}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{chap/description/fig/energyloss_vs_velocity}
+	\caption{${\mu}^+$在Cu中的能量损失率与速度的关系(用$\beta\gamma$表示)，引自~\parencite{pdg_book}。 图中实线是总的能量损失率，包含了所有相互作用。}
+	\label{fig:ch2:energyloss_vs_velocity}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{chap/description/fig/fermi_plateau}
+	\caption{入射粒子在几种不同介质中的电离能量损失随入射粒子动量的变化，可以清楚地看到费米坪。引自~\parencite{pdg_book}。}
+	\label{fig:ch2:fermi_plateau}
+\end{figure}
+
 粒子在物质中的能量损失与其能量有紧密的关系。
 对于重带电粒子（质量大于电子），其平均能量损失率与入射粒子能量的关系如图~\ref{fig:ch2:energyloss_vs_velocity}所示。
 在不同能量范围内，导致能量损失的主要相互作用并不一样，图~\ref{fig:ch2:energyloss_vs_velocity}中用竖直的带子区分不同的能损区域。
@@ -32,19 +46,7 @@ $\delta$是密度效应修正项。
 随着能量的进一步升高，入射粒子的横向电场增强，靶核核外电子电荷密度的屏蔽效应也逐渐显著，减小了能量损失率，这种效应被称为密度效应。
 密度效应在公式~\ref{eq:beth_bloch}中用$\delta/2$来表示，它使得电离能量损失率减缓并最终接近一个常数值，称为费米坪（见图~\ref{fig:ch2:fermi_plateau})。
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\linewidth]{chap/description/fig/energyloss_vs_velocity}
-	\caption{${\mu}^+$在Cu中的能量损失率与速度的关系(用$\beta\gamma$表示)，引自~\parencite{pdg_book}。 图中实线是总的能量损失率，包含了所有相互作用。}
-	\label{fig:ch2:energyloss_vs_velocity}
-\end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.8\linewidth]{chap/description/fig/fermi_plateau}
-\caption{入射粒子在几种不同介质中的电离能量损失随入射粒子动量的变化，可以清楚地看到费米坪。引自~\parencite{pdg_book}。}
-\label{fig:ch2:fermi_plateau}
-\end{figure}
 
 由公式~\ref{eq:beth_bloch}可知，对同一种探测介质来说，$dE/dx$只与入射粒子的电荷量$z$和速度$\beta$有关。
 对于相对论粒子来说($\beta\gamma>1$)，其电离能量损失虽然与速度相关，但在很大的能量范围内其变化并不大。
@@ -57,6 +59,13 @@ $\delta$是密度效应修正项。
 因此可以通过测量PSD中沉积能量的大小进行重离子的鉴别。
 
 \subsection{高能$e/\gamma$鉴别的原理}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.2\linewidth,angle=270]{chap/description/fig/photon_energyloss}
+	\caption{光子与物质各种相互作用的反应截面，上图是在碳中的，下图是在铅中的，引自~\parencite{pdg_book}。}
+	\label{fig:ch2:photon_energyloss}
+\end{figure}
+
 光子可以与物质发生多种相互作用，如图~\ref{fig:ch2:photon_energyloss}所示。
 其中${\sigma}_{p.e.}$是光电效应的反应截面，
 ${\sigma}_{Rayleigh}$是Rayleigh散射的反应截面， 
@@ -67,13 +76,6 @@ ${\sigma}_{g.d.r}$是光致核反应的反应截面。
 在光子能量较低时光电效应占主导作用，中等能量时康普顿散射占主导作用，而高能光子一般只通过电子对效应损失能量.
 从图~\ref{fig:ch2:photon_energyloss}中可以看到电子对效应的反应截面非常小，再加上PSD使用的塑料闪烁体材料密度小、厚度薄，高能$\gamma$射线在PSD中发生反应的概率非常小，因此基本不会有能量沉积。
 
-\begin{figure}[t]
-	\centering
-	\includegraphics[width=0.9\linewidth,angle=270]{chap/description/fig/photon_energyloss}
-	\caption{光子与物质各种相互作用的反应截面，上图是在碳中的，下图是在铅中的，引自~\parencite{pdg_book}。}
-	\label{fig:ch2:photon_energyloss}
-\end{figure}
-
 对于电子/正电子来说，它们的质量小，在物质中的能量损失情况与重带电粒子有很大的不同。
 电子/正电子与靶原子的相互作用，主要是电离能量损失，辐射能量损失和多次散射。
 在能量较低时，电子/正电子虽然可以通过Møller散射，Bhabha散射和正电子湮灭损失能量，但电离能损仍然占据主导地位，见图~\ref{fig:ch2:electron_energyloss}。
@@ -83,7 +85,7 @@ ${\sigma}_{g.d.r}$是光致核反应的反应截面。
 然而，高能电子/正电子轫致辐射产生的光子能量也比较高，一般不在PSD中沉积能量。
 另一方面，电离相互作用虽然不占据主导作用，但它是一个连续过程，会一直在PSD中沉积能量，其大小大概与MIPs粒子的能量沉积差不多。
 
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.8\linewidth]{chap/description/fig/electron_energyloss}
 \caption{电子/正电子在铅中的单位辐射长度能损比例与能量的关系，引自~\parencite{pdg_book}。}
@@ -95,8 +97,9 @@ ${\sigma}_{g.d.r}$是光致核反应的反应截面。
 
 \section{性能要求}
 \label{sec:psd_requirements}
+
 结合DAMPE探测器整体的物理需求，PSD需要达到的性能指标如下：
-\begin{enumerate}
+\begin{enumerate}[noitemsep,topsep=0pt]
 	\item 有效探测面积$\SI{820}{\milli\meter}\times\SI{820}{\milli\meter}$。DAMPE是单方向的探测器，即它只关心从顶部入射的粒子。由于PSD位于DAMPE探测器最顶端，它的有效探测面积决定了DAMPE的视场大小。PSD是DAMPE中面积最大的子探测器。
 	\item 探测单元实现电子和重离子（$Z=1\sim20$）的测量。根据~\ref{sec:psd_principle}节的描述，重离子在PSD中的能量沉积相差巨大，这就对PSD探测单元提出了大动态范围的要求。另外，为了有效区分电子信号和噪声本底（光子不在PSD中产生信号），探测单元还需要由较高的信噪比（Signal to Noise Ratio，简称SNR）。因此PSD的探测单元需要进行认真地设计和验证以满足这些要求，这将在第三章进行详细讨论。
 	\item 探测单元电荷分辨优于\SI{25}{\percent}（$\sigma$,Z=1）。为了对不同种类的重离子进行有效鉴别，探测器分辨率需要满足一定条件。由于塑料闪烁体材料本身的限制，PSD探测探测单元的分辨率确定为对$Z=1$的粒子（对于$Z>1$的重离子，探测器响应很难在实验室条件下进行验证）的$\sigma$好于\SI{25}{\percent}。在相对论能区，所有$Z=1$的粒子与MIPs粒子具有类似的能量沉积，这个要求可以简化为对MIPs粒子的能量分辨好于\SI{25}{\percent}。
@@ -107,23 +110,38 @@ ${\sigma}_{g.d.r}$是光致核反应的反应截面。
 \section{探测器主体功能模块}
 \subsection{PSD整体构型}
 \label{sec:psd_composition}
-入射粒子在BGO量能器中发生电磁簇射或强子簇射时，大部分次级粒子都是前向的，但也有小部分次级粒子由于大角度散射反照(backscatter)到PSD上。
-反散射的簇射粒子由于带电或能量较低，在PSD上会有能量沉积，使得PSD测到的能量变大，这可能造成光子被误判为带电粒子，或者质子被误判为重离子。
-为了减小由此引起的误判率，PSD采用了模块化设计，即将PSD切割成一个个足够小的探测单元，每个探测单元模块都能独立进行能损测量。
-由于反散射粒子在入射粒子迳迹周围会有一个分布，且在入射粒子穿过的PSD探测单元内接收的反散射粒子最少（因为\ang{180}反散射的概率最小），如果只使用入射粒子穿过的PSD探测单元作为粒子鉴别的依据，就可以大大降低反散射簇射粒子造成的误判率。
-PSD模块化带来的另一个好处是增加了一组位置信息，因为每个探测单元模块都对应一个固定的空间位置坐标。
 
-\begin{figure}
+\begin{figure}[b!]
 	\centering
 	\includegraphics[width=\linewidth]{chap/description/fig/bars}
 	\caption{PSD中两种塑闪单元条的尺寸}
 	\label{fig:ch2:bars}
 \end{figure}
 
+入射粒子在BGO量能器中发生电磁簇射或强子簇射时，大部分次级粒子都是前向的，但也有小部分次级粒子由于大角度散射反照(backscatter)到PSD上。
+反散射的簇射粒子由于带电或能量较低，在PSD上会有能量沉积，使得PSD测到的能量变大，这可能造成光子被误判为带电粒子，或者质子被误判为重离子。
+为了减小由此引起的误判率，PSD采用了模块化设计，即将PSD切割成一个个足够小的探测单元，每个探测单元模块都能独立进行能损测量。
+由于反散射粒子在入射粒子迳迹周围会有一个分布，且在入射粒子穿过的PSD探测单元内接收的反散射粒子最少（因为\ang{180}反散射的概率最小），如果只使用入射粒子穿过的PSD探测单元作为粒子鉴别的依据，就可以大大降低反散射簇射粒子造成的误判率。
+PSD模块化带来的另一个好处是增加了一组位置信息，因为每个探测单元模块都对应一个固定的空间位置坐标。
+
 PSD的最小探测单元是一根长度为\SI{884}{\milli\meter}，厚度为\SI{10}{\milli\meter}的有机塑料闪烁体单元条。
 单元条的宽度有两个规格：A型宽度为\SI{28}{\milli\meter}，B型宽度为\SI{25}{\milli\meter}，见图~\ref{fig:ch2:bars}。
 单元条的端头被加工成特殊的“工”字形，这是为了将单元条与支撑结构更好地固定在一起（详见第~\ref{sec:psd_support}节）。
 每根塑闪单元条的两端都耦合一个光电倍增管（PMT）作为读出器件，这构成了PSD的一个探测器单元模块。
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.72\linewidth]{chap/description/fig/psd_detector}
+	\caption{PSD探测器的整体构型}
+	\label{fig:ch2:psd_explosion}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{chap/description/fig/bars_layout}
+	\caption{塑闪阵列平面内的单元条交叠放置以消除探测器灵敏死区。}
+	\label{fig:ch2:bars_layout}
+\end{figure}
 
 PSD一共由82个探测单元模块组成，分为X、Y两个相互垂直的塑闪阵列平面，见图~\ref{fig:ch2:psd_explosion}。
 X、Y两个探测平面的构型完全一样，每个平面内的41个探测单元平行紧密排列，A型单元条被放置在探测平面的中间部位，B型单元条被放置在平面的两边界上。
@@ -131,18 +149,6 @@ X、Y两个探测平面的构型完全一样，每个平面内的41个探测单�
 每个探测平面内，探测单元模块交错放置成“品”字形排列用以消除相邻单元条之间的间隙（探测死区），见图~\ref{fig:ch2:bars_layout}。
 相邻单元模块的中心距离为\SI{20}{\milli\meter}，因此单元条的重叠区域为\SI{8}{\milli\meter}，足以消除DAMPE探测器广视角造成的探测器死区。
 简单计算可以得到，PSD覆盖的有效探测面积为$\SI{822}{\milli\meter}\times\SI{822}{\milli\meter}$。
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.72\linewidth]{chap/description/fig/psd_explosion}
-\caption{PSD探测器结构的爆炸图展示。}
-\label{fig:ch2:psd_explosion}
-
-\centering
-\includegraphics[width=0.8\linewidth]{chap/description/fig/bars_layout}
-\caption{PSD每一塑闪层内的单元条交叠放置以消除探测器灵敏死区。}
-\label{fig:ch2:bars_layout}
-\end{figure}
 
 \subsection{探测器单元模块}
 PSD探测单元模块由一根塑闪单元条及其两端耦合的两支PMT组成。
@@ -155,7 +161,7 @@ EJ-200本身具有较好的光传输性能，但由于PSD单元条的长度较�
 为了提高光传输效率，PSD塑闪单元条的表面（除了与PMT耦合的端面）进行了抛光处理，同时使用Tyvek纸对塑闪单元条主体进行包装以提高反射率。
 太阳光会对PSD探测器单元模块的工作造成干扰，因此Tyvek包装层外又包裹了一层黑色热缩管材料进行避光，见图~\ref{fig:ch2:bar_wrapping}。
 
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.8\linewidth]{chap/description/fig/va160}
 \caption{PSD塑闪单元条的包装。}
@@ -204,7 +210,7 @@ R4443-MOD2是R4443的升级版本，主要替换了光阴极材料,使得其暗�
 PSD探测器单元模块处的磁场强度小于\SI{5}{Gauss}，因此R4443-MOD2外部缠绕了一层玻莫合金以消除磁场对PMT增益的影响。
 使用中,为了提高可靠性,R4443-MOD2外部还设计了硅胶保护层进行力学减震，同时PMT整体将安装到特殊的保护套中并固定在探测器支撑结构上（详见第~\ref{sec:psd_support}节）。
 
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.8\linewidth]{chap/description/fig/va160}
 \caption{R4443-MOD2裸管}
@@ -286,7 +292,7 @@ DAMPE高压单机不能提供连续可调的高压值，只有8个高压档位�
 
 \section{前端电子学功能模块}
 \label{sec:psd_electronics}
-\begin{figure}[t]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{chap/description/fig/psd_fee1}
 	\caption{PSD的前端电子学原理框图。}
@@ -300,7 +306,7 @@ PSD的前端电子学功能模块一共由4块前端电子学板（FEE）组成�
 下面对其主要功能做一个简单的介绍，更详细的内容参看~\parencite{yanghaibo_thesis,psd_tdr}。
 
 \subsection{电荷测量}
-电荷测量是FEE的主体功能，PSD选择了一款来自挪威IDEAS公司的ASIC（）Application Specific  Integrating Circuit芯片作为电荷测量的核心电路。
+电荷测量是FEE的主体功能，PSD选择了一款来自挪威IDEAS公司的ASIC(Application Specific  Integrating Circuit)芯片作为电荷测量的核心电路。
 VA160是一款高集成度、低功耗、高灵敏度的电荷测量芯片(见表~\ref{tab:ch2:va160})，能够满足DAMPE卫星载荷的功耗和空间/重量限制。
 另外，VA160是VA32的改进版本，而VA32在AMS-02中成功使用过，其空间抗辐照性能可以保证。
 
@@ -314,7 +320,7 @@ VA160是一款高集成度、低功耗、高灵敏度的电荷测量芯片(见�
 		\textbf{参数} &                     \textbf{典型值}                       \\ 
 		\midrule[1pt]
 		通道数         &                          32                            \\
-		电荷测量范围      &           \SIrange{-5}{13}{\pico\coulomb}            \\
+		电荷测量范围      &           \SIrange{-3}{13}{\pico\coulomb}            \\
 		成形时间        &          \SIrange{1.8}{2.3}{\micro\second}            \\
 		等效噪声电荷(ENC) &       3200 \si{e} + 7.6 \si{e\per\pico\farad}          \\
 		积分非线性       &                   \SI{2}{\percent}                     \\
@@ -323,16 +329,11 @@ VA160是一款高集成度、低功耗、高灵敏度的电荷测量芯片(见�
 	\end{tabulary}
 \end{table}
 
-\begin{figure}[t]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.8\linewidth]{chap/description/fig/va160}
 	\caption{VA160原理框图，来自~\parencite{fengchangqing_eqm}}
 	\label{fig:ch2:va160}
-	
-	\centering
-	\includegraphics[width=0.5\linewidth]{chap/description/fig/sample_hold}
-	\caption{保持信号与触发信号的关系。}
-	\label{fig:ch2:sample_hold}
 \end{figure}
 
 图~\ref{fig:ch2:va160}给出了VA160的电路原理框图。
@@ -343,6 +344,13 @@ VA160采用电流-电荷方法进行电荷测量：来自R4443-MOD2的电流脉�
 所有测量通道最终通过一个32选1的模拟多路开关依次经过电流输出型全差分放大器输出。
 VA160输出的差分电流信号经过模拟调理电路后被转换成电压信号，最后输入到一款14位的高精度ADC中进行模/数转换并被记录下来。
 除了32个正常的测量通道外，VA160内还有一个悬空参考通道，用于抑制共模噪声和由温度引起的电子学漂移。
+
+\begin{figure}[h!]	
+	\centering
+	\includegraphics[width=0.5\linewidth]{chap/description/fig/sample_hold}
+	\caption{保持信号与触发信号的关系。}
+	\label{fig:ch2:sample_hold}
+\end{figure}
 
 PSD的每个侧面有41支PMT，由于每支PMT输出两个信号(Dy5和Dy8双打拿极输出，详见第三章)，每个侧面一共有82个待测电流信号。
 Dy5和Dy8的信号幅度相差较大，为了减少通道间的串扰，它们被连接到不同的VA160芯片上。
@@ -364,7 +372,7 @@ DAC输出一个恒定的参考电压$V_{ref}$，FPGA控制模拟开关的通断�
 刻度电容左端与VA160的Cali管脚相连，因此这个脉冲电流被直接用于VA160的通道刻度，其对应的电荷量为$Q_{calib}=V_{ref}C_{calib}$。
 通过改变DAC的输出电压值，可以得到一系列不同电荷量大小的脉冲电流，从而对测量通道进行电荷扫描，得到其线性曲线。
 
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.7\linewidth]{chap/description/fig/fee_calibration}
 \caption{电子学刻度电路原理}
@@ -386,4 +394,34 @@ FEE采用电流采样电阻+ADC的方式监测VA160的-2.5V直流电源电压的
 
 \section{机械支撑功能模块}
 \label{sec:psd_support}
+PSD所有的探测器功能模块、前端电子学功能模块和高压扇出板都安装在机械支撑结构当中。
+PSD的机械结构能够稳固地支撑各内部组件，同时减缓火箭升空过程中的机械冲击和振动，保护脆弱部件不受损伤，保证PSD的功能完整性。
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{chap/description/fig/psd_explosion.eps}
+	\caption{PSD结构的爆炸图展示}
+	\label{fig:ch2:psd_structure}
+\end{figure}
+
+图~\ref*{fig:ch2:psd_structure}给出了PSD整体结构的爆炸图展示。
+底板和顶板，加上四个角上的连接法兰以及四个侧面的FEE机箱构成了PSD的主体包络($\SI{1200}{\milli\meter}\times\SI{1200}{\milli\meter}\times\SI{126}{\milli\meter}$)。
+整个外包络组成一个封闭的内部空间，能够有效抵挡外部太阳光的照射，保护内部的PMT和塑闪单元条免受外部杂散光线的影响。
+为了减轻重量和减少探测器灵敏面积内的物质量，底板和顶板采用碳纤维蒙皮的铝蜂窝板结构，并在四周主要承力部位预埋碳纤维方管和铝合金榫头组成的框架以加强刚度和强度。
+连接法兰用于连接顶板和底板主传力结构，它采用铝合金材料。
+FEE机箱内安装有该侧面对应的FEE前端电子学板、高压扇出板和信号转接板。
+考虑到箱体结构的力学性能，FEE机箱的主体结构由铝合金整体铣制加工而成。
+FEE机箱的侧板和顶板同样由铝合金材料加工而成，并与主箱体无缝衔接以提高电磁屏能力和导热性能。
+
+PSD的主承力结构由4组梁结构和底板连接为一个整体组成，主要用于固定和保护塑闪单元条阵列及其PMT组件。
+为便于结构装配，每根梁的主体由三层铝合金组件构成。
+每组梁内部具有两排(一排21个，一排20个)“工”字形和圆柱形组成的凹槽结构，用于固定41个塑闪单元模块的一端。
+“工”字形凹槽与塑闪单元条的“工”字形端头适配，用于固定塑闪单元条；圆柱形孔结构紧连“工”字形槽结构，用于安装PMT组件。
+每两组梁结构固定一个塑闪阵列平面，并被分为固定端梁和活动端梁。
+固定端梁只由三层铝合金组件组成，下层铝合金较其余两层稍长并直接与碳纤维底板连接，完全约束了单元条固定端的6个自由度。
+活动端梁由三层铝合金组件和一个碳纤维弓形梁组成：三层铝合金组件自身连接成一个整体，该结构不和底板连接，也被称为铝合金滑块；碳纤维弓形梁与铝合金滑块外形完全适配并与底板直接连接，它和底板组成梁结构完全约束单元条活动端的5个自由度，底板和铝合金滑块间的摩擦力约束了沿塑闪单元条长度方向的自由度。
+当温度变化时，塑闪单元条变形力能够克服摩擦力，并带动铝合金滑块小范围来回滑动从而释放塑闪单元条形变，保证单元条不因膨胀收缩而断裂。
+碳纤维弓形梁对刚度和强度的要求都很高，因此选用高模量的碳纤维胶结而成。
+
+
 
