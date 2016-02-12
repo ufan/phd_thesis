@@ -1,4 +1,5 @@
 \chapter{塑闪阵列探测器分系统的设计}
+\label{ch:psd_description}
 塑闪阵列探测器（Plastic Scintillator Detector， 以下将简称PSD）是暗物质粒子探测卫星的关键子探测器之一，它位于DAMPE卫星的最顶部。
 PSD需要实现以下两个功能：一是作为电荷测量探测器，对$Z=1\sim20$的入射相对论重离子进行鉴别；二是作为反符合探测器，区分电子和光子事件。
 由于不同种类的入射粒子在物质中的沉积能量并不一致，PSD通过准确测量沉积能量的大小来实现上述两个功能。
@@ -145,20 +146,19 @@ G = \frac{n_{anode}}{n_{photon}} = QE \times \eta \times M
 其中，$n_{anode}$是阳极输出的电子数目，$n_{photon}$是入射光子数目；
 $QE$是光阴极的量子效率（Quantum Efficiency），它是光电子数与入射光子数的比值，表示光电效应的转换效率；
 $\eta$是电子光学系统的收集效率（Collection Efficiency），它是第一打拿极收集到的电子数与光电子数的比值；
-$M$是电子倍增器的增益系数，它是阳极输出的电子数与轰击第一打拿极的电子数目比值。
-$QE$是个常数，它的值取决于所使用的光阴极材料。
-$\eta$在光阴极和第一打拿极间的电压足够大时近似等于1。
-而$M$是各打拿极增益的乘积
+$M$是电子倍增器的增益系数，它是阳极输出的电子数与轰击第一打拿极的电子数的比值。
+
+电子倍增器有多个打拿极串联组成，其增益系数$M$是各打拿极增益的乘积
 \begin{equation}
 M = \prod_{i=1}^{N} g_{i}
 \label{eq:ch2:multiplier_gain}
 \end{equation}
-各打拿极增益$g_i$可进一步分解为
+而打拿极增益$g_i$可进一步分解为
 \begin{equation}
 g_{i} = \eta_{i} \delta_{i}
 \end{equation}
 其中，$\eta_{i}$是第$i$打拿极到第$i+1$个打拿极间的电子收集效率 ，而$\delta_i$是第$i$打拿极的二次电子发射系数。
-$\eta_{i}$和$i+1$都是极间电压$V_i$的幂函数，因此
+$\eta_{i}$和$\delta_i$都是极间电压$V_i$的幂函数，因此
 \begin{equation}
 g_{i} = k_i {V_i}^\alpha
 \label{eq:ch2:dynode_power_function}
@@ -168,8 +168,19 @@ $k_i$和$\alpha$都是常数，其中$k_i$与打拿极的几何结构有关，�
 将公式~\ref{eq:ch2:dynode_power_function}代入公式~\ref{eq:ch2:multiplier_gain}，同时考虑到极间电压是总电压$V_{ht}$固定的一部分（$V_i=k^{'}V_{ht}$），可以得到
 \begin{equation}
 M = \prod_{i=1}^{N} k_i{V_i}^\alpha = \prod_{i=1}^{N} k_i{(k^{'}_i V_{ht})}^\alpha = KV_{ht}^{N\alpha}
+\label{eq:ch2:multiplier_power_function}
 \end{equation}
-即PMT电子倍增器的增益系数是总电压的幂函数。
+即PMT电子倍增器的增益系数是光阴极和阳极间所加总电压的幂函数。
+
+量子效率$QE$是一个常数，它的值取决于所使用的光阴极材料，与所加电压无关。
+电子光学系统的结构一般经过优化，其收集效率$\eta$虽然是电压的函数，但当光阴极和第一打拿极间的电压足够大时，可以认为$\eta\simeq1$。
+基于这个假设，同时将公式~\ref{eq:ch2:multiplier_power_function}代入公式~\ref{eq:ch2:pmt_gain}，可以得到PMT的整体增益也是所加总电压的幂函数
+\begin{equation}
+G = K^{'} V_{ht}^{{\alpha}^{'}}
+\label{eq:ch2:pmt_gain_power_function}
+\end{equation}
+上式是光电倍增管的一个重要特性，它对PMT工作状态的调节具有指导意义，是PMT性能测试的主要内容。
+PSD的PMT性能测试过程和结果将在第\ref{ch:pmt_characterization}章中进行详细叙述。
 
 \section{性能要求}
 \label{sec:psd_requirements}
