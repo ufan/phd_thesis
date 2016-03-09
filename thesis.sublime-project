@@ -1,0 +1,22 @@
+{
+	"folders":[
+		{
+			"path":"chap",
+			"name":"chapters",
+			"file_include_patterns":"*.tex",
+			"file_exclude_patterns":"lpsum*",
+			"folder_exclude_patterns":"lpsum*"
+		},
+		{
+			"path":"refs",
+			"name":"bibliography"
+		}
+	],
+	"settings":{
+		"TEXroot":"thesis.tex",
+		"builder_settings":{
+			"program":"xelatex",
+		},
+	"hide_build_panel": "no_errors"	
+	}
+}
