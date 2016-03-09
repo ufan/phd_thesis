@@ -85,8 +85,15 @@
 	\pretocmd{\section}{\mfilbreak}{}{}content...
 \end{comment}
 
+% 处理tiff图片
+% \usepackage{grfext}
+% \DeclareGraphicsRule{.tif}{png}{.png}%
+% {%
+  % `convert #1 `dirname #1`/`basename #1 .tif`-tif-converted-to.png %
+% }
+
 % \includeonly{./chap/introduction/introduction}
-% \includeonly{./chap/description/description}
+\includeonly{./chap/dynamic_range/dynamic_range}
 \begin{document}
 	%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%% 封面,版权,声明,致谢 %%%
