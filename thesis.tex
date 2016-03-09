@@ -60,7 +60,7 @@
 
 % extra packages
 \usepackage[absolute, overlay]{textpos} %封面制作
-\usepackage{import} % 使用\import,\subimport命令模块化文档结构，可以用相对路径载入文档
+% \usepackage{import} % 使用\import,\subimport命令模块化文档结构，可以用相对路径载入文档
 \usepackage{blindtext}
 \usepackage{comment}
 \usepackage{siunitx}
@@ -85,7 +85,8 @@
 	\pretocmd{\section}{\mfilbreak}{}{}content...
 \end{comment}
 
-
+% \includeonly{./chap/introduction/introduction}
+% \includeonly{./chap/description/description}
 \begin{document}
 	%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%% 封面,版权,声明,致谢 %%%
@@ -103,14 +104,14 @@
 	% 原创性声明和使用授权说明。
 	\input{cover/originauth}
 	% 致谢。
-	\subimport{chap/acknowledge/}{acknowledge}
+	\input{./chap/acknowledge/acknowledge}
 	
 	%%%%%%%%%%%%%%%%%%%%%
 	%%% 中英文摘要,目录 %%%
 	% 简单页眉页脚.此后内容都加入目录,并双面打印
 	\frontmatter
 	% 中英文摘要。
-	\subimport{chap/abstract/}{abstract.tex}
+	\input{./chap/abstract/abstract}
 	% 自动生成目录。	
 	\tableofcontents
 
@@ -118,25 +119,24 @@
 	%%% 正文各章节 %%%
 	\mainmatter
 	% 各章节。
-	\subimport{chap/introduction/}{introduction.tex}
+	\include{./chap/introduction/introduction}
 	% 各章节。
-	\subimport{chap/description/}{description.tex}
+	\include{./chap/description/description}
 	% 各章节
-	\subimport{chap/dynamic_range/}{dynamic_range.tex}
+	\include{./chap/dynamic_range/dynamic_range}
 	% 各章节。
-	\subimport{chap/pmt_test/}{pmt_test.tex}
-	\begin{comment}
+	\include{./chap/pmt_test/pmt_test}
 	% 各章节。
-	\subimport{chap/construction/}{construction.tex}
+	\include{./chap/construction/construction}
 	%
-	\subimport{chap/cosmic_ray/}{cosmic_ray.tex}
+	\include{chap/cosmic_ray/cosmic_ray}
 	% 各章节。
-	\subimport{chap/heavy_ion/}{heavy_ion.tex}
+	\include{chap/heavy_ion/heavy_ion}
 	% 结论
-	\subimport{chap/conclusion/}{conclusion.tex}
+	\include{chap/conclusion/conclusion}
+
 	% special chapter没有章节编号，在目录中显示
 % 	\subimport*{chap/special}{}
-	\end{comment}
 	% 正文中的附录部分。
 	\appendix
 	% 排版参考文献列表。
@@ -154,8 +154,8 @@
 		sorting = ecnty
 	]
 	% 各附录。
-	\subimport*{chap/appendix/}{app1.tex}
-	\subimport*{chap/appendix/}{app2.tex}
+	\include{./chap/appendix/app1}
+	\include{./chap/appendix/app2}
 	
 	
 	% 以下为正文之后的部分，默认不进行章节编号。

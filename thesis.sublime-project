@@ -17,6 +17,6 @@
 		"builder_settings":{
 			"program":"xelatex",
 		},
-	"hide_build_panel": "no_errors"	
+	"hide_build_panel": "never"	
 	}
 }
