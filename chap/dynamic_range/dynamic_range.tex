@@ -143,6 +143,19 @@ PSD使用ASIC芯片VA160进行电荷测量。该芯片集成了32个输入通道
 因此，高增益打拿级对应的通道应该覆盖$\SI{0.1}{MIPs}\sim\SI{40}{MIPs}$的动态范围，而余下的动态范围由低增益打拿级对应的通道覆盖。
 这就限制了两个打拿级间的增益系数应该$\ge 35$。
 
+\begin{figure}[!htb]
+\centering
+\subfloat[][FEE某通道的基线噪声谱]{
+	\includegraphics[width=0.48\textwidth]{chap/dynamic_range/fig/ped.eps}
+}
+% \hfill
+\subfloat[][FEE某通道的电子学刻度结果]{
+	\includegraphics[width=0.48\textwidth]{chap/dynamic_range/fig/elec_calib.eps}
+}
+\label{fig:dynamic_range:fee_test}
+\caption{FEE的测试结果}
+\end{figure}
+
 \subsection{打拿极的选择}
 \label{sec:dynamic_range:dynode_selection}
 光电倍增管R4443是一个具有10个打拿级的PMT。
@@ -151,7 +164,7 @@ PSD使用ASIC芯片VA160进行电荷测量。该芯片集成了32个输入通道
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.95\textwidth]{chap/dynamic_range/fig/pmt_current_distribution_photonics.png}
+	\includegraphics[width=0.9\textwidth]{chap/dynamic_range/fig/pmt_current_distribution_photonics.png}
 	\caption{Caption here}
 	\label{fig:figure1}
 \end{figure}
@@ -182,5 +195,33 @@ PSD使用ASIC芯片VA160进行电荷测量。该芯片集成了32个输入通道
 	\label{fig:dynamic_range:cosmic_test}
 \end{figure}
 
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.6\textwidth]{chap/dynamic_range/fig/mip.eps}
+	\caption{PSD单元条中间位置处的MIP响应}
+	\label{fig:dynamic_range:mip}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.6\textwidth]{chap/dynamic_range/fig/attenuation.eps}
+	\caption{PSD单元条的光衰减曲线}
+	\label{fig:dynamic_range:attenuation}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.6\textwidth]{chap/dynamic_range/fig/dy58.eps}
+	\caption{Dy8与Dy5通道的ADC道数关联谱}
+	\label{fig:dynamic_range:dy58}
+\end{figure}
+
 \subsection{中能轻核束流的测试}
 \label{sec:dynamic_range:ion_beam}
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.6\textwidth]{chap/dynamic_range/fig/Ar.eps}
+	\caption{$^{40}Ar$击中PSD单元条中间位置处的ADC原始谱}
+	\label{fig:dynamic_range:Ar}
+\end{figure}
