@@ -74,6 +74,13 @@ core区域在入射粒子的径迹附近，这里是电离过程发生的主要�
 所有这些对Birks定律的扩展，它们的行为在$dE/dx$较小时都是一致的（即正比于光产额正比于沉积能量大小）；但当$dE/dx$较大时，不同形式的扩展给出的结果相差很大。
 虽然各种扩展形式在特定条件下，都可以准确地描述已有的实验数据点，但它们各有各的局限性，都不适合作为“第一性原理”来估算不同的相对论重离子在PSD塑闪条中的光产额差异。
 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.6\textwidth]{chap/dynamic_range/fig/ams02_tof.png}
+	\caption{AMS02-TOF得到的光响应曲线，横轴为质子数，纵轴为相对光产额。图中的圆点是实验数据点，实线是利用公式\ref{eq:dynamic_range:birks_chou_law}对数据点的拟合结果。}
+	\label{fig:dynamic_range:AMS02}
+\end{figure}
+
 由于理论模型的局限性，我们基于AMS02-TOF束流测试的实验结果\cite{bindi_performance_2005}来得到相对论重离子在PSD塑闪条中的光产额差异。
 束流测试在CERN的SPS进行，通过主束轰击Be靶得到不同种类的次级离子，主束使用的是\SI{20}{AGeV/c}和\SI{158}{AGeV/c}的Pb。
 由于AMS02-TOF使用的探测介质与PSD完全一致，都是\SI{10}{mm}的EJ-200，该实验结果可以直接被PSD参考和使用。
@@ -82,15 +89,19 @@ core区域在入射粒子的径迹附近，这里是电离过程发生的主要�
 根据拟合结果，可以外推得到$Z=20$时的相对光产额，约为$Z=1$时的270倍。
 该结果是我们估算PSD动态范围需求的基础。
 
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.6\textwidth]{chap/dynamic_range/fig/ams02_tof.png}
-	\caption{AMS02-TOF得到的光响应曲线，横轴为质子数，纵轴为相对光产额。图中的圆点是实验数据点，实线是利用公式\ref{eq:dynamic_range:birks_chou_law}对数据点的拟合结果。}
-	\label{fig:dynamic_range:AMS02}
-\end{figure}
+
 
 \section{PSD动态范围需求的估算}
 \label{sec:dynamic_range:estimation}
+闪烁体的实际发光量不仅与其光响应有关，而且还与入射粒子穿过的厚度和能量涨落有关。
+另外，PSD输出信号的动态范围直接决定于单元条端头PMT接收到的光子数，因此最终的动态范围还会受到光在单元条中传输导致的衰减效应的影响。
+本节结合这些因素，对PSD的动态范围做了一个合理的估计，该估算结果被用于指导PSD探测单元模块大动态范围读出方案的设计。
+
+在高能粒子探测器领域，设计人员经常使用最小电离粒子(Minimum Ionizing Particle，简称MIP)来对探测器进行测试和刻度。
+对于PSD覆盖的相对论能区，所有的被测粒子（质子，重离子，电子）的能量都在Beth-Block曲线的费米坪区内，它们的电离能损与MIP相差不大，因此它们也都可以被称为MIP粒子。
+我们将单电荷的最小电离粒子垂直穿过PSD塑闪单元条中心时端头PMT接收到的光输出量定义为\SI{1}{MIP}，并以它为单位来表述PSD的动态范围需求。
+由上节的结果可以看到，不同入射重离子在PSD塑闪条中的光产额最大相差270倍。由于所有单电荷的
+
 
 \section{大动态范围读出方案的设计}
 \label{sec:dynamic_range:design}
