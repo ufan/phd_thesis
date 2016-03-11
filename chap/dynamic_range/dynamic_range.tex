@@ -119,7 +119,7 @@ DAMPE探测器设计有较大的视角，需要覆盖的入射角度为$[\SI{-60
 由于PSD单元条长度很长，上述措施并不能把光的传输衰减完全消除掉，这使得相同入射粒子在不同击中位置处产生的输出信号幅度并不一致。
 该现象被称为光收集不均匀性，它极大地扩展了PSD输出信号的动态范围。
 初步测试显示，从PSD单元条中心到单元条最远端的光衰减比例以及从单元条最近端到单元条中心的光衰减比例都可以被有效控制在\SI{50}{\percent}以上。
-因此，PSD端头PMT接收到的闪烁光强度在应该在\SI{0.375}{MIPs}到\SI{1350}{MIPs}]之间。
+因此，PSD端头PMT接收到的闪烁光强度在应该在\SI{0.375}{MIPs}到\SI{1350}{MIPs}之间。
 
 最后，为了将带电粒子产生的最小信号与电子学基线的噪声信号有效区分开来，同时适当预留部分动态范围供调节使用，PSD的动态范围需求被确定为$\SI{0.1}{MIPs}\sim\SI{1400}{MIPs}$。
 
@@ -128,19 +128,43 @@ DAMPE探测器设计有较大的视角，需要覆盖的入射角度为$[\SI{-60
 
 \subsection{设计思路}
 \label{sec:dynamic_range:readout_scheme}
+PSD使用ASIC芯片VA160进行电荷测量。该芯片集成了32个输入通道，每个通道的动态范围为$\SI{-3}{\pico\coulomb}\sim\SI{13}{\pico\coulomb}$（详见第\ref{ch:psd_description}章）。显然，单个VA160通道不能够覆盖所需的动态范围。因此，PSD探测单元模块采用了下述的读出设计：以双打拿极引出的方式，从单个PMT得到两路不同增益的输出信号，然后将两路信号分别输入到不同的VA160的测量通道中。当光输出量较小时，可以使用低增益的通道进行测量；当光输出量较大时，此时低增益通道已经饱和，可以使用高增益的通道进行测量。同时，为了降低高增益通道对低增益通道的干扰，高增益通道的信号和低增益通道的信号被输出到不同的VA160芯片中，如图~\ref{fig:dynamic_range:readout_scheme}所示。
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\textwidth]{chap/dynamic_range/fig/readout_scheme.eps}
+	\caption{PSD探测单元模块的读出方案}
+	\label{fig:dynamic_range:readout_scheme}
+\end{figure}
+
+中国科学院近代物理研究所基于VA160芯片开发了PSD的前端电子学模块（Front-End Electronic，简称FEE），详见第\ref{ch:psd_description}章。
+测试显示，该FEE模块的有效线性范围为$\SI{0}{\pico\coulomb}\sim\SI{12}{\pico\coulomb}$，且每个测量通道的电子学噪声可以控制在\SI{6}{\femto\coulomb}内。
+假设这意味着$5\sigma$的噪声信号分离度，这意味着PSD对\SI{0.1}{MIPs}的测量值应该大于\SI{30}{\femto\coulomb}，即$\SI{1}{MIP} \ge \SI{300}{\femto\coulomb}$。
+因此，高增益打拿级对应的通道应该覆盖$\SI{0.1}{MIPs}\sim\SI{40}{MIPs}$的动态范围，而余下的动态范围由低增益打拿级对应的通道覆盖。
+这就限制了两个打拿级间的增益系数应该$\ge 35$。
 
 \subsection{打拿极的选择}
 \label{sec:dynamic_range:dynode_selection}
+光电倍增管R4443是一个具有10个打拿级的PMT。
+为了选择合适的打拿级级数用于信号引出，首先要对
 
-\begin{figure}[tb]
+
+\begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.9\textwidth]{chap/dynamic_range/fig/pmt_current_distribution_hamamatsu}
+	\includegraphics[width=0.95\textwidth]{chap/dynamic_range/fig/pmt_current_distribution_photonics.png}
 	\caption{Caption here}
 	\label{fig:figure1}
 \end{figure}
 
 \subsection{分压器电路的设计}
 \label{sec:dynamic_range:hv_divider}
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{chap/dynamic_range/fig/divider.eps}
+	\caption{PSD的分压器电路原理图}
+	\label{fig:dynamic_range:divider}
+\end{figure}
 
 \section{大动态范围读出方案的原理验证}
 \label{sec:dynamic_range:verification}
