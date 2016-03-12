@@ -179,32 +179,74 @@ PMT的不同打拿极对应不同的增益系数，而R4443具有10个打拿极�
 其中，$\varepsilon_1$ ($\approx$0.5)是从单元条中心到端头的光传输衰减率；$\varepsilon_2$ ($\approx$0.3)是几何因子，它由R4443入射窗和PSD单元条端面的有效耦合面积决定；$\varepsilon_3$ ($\approx$0.95)是耦合介质EJ-560的传输效率；而$\varepsilon_4$ ($\approx$0.15)是R4443光阴极的量子效率（quantum efficiency），它是表示光电转换的效率，是出射光电子数与入射光子数的比值。
 
 根据表~\ref{tab:description:r4443}，在标称工作电压下并使用标准分压器（即所有打拿极间具有相同的电压降）的条件下，R4443阳极增益$G$的典型值为\SI{1e6}{}。
+显然，这个值对VA160来说太大了，所以需要从打拿极引出信号来降低增益。
 R4443的所有打拿极使用相同的材料，因此它们的二次发射系数$\delta_i$是相等的；另外，在极间电压足够大的情况下，打拿极间的传输效率$\eta_i$近似为\SI{100}{\percent}。
 因此，可以认为所有打拿极的极间增益系数$g_i=\delta_i\eta_i$也是相等的。
 于是，根据公式\ref{eq:dynamic_range:gain}可以得到：在标准工作电压下，极间增益$g$约为3.98。
 \begin{equation}
-	G = \prod_{i=1}^{n} g_i = g^n
+	G = \prod_{i=1}^{N} g_i = g^N
 	\label{eq:dynamic_range:gain}
 \end{equation}
-
+令第$n$个打拿极经过二次电子发射产生的发射电流为$I_n$。
+假设极间传输效率为\SI{100}{\percent}，则$I_n$也就是光电倍增管内从第$n$到第$n+1$个打拿极间的极间电流。
+因此，从第$n$个打拿极引出的电流信号$I_{dn}$需要满足下述关系
+\begin{equation}
+	I_{dn} = I_n - I_{n-1}
+	\label{eq:dynamic_range:dynodes_relation}
+\end{equation}
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=0.9\textwidth]{chap/dynamic_range/fig/pmt_current_distribution_photonics.png}
-	\caption{Caption here}
-	\label{fig:figure1}
+	\includegraphics[width=0.8\textwidth]{chap/dynamic_range/fig/pmt_current_distribution_photonics.png}
+	\caption{PMT工作时的电流分布图}
+	\label{fig:dynamic_range:current_distribution}
 \end{figure}
+令PMT的打拿极总数为$N$，阳极的信号电流为$I_a$，分压器电流为$I'_p$以及极间增益系数为$g$，则整个PMT工作电路的电流分布如图~\ref{fig:dynamic_range:current_distribution}所示。
+其中，第$n$个打拿极引出的电流信号可以表示为
+\begin{equation}
+	I_{dn} = \frac{I_a}{g^{N-n}}(1-\frac{1}{g})
+	\label{eq:dynamic_range:dynode_current}
+\end{equation}
+而阴极电流为$I_a/g^N$，结合公式\ref{eq:dynamic_range:dynode_current}，可以推得第$n$个打拿极的增益系数$G_{dn}$为
+\begin{equation}
+	G_{dn} = g^n(1-\frac{1}{g})
+	\label{eq:dynamic_range:dynode_gain}
+\end{equation}
+依据公式\ref{eq:dynamic_range:dynode_gain}，同时结合之前得到的平均光电子数$N_{pes}$和极间增益系数$g$，可以估算出各打拿极的增益以及输出信号所带的电荷量。
+最终，R4443的第8打拿极(Dy8)被选择为高增益通道，用于覆盖动态范围需求的低半段；R4443的第5打拿极(Dy5)被选择为低增益通道，用于覆盖动态范围需求的高半段。
+Dy8的典型增益为$4.71\times10^4$，对于\SI{1}{MIP}的输出信号电荷量约为\SI{362}{\femto\coulomb}。
+虽然这个数值比设计值\SI{300}{\femto\coulomb}略大，但通过调节工作电压可以消除该差异。
+而在标准工作电压下，Dy5和Dy8间的典型相对增益值约为63。
+这个值略大于设计值35，但它满足我们的设计要求，而且也可以改变工作电压对其进行调节。
 
 \subsection{分压器电路的设计}
 \label{sec:dynamic_range:hv_divider}
-
-\begin{figure}[!htbp]
+光电倍增管的分压器具有两个基本功能：1.给PMT提供工作电压，并按一定的比例合理分配各光阴极、打拿极和阳极间的电势差；2.电流信号引出。
+一般的分压器电路都是从阳极引出电流信号，不能够满足PSD的读出需求，因此我们对R4443的分压器电路进行了重新设计，如图\ref{fig:dynamic_range:divider}所示。
+其中，打拿极9、打拿极10与阳极串联在一起，在工作中并不使用；而打拿极5和打拿极8处各增加了一段引出电路，用于电流信号的引出。
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{chap/dynamic_range/fig/divider.eps}
 	\caption{PSD的分压器电路原理图}
 	\label{fig:dynamic_range:divider}
 \end{figure}
 
+为了尽量降低光阴极的输入噪声，PSD分压器的光阴极端(图中的Cathode)接地，并使用正电压供电。
+另外，在PSD的工作范围内，R4443的输入光强并不算大，而R4443内部的极间空间电荷效应也并不显著。
+因此，为了减少元器件种类和提高可靠性，该分压器采用均匀的极间电压分布，即$R_1 \sim R_9$的阻值相等。
+而且，打拿极4到打拿极9间并联了一系列高压电容$C_1 \sim C_7$，用于在大输入光强时补偿后面几个打拿极间的分压器电流，保证了极间电压的稳定。
+由于极间的增益系数取决于极间电压的大小，这也保证了PMT的增益线性。
+
+打拿极5和打拿极8的引出电路采用相同的设计。
+阻尼电阻$R_{10}/R_{11}$和电容$C_{10}/C_{13}$可以改善输出电流信号的波形。
+由于分压器电路采用正高压供电，引出电路需要使用隔直电容来保护后面低压直流供电的FEE电路。
+隔直电容采用冗余设计，即由两个电容串联组成（即打拿极5支路的$C_8/C_9$和打拿极8支路的$C_{11}/C_{12}$）。
+这样，在一个隔直电容失效后，另一个隔直电容还能继续保护后续电路，提高了系统可靠性和安全性。
+
+TODO：\emph{双绞线，实物图，电路板设计}
+
 \section{大动态范围读出方案的原理验证}
+TODO：\emph{探测器单元模块实物图}
+
 \label{sec:dynamic_range:verification}
 
 % \subsection{LED的测试}
