@@ -7,8 +7,8 @@
 合理的读出设计可以将探测器的本征探测性能发挥到极致，这也是探测器研制的主要目标。
 
 对于PSD来说，它首先需要覆盖质子数$Z=1 \sim 20$的重离子探测。
-根据第二章的描述(见\ref{sec:psd_principle})，相对论重离子在PSD塑闪单元条中的沉积能量近似正比于$Z^2$。因此，不同种类带电粒子在PSD中的输出信号幅度变化范围巨大，这对PSD探测单元模块读出方案的动态范围提出了上限要求。
-另一方面，PSD同时需要对高能$\gamma$和高能$e$进行鉴别，即通过信号的有/无来判断入射粒子是否带电（见\ref{sec:psd_principle}）。
+根据第二章的描述(见\ref{sec:description:psd_principle}节)，相对论重离子在PSD塑闪单元条中的沉积能量近似正比于$Z^2$。因此，不同种类带电粒子在PSD中的输出信号幅度变化范围巨大，这对PSD探测单元模块读出方案的动态范围提出了上限要求。
+另一方面，PSD同时需要对高能$\gamma$和高能$e$进行鉴别，即通过信号的有/无来判断入射粒子是否带电（见\ref{sec:description:psd_principle}）。
 为了降低$e/\gamma$误判率，PSD探测单元模块的读出方案需要足够敏感，能够有效区分带电粒子信号与电子学基线噪声信号，
 这对其动态范围提出了下限要求。
 一般的读出设计不能同时满足上述两方面的需求，我们需要对PSD探测单元模块的读出进行特殊设计，以满足其大动态范围的要求。
@@ -128,7 +128,7 @@ DAMPE探测器设计有较大的视角，需要覆盖的入射角度为$[\SI{-60
 
 \subsection{设计思路}
 \label{sec:dynamic_range:readout_scheme}
-PSD使用ASIC芯片VA160进行电荷测量。该芯片集成了32个输入通道，每个通道的动态范围为$\SI{-3}{\pico\coulomb}\sim\SI{13}{\pico\coulomb}$（详见第\ref{ch:psd_description}章）。显然，单个VA160通道不能够覆盖所需的动态范围。因此，PSD探测单元模块采用了下述的读出设计：以双打拿极引出的方式，从单个PMT得到两路不同增益的输出信号，然后将两路信号分别输入到不同的VA160的测量通道中。当光输出量较小时，可以使用低增益的通道进行测量；当光输出量较大时，此时低增益通道已经饱和，可以使用高增益的通道进行测量。同时，为了降低高增益通道对低增益通道的干扰，高增益通道的信号和低增益通道的信号被输出到不同的VA160芯片中，如图~\ref{fig:dynamic_range:readout_scheme}所示。
+PSD使用ASIC芯片VA160进行电荷测量。该芯片集成了32个输入通道，每个通道的动态范围为$\SI{-3}{\pico\coulomb}\sim\SI{13}{\pico\coulomb}$（详见第\ref{ch:description}章）。显然，单个VA160通道不能够覆盖所需的动态范围。因此，PSD探测单元模块采用了下述的读出设计：以双打拿极引出的方式，从单个PMT得到两路不同增益的输出信号，然后将两路信号分别输入到不同的VA160的测量通道中。当光输出量较小时，可以使用低增益的通道进行测量；当光输出量较大时，此时低增益通道已经饱和，可以使用高增益的通道进行测量。同时，为了降低高增益通道对低增益通道的干扰，高增益通道的信号和低增益通道的信号被输出到不同的VA160芯片中，如图~\ref{fig:dynamic_range:readout_scheme}所示。
 
 \begin{figure}[!htb]
 	\centering
@@ -137,11 +137,11 @@ PSD使用ASIC芯片VA160进行电荷测量。该芯片集成了32个输入通道
 	\label{fig:dynamic_range:readout_scheme}
 \end{figure}
 
-中国科学院近代物理研究所基于VA160芯片开发了PSD的前端电子学模块（Front-End Electronic，简称FEE），详见第\ref{ch:psd_description}章。
-测试显示，该FEE模块的有效线性范围为$\SI{0}{\pico\coulomb}\sim\SI{12}{\pico\coulomb}$，且每个测量通道的电子学噪声可以控制在\SI{6}{\femto\coulomb}内。
-假设这意味着$5\sigma$的噪声信号分离度，这意味着PSD对\SI{0.1}{MIPs}的测量值应该大于\SI{30}{\femto\coulomb}，即$\SI{1}{MIP} \ge \SI{300}{\femto\coulomb}$。
-因此，高增益打拿级对应的通道应该覆盖$\SI{0.1}{MIPs}\sim\SI{40}{MIPs}$的动态范围，而余下的动态范围由低增益打拿级对应的通道覆盖。
-这就限制了两个打拿级间的增益系数应该$\ge 35$。
+中国科学院近代物理研究所基于VA160芯片开发了PSD的前端电子学模块（Front-End Electronic，简称FEE），详见第\ref{ch:description}章。
+测试显示，该FEE模块的有效线性范围为$\SI{0}{\pico\coulomb}\sim\SI{12}{\pico\coulomb}$，且每个测量通道的电子学噪声可以控制在\SI{6}{\femto\coulomb}内~\ref{fig:dynamic_range:fee_test}。
+假设最少需要$5\sigma$的分离度来区分真实信号与基线噪声，这意味着PSD读出电子学对\SI{0.1}{MIPs}的测量值应该大于\SI{30}{\femto\coulomb}，即$\SI{1}{MIP} \ge \SI{300}{\femto\coulomb}$。
+因此，高增益打拿级对应通道的动态范围应该覆盖$\SI{0.1}{MIPs}\sim\SI{40}{MIPs}$余下的动态范围由低增益打拿级对应的通道覆盖，这限制了两个打拿级间的增益系数必须$\ge 35$。
+这两个要求是下一节中对打拿极进行选择的依据。
 
 \begin{figure}[!htb]
 \centering
@@ -158,9 +158,34 @@ PSD使用ASIC芯片VA160进行电荷测量。该芯片集成了32个输入通道
 
 \subsection{打拿极的选择}
 \label{sec:dynamic_range:dynode_selection}
-光电倍增管R4443是一个具有10个打拿级的PMT。
-为了选择合适的打拿级级数用于信号引出，首先要对
+PMT的不同打拿极对应不同的增益系数，而R4443具有10个打拿极级数。
+为了从中选出合适的两个打拿极级数用于信号引出，需要对\SI{1}{MIP}信号产生的平均光电子数(Photoelectrons，简称PE)进行估算（这里的\SI{1}{MIP}同\ref{sec:dynamic_range:estimation}节的定义，即需要对单电荷最小电离粒子垂直穿过PSD塑闪单元条时端头PMT产生的光电子数进行估算）。
+根据得到的平均光电子数值，就能进一步估算出各个打拿极输出信号的电荷量。
+最终，结合上一节得到的动态范围要求和打拿极间的相对增益要求，我们就能确定合适的打拿极级数。
 
+单电荷最小电离粒子在\SI{10}{mm}塑料闪烁体材料中的沉积能量约为\SI{2}{MeV}，而EJ-200的发光效率约为$\SI{e4}{photons/MeV}$(见表~\ref{tab:description:ej200})。
+产生的闪烁光子在空间中的分布是各向同性的，因此各有一半光子指向单元条的两端。
+这些光子首先在单元条的表面经历一次折射过程，出射角度小于全反射角的光子会直接逃逸出单元条内部，只有出射角度大于全反射角的那些光子才有可能在单元条内部经过多次反射并最终传输到单元条端头。
+根据EJ-200的折射率（见表~\ref{tab:description:ej200}）可以计算得到，这部分光子只占总光子数的\SI{22.5}{\percent}。
+部分光子在单元条内部的传输过程中会被吸收，这就是光衰减效应，它由塑闪单元条的光衰减系数决定。
+到达端头的光子穿过单元条端面进入耦合介质EJ-560，然后被传输到PMT的端面，最终击中光阴极并通过光电效应产生光电子。
+结合所有这些因素，可以将\SI{1}{MIP}产生的平均光电子数估算为
+\begin{align}
+ N_{PEs} &= \frac{1}{2} \times \SI[per-mode=symbol]{2}{\mega\electronvolt} \times \SI{e4}{\per\mega\electronvolt} \times 0.225
+           \times \varepsilon_{1} \times \varepsilon_{2} \times \varepsilon_{3} \times \varepsilon_{4} \nonumber \\
+         &\approx \SI{48}{PEs\per{MIP}}
+\label{eq:dynamic_range:pe_estimation}
+\end{align}
+其中，$\varepsilon_1$ ($\approx$0.5)是从单元条中心到端头的光传输衰减率；$\varepsilon_2$ ($\approx$0.3)是几何因子，它由R4443入射窗和PSD单元条端面的有效耦合面积决定；$\varepsilon_3$ ($\approx$0.95)是耦合介质EJ-560的传输效率；而$\varepsilon_4$ ($\approx$0.15)是R4443光阴极的量子效率（quantum efficiency），它是表示光电转换的效率，是出射光电子数与入射光子数的比值。
+
+根据表~\ref{tab:description:r4443}，在标称工作电压下并使用标准分压器（即所有打拿极间具有相同的电压降）的条件下，R4443阳极增益$G$的典型值为\SI{1e6}{}。
+R4443的所有打拿极使用相同的材料，因此它们的二次发射系数$\delta_i$是相等的；另外，在极间电压足够大的情况下，打拿极间的传输效率$\eta_i$近似为\SI{100}{\percent}。
+因此，可以认为所有打拿极的极间增益系数$g_i=\delta_i\eta_i$也是相等的。
+于是，根据公式\ref{eq:dynamic_range:gain}可以得到：在标准工作电压下，极间增益$g$约为3.98。
+\begin{equation}
+	G = \prod_{i=1}^{n} g_i = g^n
+	\label{eq:dynamic_range:gain}
+\end{equation}
 
 \begin{figure}[!htb]
 	\centering
@@ -204,7 +229,7 @@ PSD使用ASIC芯片VA160进行电荷测量。该芯片集成了32个输入通道
 
 \begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=0.6\textwidth]{chap/dynamic_range/fig/attenuation.eps}
+	\includegraphics[width=0.6\textwidth]{chap/dynamic_range/fig/atten_right.eps}
 	\caption{PSD单元条的光衰减曲线}
 	\label{fig:dynamic_range:attenuation}
 \end{figure}
