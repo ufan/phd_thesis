@@ -245,45 +245,75 @@ Dy8的典型增益为$4.71\times10^4$，对于\SI{1}{MIP}的输出信号电荷�
 TODO：\emph{双绞线，实物图，电路板设计}
 
 \section{大动态范围读出方案的原理验证}
-TODO：\emph{探测器单元模块实物图}
-
 \label{sec:dynamic_range:verification}
+为了验证上述大动态范围读出方案设计的合理性，我们对PSD的一个探测器单元模块进行了详细的测试，分别是地面宇宙线的测试和相对论重离子$^{40}Ar$的束流测试。
+测试结果显示，该读出方案完全满足PSD大动态范围的需求。
+本节将对这些测试进行简单介绍，并给出测试结果。
+由于PSD探测单元模块两端得到了相似的测试结果，为了叙述方便，下文中只对其中一端的结果进行了介绍。
 
+TODO：\emph{探测器单元模块实物图}
 % \subsection{LED的测试}
 % \label{sec:dynamic_range:led}
 
-\subsection{宇宙线的测试}
+\subsection{宇宙线测试}
 \label{sec:dynamic_range:cosmic_ray}
+到达地面的宇宙线主要由原初宇宙线和地球大气层反应产生的次级$\mu$子构成。
+宇宙线$\mu$子是带一个电荷的最小电离粒子，经常被用于研究粒子探测器的MIP响应和在地面对探测器进行刻度。
 
-\begin{figure}[!htbp]
+图~\ref{fig:dynamic_range:cosmic_test}给出了PSD探测单元模块进行宇宙线测试的装置示意图。
+其中，S1和S2是两个大小为$\SI{10}{mm} \times \SI{10}{mm} \times \SI{10}{mm}$的塑料闪烁体探测器。
+它们分别放置在PSD探测单元模块单元条的上部和下部，其中心连线与被测单元条相互垂直，用于标识垂直入射的宇宙线事例。
+S1和S2被固定在一个可以沿单元条方向移动的支撑台上，从而可以研究单元条不同位置处的MIP响应。
+测试时，S1和S2的信号相与后作为触发信号输入到PSD的DAQ获取板中(详见第\ref{ch:description}章；DAQ板再把触发信号分发到FEE板，时FEE对此次事件进行处理，并将处理结果上传到DAQ板；最终，数据被DAQ收集、整理并上传到计算机进行保存。
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{chap/dynamic_range/fig/cosmic_test.eps}
 	\caption{PSD探测单元模块的宇宙线测试}
 	\label{fig:dynamic_range:cosmic_test}
 \end{figure}
 
-\begin{figure}[!htbp]
+S1和S2首先移动到单元条的中心位置处，考察PSD探测单元模块的1MIP的能量响应。
+正式测试前进行了若干次预备测试，每次测试使用不同的PMT工作电压以考察MIP峰位的移动。
+最终，该探测单元模块的分压器电压确定为870V。
+在该工作电压下，Dy8通道得到的MIP原始谱如图~\ref{fig:dynamic_range:mip}所示（蓝色部分）。
+上图同时给出了该测量通道的基线原始谱（黑色部分），可以看到MIP峰和基线噪声可以很好地区分开来。
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{chap/dynamic_range/fig/mip.eps}
-	\caption{PSD单元条中间位置处的MIP响应}
+	\caption{PSD单元条中间位置处的MIP响应。横轴为ADC道数，纵轴为事例数}
 	\label{fig:dynamic_range:mip}
 \end{figure}
+MIP原始谱符合朗道分布，使用高斯分布对MIP峰的前半部分进行拟合，可以得到其最可几值(Most Probable Value，简称MPV)为395.8。
+同样使用高斯分布拟合，可以得到该通道的基线噪声$\sigma$值为5.8。
+以$5\sigma$为界限，则该探测单元模块动态范围下限可以计算为$5\cdot5.8/398.5\simeq\SI{0.0073}{MIPs}$。
+这个值小于\SI{0.1}{MIPs}，因此满足我们的设计要求。
+上述测量结果都以ADC道数为单位，为了得到该通道所覆盖的动态范围上限，需要将ADC道数传化为电荷量。
+利用FEE自带的电荷刻度模块，得到该测量通道的刻度参数值为\SI{1.082}{\per\femto\coulomb}。
+结合FEE测量通道的有线线性范围(\SI{12}{\pico\coulomb})，则该单元模块Dy8通道的动态范围上限为$12000\cdot 1.082/395.8 \simeq \SI{32.6}{MIPs}$。
 
-\begin{figure}[!htbp]
+从单元条中心位置出发，将S1和S2沿着单元条以\SI{10}{cm}的间隔向左右两边移动，以考察单元条不同位置处的MIP响应。
+将每个位置点处MIP谱的MPV值提取出来，就得到了MPV随击中位置的变化，如图\ref{fig:dynamic_range:attenuation}所示。
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{chap/dynamic_range/fig/atten_right.eps}
-	\caption{PSD单元条的光衰减曲线}
+	\caption{PSD单元条的光衰减曲线。横轴是以单元条中心为零点的位置坐标，横轴是相对中心位置归一的MPV值。}
 	\label{fig:dynamic_range:attenuation}
 \end{figure}
+由于MPV值正比于平均光输出，图\ref{fig:dynamic_range:attenuation}同时也反应了单元条的光传输衰减效应。
+\begin{equation}
+\label{eq:attenuation}
+A(x)=C_0(e^{-x/\lambda} + \alpha e^{-(2L-x)/\lambda})
+\end{equation}
 
-\begin{figure}[!htbp]
+
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{chap/dynamic_range/fig/dy58.eps}
 	\caption{Dy8与Dy5通道的ADC道数关联谱}
 	\label{fig:dynamic_range:dy58}
 \end{figure}
 
-\subsection{中能轻核束流的测试}
+\subsection{相对论$^{40}Ar$束测试}
 \label{sec:dynamic_range:ion_beam}
 
 \begin{figure}[!htbp]
