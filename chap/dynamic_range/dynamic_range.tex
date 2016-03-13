@@ -285,25 +285,25 @@ S1和S2首先移动到单元条的中心位置处，考察PSD探测单元模块�
 \end{figure}
 MIP原始谱符合朗道分布，使用高斯分布对MIP峰的前半部分进行拟合，可以得到其最可几值(Most Probable Value，简称MPV)为395.8。
 同样使用高斯分布拟合，可以得到该通道的基线噪声$\sigma$值为5.8。
-以$5\sigma$为界限，则该探测单元模块动态范围下限可以计算为$5\cdot5.8/398.5\simeq\SI{0.0073}{MIPs}$。
+单元条中间位置的MPV值就是在\ref{sec:dynamic_range:estimation}节中定义的动态范围单位\SI{1}{MIP}，以$5\sigma$为界限，则该探测单元模块动态范围下限可以计算为$5\cdot5.8/398.5\simeq\SI{0.0073}{MIPs}$。
 这个值小于\SI{0.1}{MIPs}，因此满足我们的设计要求。
 上述测量结果都以ADC道数为单位，为了得到该通道所覆盖的动态范围上限，需要将ADC道数传化为电荷量。
 利用FEE自带的电荷刻度模块，得到该测量通道的刻度参数值为\SI{1.082}{\per\femto\coulomb}。
-结合FEE测量通道的有线线性范围(\SI{12}{\pico\coulomb})，则该单元模块Dy8通道的动态范围上限为$12000\cdot 1.082/395.8 \simeq \SI{32.6}{MIPs}$。
+结合FEE测量通道的有效线性测量范围(\SI{12}{\pico\coulomb})，则该单元模块Dy8通道的动态范围上限为$12000\cdot 1.082/395.8 \simeq \SI{32.6}{MIPs}$。
 
-之后，从单元条中心位置出发，将S1和S2沿着单元条以\SI{10}{cm}的间隔向左右两边移动，以考察单元条不同位置处的MIP响应，共考察了7个位置点。
+之后，从单元条中心位置出发，将S1和S2沿着单元条以\SI{10}{cm}的间隔向左右两边移动，以考察单元条不同位置处的MIP响应，共考察了9个位置点。
 将每个位置点处MIP谱的MPV值提取出来，就得到了MPV随击中位置的变化，如图\ref{fig:dynamic_range:attenuation}所示。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{chap/dynamic_range/fig/atten_right.eps}
-	\caption{PSD单元条的光衰减曲线。横轴是以单元条中心为零点的位置坐标，横轴是相对中心位置归一的MPV值。}
+	\caption{PSD单元条的光衰减曲线。横轴是以单元条中心为零点的位置坐标，纵轴是相对中心位置归一的MPV值。红色实线为简单指数衰减定律的拟合结果，黑色实线是使用公式\ref{eq:dynamic_range:attenuation}拟合的结果。}
 	\label{fig:dynamic_range:attenuation}
 \end{figure}
 由于MPV值与平均光输出成正比，图\ref{fig:dynamic_range:attenuation}同时也反应了单元条的光传输衰减效应。
 一般来讲，光在塑料闪烁体中的传播满足指数衰减规律，即$exp(-\lambda/x)$。
-但PSD塑闪单元条端头的形状较为复杂（见图~\ref{fig:description:bars}），简单的指数衰减规律不能够描述接近单元条端头的光衰减现象。
-对于这类端头结构复杂、长度较长的塑闪条，可以将端头接收到的光分为近端和远端两个部分\cite{atten_taiuti_measurement_1996,atten_karsch_design_2001}：近端部分为击中位置直接传输过来的闪烁光；远端部分为由击中位置传输到远端后，再反射回来传输到近端的部分闪烁光。
-该光衰减模型可以用下面的公式表示：
+但PSD塑闪单元条端头的形状较为复杂（见图~\ref{fig:description:bars}），简单的指数衰减规律不能够描述接近单元条端头的光衰减现象，如图\ref{fig:dynamic_range:attenuation}中红色实线所示。
+对于这类端头结构复杂、长度较长的塑闪条，可以将端头接收到的光分为近端和远端两个部分\cite{atten_taiuti_measurement_1996,atten_karsch_design_2001}：近端部分为从击中位置直接传输过来的闪烁光；远端部分为由击中位置传输到远端后，再反射回来传输到近端的部分闪烁光。
+该模型可以用下面的公式表示：
 \begin{equation}
 A(x)=C_0(e^{-x/\lambda} + \alpha e^{-(2L-x)/\lambda})
 \label{eq:dynamic_range:attenuation}
@@ -313,20 +313,43 @@ A(x)=C_0(e^{-x/\lambda} + \alpha e^{-(2L-x)/\lambda})
 根据该拟合结果，计算得到该单元条最近端到单元条中心的衰减比率为0.501，而单元条中心到单元条最远端的衰减比率为0.749。
 两个值都大于0.5，符合我们的预期。
 
-
+由于Dy5的动态范围覆盖Dy8的动态范围，我们可以从Dy5和Dy8的信号关联谱中得到两个打拿极间的相对增益系数。
+为了覆盖Dy8的整个有效测量范围，数据分析时将上述9个测试位置的数据整合在一起，其结果如图\ref{fig:dynamic_range:dy58}所示。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{chap/dynamic_range/fig/dy58.eps}
 	\caption{Dy8与Dy5通道的ADC道数关联谱}
 	\label{fig:dynamic_range:dy58}
 \end{figure}
+可以看到，两个打拿极间的线性非常好，直到Dy8通道开始饱和。
+这意味着R4443的工作正常，分压器电路的设计能够保证两个打拿极的增益相对稳定。
+使用线性函数对图\ref{fig:dynamic_range:dy58}中的数据点进行拟合，得到该探测单元模块Dy8通道和Dy5通道的相对增益为44.6。
+结合之前MIP响应的测试结果，可以得到Dy5通道覆盖的动态范围上限为$\SI{12000}{\femto\coulomb} \cdot \SI{1.129}{\femto\coulomb} \cdot 44.6/395.8 \simeq \SI{1526.6}{MIPs}$，其中\SI{1.129}{\femto\coulomb}为该通道的电荷刻度参数。
+\SI{1526.6}{MIPs}同时也是该探测单元模块的动态范围上限，它大于设计值\SI{1400}{MIPs}，因此满足我们的设计要求。
+
 
 \subsection{相对论$^{40}Ar$束测试}
 \label{sec:dynamic_range:ion_beam}
+宇宙线测试给出了探测单元模块的动态范围。
+为了验证该动态范围是否能够覆盖$Z=1\sim 20$重离子种类，我们利用CERN-SPS的$^{40}Ar$束对该模块的重离子响应进行了测试。
+束流能量为\SI{40}{AGeV/c}，束流中心对准PSD单元条的中间位置，并垂直入射。
+测试中，该单元模块使用的PMT高压与宇宙线测试一致，因此束流测试的结果可以直接和宇宙线测试结果进行比较和分析。
 
-\begin{figure}[!htbp]
+$^{40}Ar$在PSD单元条中的光产额非常大，此时Dy8通道已经饱和，只能使用Dy5通道的数据进行分析。
+图\ref{fig:dynamic_range:Ar}给出了$^{40}Ar$击中单元条中心位置时，Dy5通道测得的ADC原始谱。
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{chap/dynamic_range/fig/Ar.eps}
 	\caption{$^{40}Ar$击中PSD单元条中间位置处的ADC原始谱}
 	\label{fig:dynamic_range:Ar}
 \end{figure}
+其中，主峰位是$^{40}Ar$的能量响应；主峰位前面的尾巴是$^{40}Ar$在PSD探测单元模块前面的物质中发生反应产生的轻核在单元条中的能量沉积。
+使用高斯分布对主峰位进行拟合，得到$^{40}Ar$的能量响应中心值为$1920.6$，标准差为$81.3$。
+因此，计算得到PSD探测单元模块对$^{40}Ar$的能量分辨率为\SI{4.2}{\percent}。
+
+结合宇宙线测试的结果，可以计算得到$Ar$在PSD塑闪单元条中的光产额为$1920.6*44.6/395.8 \simeq \SI{216}{MIPs}$。
+若不考虑猝灭效应，即假设光产额与沉积能量成正比，上述结果可以依据$Z^2$依赖关系外推到$Ca(Z=20)$。
+这样，得到$Ca$在EJ-200中的光产额约为\SI{267}{MIPs}，该结果与AMS02-TOF的束流测试结果一致（见\ref{sec:dynamic_range:light_yield}节）。
+另一方面，根据得到的PSD探测单元对$^{40}Ar$的能量分辨率，可以合理假设其对$Ca$的能量分辨为\SI{5}{\percent}。
+综合\ref{sec:dynamic_range:estimation}节列出的各种因素，带入宇宙线测试和上述束流测试的结果，计算得到该探测单元模块Dy5通道上的最大信号约为\SI{1200}{MIPs}。
+这个值小于该探测单元模块的动态范围上限，最终验证了PSD基于光电倍增管双打拿极信号引出的大动态范围读出设计的合理性。
