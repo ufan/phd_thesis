@@ -291,7 +291,7 @@ MIP原始谱符合朗道分布，使用高斯分布对MIP峰的前半部分进�
 利用FEE自带的电荷刻度模块，得到该测量通道的刻度参数值为\SI{1.082}{\per\femto\coulomb}。
 结合FEE测量通道的有线线性范围(\SI{12}{\pico\coulomb})，则该单元模块Dy8通道的动态范围上限为$12000\cdot 1.082/395.8 \simeq \SI{32.6}{MIPs}$。
 
-从单元条中心位置出发，将S1和S2沿着单元条以\SI{10}{cm}的间隔向左右两边移动，以考察单元条不同位置处的MIP响应。
+之后，从单元条中心位置出发，将S1和S2沿着单元条以\SI{10}{cm}的间隔向左右两边移动，以考察单元条不同位置处的MIP响应，共考察了7个位置点。
 将每个位置点处MIP谱的MPV值提取出来，就得到了MPV随击中位置的变化，如图\ref{fig:dynamic_range:attenuation}所示。
 \begin{figure}[htbp]
 	\centering
@@ -299,11 +299,19 @@ MIP原始谱符合朗道分布，使用高斯分布对MIP峰的前半部分进�
 	\caption{PSD单元条的光衰减曲线。横轴是以单元条中心为零点的位置坐标，横轴是相对中心位置归一的MPV值。}
 	\label{fig:dynamic_range:attenuation}
 \end{figure}
-由于MPV值正比于平均光输出，图\ref{fig:dynamic_range:attenuation}同时也反应了单元条的光传输衰减效应。
+由于MPV值与平均光输出成正比，图\ref{fig:dynamic_range:attenuation}同时也反应了单元条的光传输衰减效应。
+一般来讲，光在塑料闪烁体中的传播满足指数衰减规律，即$exp(-\lambda/x)$。
+但PSD塑闪单元条端头的形状较为复杂（见图~\ref{fig:description:bars}），简单的指数衰减规律不能够描述接近单元条端头的光衰减现象。
+对于这类端头结构复杂、长度较长的塑闪条，可以将端头接收到的光分为近端和远端两个部分\cite{atten_taiuti_measurement_1996,atten_karsch_design_2001}：近端部分为击中位置直接传输过来的闪烁光；远端部分为由击中位置传输到远端后，再反射回来传输到近端的部分闪烁光。
+该光衰减模型可以用下面的公式表示：
 \begin{equation}
-\label{eq:attenuation}
 A(x)=C_0(e^{-x/\lambda} + \alpha e^{-(2L-x)/\lambda})
+\label{eq:dynamic_range:attenuation}
 \end{equation}
+其中，$x$是击中位置到端头的距离，$L$是单元条的长度，$\lambda$是单元条的有效衰减长度，$C_0$是个常数，而$\alpha$代表远端反射回来的光子数所占的比例。
+公式\ref{eq:dynamic_range:attenuation}可以准确地描述PSD塑闪单元条的光衰减现象，如图~\ref{fig:description:bars}中的黑色实线所示。
+根据该拟合结果，计算得到该单元条最近端到单元条中心的衰减比率为0.501，而单元条中心到单元条最远端的衰减比率为0.749。
+两个值都大于0.5，符合我们的预期。
 
 
 \begin{figure}[htbp]
