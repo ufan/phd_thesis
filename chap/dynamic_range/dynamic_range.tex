@@ -138,7 +138,11 @@ PSD使用ASIC芯片VA160进行电荷测量。该芯片集成了32个输入通道
 \end{figure}
 
 中国科学院近代物理研究所基于VA160芯片开发了PSD的前端电子学模块（Front-End Electronic，简称FEE），详见第\ref{ch:description}章。
-测试显示，该FEE模块的有效线性范围为$\SI{0}{\pico\coulomb}\sim\SI{12}{\pico\coulomb}$，且每个测量通道的电子学噪声可以控制在\SI{6}{\femto\coulomb}内~\ref{fig:dynamic_range:fee_test}。
+使用FEE自带的电子学刻度电路，可以得到每个通道的有效的线性测量范围，初步测试显示这可以被控制在$\SI{0}{\pico\coulomb}\sim\SI{12}{\pico\coulomb}$。
+图\ref{fig:dynamic_range:elec_calib}给出了电子学刻度结果的一个示例，其中蓝色直线是用线性函数拟合刻度点得到的结果。
+该通道$\SI{0}{\pico\coulomb}\sim\SI{12}{\pico\coulomb}$范围的积分非线性（Integral Non-Linearity，简称INL）非常小，只有\SI{0.52}{\percent}；而拟合直线的斜率被称为刻度参数，它表示每$fC$电荷对应的ADC道数值，可以用于ADC道数和电荷量的相互转化。
+我们把输入信号为零时FEE获取得到的值称为基线(pedestal)，因此基线分布的标准差就是FEE测量通道的电子学噪声。
+初步测试显示，FEE每个测量通道的电子学噪声可以被有效地控制在\SI{6}{\femto\coulomb}内，图~\ref{fig:dynamic_range:fee_test}给出了FEE基线测试结果的一个示例。
 假设最少需要$5\sigma$的分离度来区分真实信号与基线噪声，这意味着PSD读出电子学对\SI{0.1}{MIPs}的测量值应该大于\SI{30}{\femto\coulomb}，即$\SI{1}{MIP} \ge \SI{300}{\femto\coulomb}$。
 因此，高增益打拿级对应通道的动态范围应该覆盖$\SI{0.1}{MIPs}\sim\SI{40}{MIPs}$余下的动态范围由低增益打拿级对应的通道覆盖，这限制了两个打拿级间的增益系数必须$\ge 35$。
 这两个要求是下一节中对打拿极进行选择的依据。
@@ -146,11 +150,13 @@ PSD使用ASIC芯片VA160进行电荷测量。该芯片集成了32个输入通道
 \begin{figure}[!htb]
 \centering
 \subfloat[][FEE某通道的基线噪声谱]{
-	\includegraphics[width=0.48\textwidth]{chap/dynamic_range/fig/ped.eps}
+	\label{fig:dynamic_range:elec_calib}
+	\includegraphics[width=0.48\textwidth]{chap/dynamic_range/fig/elec_calib.eps}
 }
 % \hfill
 \subfloat[][FEE某通道的电子学刻度结果]{
-	\includegraphics[width=0.48\textwidth]{chap/dynamic_range/fig/elec_calib.eps}
+	\label{fig:dynamic_range:ped}
+	\includegraphics[width=0.48\textwidth]{chap/dynamic_range/fig/ped.eps}
 }
 \label{fig:dynamic_range:fee_test}
 \caption{FEE的测试结果}
