@@ -140,14 +140,7 @@ PSD使用ASIC芯片VA160进行电荷测量。该芯片集成了32个输入通道
 中国科学院近代物理研究所基于VA160芯片开发了PSD的前端电子学模块（Front-End Electronic，简称FEE），详见第\ref{ch:description}章。
 使用FEE自带的电子学刻度电路，可以得到每个通道的有效的线性测量范围，初步测试显示这可以被控制在$\SI{0}{\pico\coulomb}\sim\SI{12}{\pico\coulomb}$。
 图\ref{fig:dynamic_range:elec_calib}给出了电子学刻度结果的一个示例，其中蓝色直线是用线性函数拟合刻度点得到的结果。
-该通道$\SI{0}{\pico\coulomb}\sim\SI{12}{\pico\coulomb}$范围的积分非线性（Integral Non-Linearity，简称INL）非常小，只有\SI{0.52}{\percent}；而拟合直线的斜率被称为刻度参数，它表示每$fC$电荷对应的ADC道数值，可以用于ADC道数和电荷量的相互转化。
-我们把输入信号为零时FEE获取得到的值称为基线(pedestal)，因此基线分布的标准差就是FEE测量通道的电子学噪声。
-初步测试显示，FEE每个测量通道的电子学噪声可以被有效地控制在\SI{6}{\femto\coulomb}内，图~\ref{fig:dynamic_range:fee_test}给出了FEE基线测试结果的一个示例。
-假设最少需要$5\sigma$的分离度来区分真实信号与基线噪声，这意味着PSD读出电子学对\SI{0.1}{MIPs}的测量值应该大于\SI{30}{\femto\coulomb}，即$\SI{1}{MIP} \ge \SI{300}{\femto\coulomb}$。
-因此，高增益打拿级对应通道的动态范围应该覆盖$\SI{0.1}{MIPs}\sim\SI{40}{MIPs}$余下的动态范围由低增益打拿级对应的通道覆盖，这限制了两个打拿级间的增益系数必须$\ge 35$。
-这两个要求是下一节中对打拿极进行选择的依据。
-
-\begin{figure}[!htb]
+\begin{figure}[htb]
 \centering
 \subfloat[][FEE某通道的基线噪声谱]{
 	\label{fig:dynamic_range:elec_calib}
@@ -158,9 +151,16 @@ PSD使用ASIC芯片VA160进行电荷测量。该芯片集成了32个输入通道
 	\label{fig:dynamic_range:ped}
 	\includegraphics[width=0.48\textwidth]{chap/dynamic_range/fig/ped.eps}
 }
-\label{fig:dynamic_range:fee_test}
 \caption{FEE的测试结果}
+\label{fig:dynamic_range:fee_test}
 \end{figure}
+该通道$\SI{0}{\pico\coulomb}\sim\SI{12}{\pico\coulomb}$范围的积分非线性（Integral Non-Linearity，简称INL）非常小，只有\SI{0.52}{\percent}；而拟合直线的斜率被称为刻度参数，它表示每$fC$电荷对应的ADC道数值，可以用于ADC道数和电荷量的相互转化。
+我们把输入信号为零时FEE获取得到的值称为基线(pedestal)，因此基线分布的标准差就是FEE测量通道的电子学噪声。
+初步测试显示，FEE每个测量通道的电子学噪声可以被有效地控制在\SI{6}{\femto\coulomb}内，图~\ref{fig:dynamic_range:ped}给出了FEE基线测试结果的一个示例。
+假设最少需要$5\sigma$的分离度来区分真实信号与基线噪声，这意味着PSD读出电子学对\SI{0.1}{MIPs}的测量值应该大于\SI{30}{\femto\coulomb}，即$\SI{1}{MIP} \ge \SI{300}{\femto\coulomb}$。
+因此，高增益打拿级对应通道的动态范围应该覆盖$\SI{0.1}{MIPs}\sim\SI{40}{MIPs}$余下的动态范围由低增益打拿级对应的通道覆盖，这限制了两个打拿级间的增益系数必须$\ge 35$。
+这两个要求是下一节中对打拿极进行选择的依据。
+
 
 \subsection{打拿极的选择}
 \label{sec:dynamic_range:dynode_selection}
@@ -229,7 +229,7 @@ Dy8的典型增益为$4.71\times10^4$，对于\SI{1}{MIP}的输出信号电荷�
 光电倍增管的分压器具有两个基本功能：1.给PMT提供工作电压，并按一定的比例合理分配各光阴极、打拿极和阳极间的电势差；2.电流信号引出。
 一般的分压器电路都是从阳极引出电流信号，不能够满足PSD的读出需求，因此我们对R4443的分压器电路进行了重新设计，如图\ref{fig:dynamic_range:divider}所示。
 其中，打拿极9、打拿极10与阳极串联在一起，在工作中并不使用；而打拿极5和打拿极8处各增加了一段引出电路，用于电流信号的引出。
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{chap/dynamic_range/fig/divider.eps}
 	\caption{PSD的分压器电路原理图}
@@ -266,29 +266,29 @@ TODO：\emph{探测器单元模块实物图}
 到达地面的宇宙线主要由原初宇宙线和地球大气层反应产生的次级$\mu$子构成。
 宇宙线$\mu$子是带一个电荷的最小电离粒子，经常被用于研究粒子探测器的MIP响应和在地面对探测器进行刻度。
 
-图~\ref{fig:dynamic_range:cosmic_test}给出了PSD探测单元模块进行宇宙线测试的装置示意图。
-其中，S1和S2是两个大小为$\SI{10}{mm} \times \SI{10}{mm} \times \SI{10}{mm}$的塑料闪烁体探测器。
-它们分别放置在PSD探测单元模块单元条的上部和下部，其中心连线与被测单元条相互垂直，用于标识垂直入射的宇宙线事例。
-S1和S2被固定在一个可以沿单元条方向移动的支撑台上，从而可以研究单元条不同位置处的MIP响应。
-测试时，S1和S2的信号相与后作为触发信号输入到PSD的DAQ获取板中(详见第\ref{ch:description}章；DAQ板再把触发信号分发到FEE板，时FEE对此次事件进行处理，并将处理结果上传到DAQ板；最终，数据被DAQ收集、整理并上传到计算机进行保存。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{chap/dynamic_range/fig/cosmic_test.eps}
 	\caption{PSD探测单元模块的宇宙线测试}
 	\label{fig:dynamic_range:cosmic_test}
 \end{figure}
+图~\ref{fig:dynamic_range:cosmic_test}给出了PSD探测单元模块进行宇宙线测试的装置示意图。
+其中，S1和S2是两个大小为$\SI{10}{mm} \times \SI{10}{mm} \times \SI{10}{mm}$的塑料闪烁体探测器。
+它们分别放置在PSD探测单元模块单元条的上部和下部，其中心连线与被测单元条相互垂直，用于标识垂直入射的宇宙线事例。
+S1和S2被固定在一个可以沿单元条方向移动的支撑台上，从而可以研究单元条不同位置处的MIP响应。
+测试时，S1和S2的信号相与后作为触发信号输入到PSD的DAQ获取板中(详见第\ref{ch:description}章；DAQ板再把触发信号分发到FEE板，时FEE对此次事件进行处理，并将处理结果上传到DAQ板；最终，数据被DAQ收集、整理并上传到计算机进行保存。
 
-S1和S2首先移动到单元条的中心位置处，考察PSD探测单元模块的1MIP的能量响应。
-正式测试前进行了若干次预备测试，每次测试使用不同的PMT工作电压以考察MIP峰位的移动。
-最终，该探测单元模块的分压器电压确定为870V。
-在该工作电压下，Dy8通道得到的MIP原始谱如图~\ref{fig:dynamic_range:mip}所示（蓝色部分）。
-上图同时给出了该测量通道的基线原始谱（黑色部分），可以看到MIP峰和基线噪声可以很好地区分开来。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{chap/dynamic_range/fig/mip.eps}
 	\caption{PSD单元条中间位置处的MIP响应。横轴为ADC道数，纵轴为事例数}
 	\label{fig:dynamic_range:mip}
 \end{figure}
+S1和S2首先移动到单元条的中心位置处，考察PSD探测单元模块的1MIP的能量响应。
+正式测试前进行了若干次预备测试，每次测试使用不同的PMT工作电压以考察MIP峰位的移动。
+最终，该探测单元模块的分压器电压确定为870V。
+在该工作电压下，Dy8通道得到的MIP原始谱如图~\ref{fig:dynamic_range:mip}所示（蓝色部分）。
+上图同时给出了该测量通道的基线原始谱（黑色部分），可以看到MIP峰和基线噪声可以很好地区分开来。
 MIP原始谱符合朗道分布，使用高斯分布对MIP峰的前半部分进行拟合，可以得到其最可几值(Most Probable Value，简称MPV)为395.8。
 同样使用高斯分布拟合，可以得到该通道的基线噪声$\sigma$值为5.8。
 单元条中间位置的MPV值就是在\ref{sec:dynamic_range:estimation}节中定义的动态范围单位\SI{1}{MIP}，以$5\sigma$为界限，则该探测单元模块动态范围下限可以计算为$5\cdot5.8/398.5\simeq\SI{0.0073}{MIPs}$。
@@ -297,14 +297,14 @@ MIP原始谱符合朗道分布，使用高斯分布对MIP峰的前半部分进�
 利用FEE自带的电荷刻度模块，得到该测量通道的刻度参数值为\SI{1.082}{\per\femto\coulomb}。
 结合FEE测量通道的有效线性测量范围(\SI{12}{\pico\coulomb})，则该单元模块Dy8通道的动态范围上限为$12000\cdot 1.082/395.8 \simeq \SI{32.6}{MIPs}$。
 
-之后，从单元条中心位置出发，将S1和S2沿着单元条以\SI{10}{cm}的间隔向左右两边移动，以考察单元条不同位置处的MIP响应，共考察了9个位置点。
-将每个位置点处MIP谱的MPV值提取出来，就得到了MPV随击中位置的变化，如图\ref{fig:dynamic_range:attenuation}所示。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{chap/dynamic_range/fig/atten_right.eps}
 	\caption{PSD单元条的光衰减曲线。横轴是以单元条中心为零点的位置坐标，纵轴是相对中心位置归一的MPV值。红色实线为简单指数衰减定律的拟合结果，黑色实线是使用公式\ref{eq:dynamic_range:attenuation}拟合的结果。}
 	\label{fig:dynamic_range:attenuation}
 \end{figure}
+之后，从单元条中心位置出发，将S1和S2沿着单元条以\SI{10}{cm}的间隔向左右两边移动，以考察单元条不同位置处的MIP响应，共考察了9个位置点。
+将每个位置点处MIP谱的MPV值提取出来，就得到了MPV随击中位置的变化，如图\ref{fig:dynamic_range:attenuation}所示。
 由于MPV值与平均光输出成正比，图\ref{fig:dynamic_range:attenuation}同时也反应了单元条的光传输衰减效应。
 一般来讲，光在塑料闪烁体中的传播满足指数衰减规律，即$exp(-\lambda/x)$。
 但PSD塑闪单元条端头的形状较为复杂（见图~\ref{fig:description:bars}），简单的指数衰减规律不能够描述接近单元条端头的光衰减现象，如图\ref{fig:dynamic_range:attenuation}中红色实线所示。
