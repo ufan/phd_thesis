@@ -128,14 +128,14 @@ DAMPE探测器设计有较大的视角，需要覆盖的入射角度为$[\SI{-60
 
 \subsection{设计思路}
 \label{sec:dynamic_range:readout_scheme}
-PSD使用ASIC芯片VA160进行电荷测量。该芯片集成了32个输入通道，每个通道的动态范围为$\SI{-3}{\pico\coulomb}\sim\SI{13}{\pico\coulomb}$（详见第\ref{ch:description}章）。显然，单个VA160通道不能够覆盖所需的动态范围。因此，PSD探测单元模块采用了下述的读出设计：以双打拿极引出的方式，从单个PMT得到两路不同增益的输出信号，然后将两路信号分别输入到不同的VA160的测量通道中。当光输出量较小时，可以使用低增益的通道进行测量；当光输出量较大时，此时低增益通道已经饱和，可以使用高增益的通道进行测量。同时，为了降低高增益通道对低增益通道的干扰，高增益通道的信号和低增益通道的信号被输出到不同的VA160芯片中，如图~\ref{fig:dynamic_range:readout_scheme}所示。
-
-\begin{figure}[!htb]
+PSD使用ASIC芯片VA160进行电荷测量。该芯片集成了32个输入通道，每个通道的动态范围为$\SI{-3}{\pico\coulomb}\sim\SI{13}{\pico\coulomb}$（详见第\ref{ch:description}章）。显然，单个VA160通道不能够覆盖所需的动态范围。因此，PSD探测单元模块采用了下述的读出设计：以双打拿极引出的方式，从单个PMT得到两路不同增益的输出信号，然后将两路信号分别输入到不同的VA160的测量通道中。当光输出量较小时，可以使用低增益的通道进行测量；当光输出量较大时，此时低增益通道已经饱和，可以使用高增益的通道进行测量。
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=\textwidth]{chap/dynamic_range/fig/readout_scheme.eps}
 	\caption{PSD探测单元模块的读出方案}
 	\label{fig:dynamic_range:readout_scheme}
 \end{figure}
+同时，为了降低高增益通道对低增益通道的干扰，高增益通道的信号和低增益通道的信号被输出到不同的VA160芯片中，如图~\ref{fig:dynamic_range:readout_scheme}所示。
 
 中国科学院近代物理研究所基于VA160芯片开发了PSD的前端电子学模块（Front-End Electronic，简称FEE），详见第\ref{ch:description}章。
 使用FEE自带的电子学刻度电路，可以得到每个通道的有效的线性测量范围，初步测试显示这可以被控制在$\SI{0}{\pico\coulomb}\sim\SI{12}{\pico\coulomb}$。
