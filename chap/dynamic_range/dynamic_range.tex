@@ -21,14 +21,14 @@
 PSD使用PMT作为读出器件，因此入射粒子在塑料闪烁体中的闪烁光输出多少直接影响其输出信号的幅度。
 在沉积能量密度不大的条件下，闪烁光输出与入射粒子的沉积能量大小成正比。
 这种情况较为简单，我们可以通过对沉积能量大小的估算直接推出闪烁光输出的幅度范围。
-但对于重离子来说，它们在物质中的沉积能量密度较大，此时猝灭效应\cite{birks_book_2013}(quenching effect)的影响显著。
+但对于重离子来说，它们在物质中的沉积能量密度较大，此时猝灭效应\parencite{birks_book_2013}(quenching effect)的影响显著。
 因此，重离子引起的闪烁光输出与沉积能量大小不成正比关系，我们需要研究它们在塑料闪烁体中的光产额差异大小，为PSD动态范围需求的估算提供基础。
 
 当带电粒子或$\gamma$射线入射到闪烁体内，使得闪烁体内的原子（分子）电离、激发，在退激过程中发光，这就是闪烁体发光的基本原理。
 退激过程也可以不通过发射荧光光子的形式进行，而以其它形式将退激放出的能量转化为热能输出，这就是猝灭效应。
 它使得闪烁体的发光量减少，并最终趋于饱和(saturation)。
 猝灭效应与原初电离密度有关，电离密度越高，猝灭效应就越强，光响应偏离线性的程度也就越大。
-闪烁体的猝灭效应一般用Birks定律进行描述\cite{birks_article_1951}:
+闪烁体的猝灭效应一般用Birks定律进行描述\parencite{birks_article_1951}:
 \begin{equation}
 	\frac{dL}{dx} = \frac{SdE/dx}{1+kBdE/dx}
 	\label{eq:dynamic_range:birks_law_dE}
@@ -48,7 +48,7 @@ PSD使用PMT作为读出器件，因此入射粒子在塑料闪烁体中的闪�
 公式\ref{eq:dynamic_range:birks_law_Z}只是一个半经验公式，其中的参数$S$和Birks系数虽然具有明确的物理意义，但一般需要通过对实验数据进行拟合得到。
 而且，它们的具体数值与入射的粒子种类有关，这反应了猝灭效应的粒子种类关联性(particle-species dependence)。
 另一方面，上述简单形式的Birks定律只能够描述闪烁体对低能入射粒子的光响应，当入射粒子能量升高到相对论能区时，就需要对Birks定律进行扩展。
-相对论能区的光响应还有另外一个特点：那就是猝灭效应与入射粒子种类的关联性减弱，光产额主要取决于沉积能量大小\cite{matsufuji_response_1999}。
+相对论能区的光响应还有另外一个特点：那就是猝灭效应与入射粒子种类的关联性减弱，光产额主要取决于沉积能量大小\parencite{matsufuji_response_1999}。
 因此，Birks定律以及以下所有Birks定律的拓展形式中的自由参数具有普适性，即它们的值与入射粒子种类无关。
 
 一种常见的扩展形式是在Birks定律的分母中加入$dE/dx$的二次项，即
@@ -56,8 +56,8 @@ PSD使用PMT作为读出器件，因此入射粒子在塑料闪烁体中的闪�
 	\frac{dL}{dx} = \frac{S' Z^2}{1+k'B'Z^2+C'Z^4}
 	\label{eq:dynamic_range:birks_chou_law}
 \end{equation}
-其中$C'$是常数。这种扩展形式是Chou首次提出\cite{chou_nature_1952}，因此上式被称为Birks-Chou公式。
-另一种常见的扩展形式是基于闪烁体发光的BTV模型\cite{voltz_influence_1966,tarle_cosmic_1979}（Birks-Tarle-Voltz model，简称BTV模型）。该模型认为闪烁光按其产生的区域，可以被分为两部分“core”和“halo”两部分。
+其中$C'$是常数。这种扩展形式是Chou首次提出\parencite{chou_nature_1952}，因此上式被称为Birks-Chou公式。
+另一种常见的扩展形式是基于闪烁体发光的BTV模型\parencite{voltz_influence_1966,tarle_cosmic_1979}（Birks-Tarle-Voltz model，简称BTV模型）。该模型认为闪烁光按其产生的区域，可以被分为两部分“core”和“halo”两部分。
 core区域在入射粒子的径迹附近，这里是电离过程发生的主要区域，分布有大量电离产生的低能电子；halo区域分布在core的外围，它由电离产生的少量高能$\delta$电子逃离core区域后形成。core区域内的电离密度较高，因此猝灭效应显著，该区域的光响应可以用Birks定律描述；halo区域的电离密度较低，猝灭效应可以忽略，该区域的光响应与沉积能量成正比。
 假设halo区域的沉积能量占总沉积能量的比例为$F_s$，则基于BTV模型拓展的Birks定律可以表示为
 \begin{equation}
@@ -65,7 +65,7 @@ core区域在入射粒子的径迹附近，这里是电离过程发生的主要�
 	\label{eq:dynamic_range:btv_law}
 \end{equation}
 其中$S$是一个常数，$B_s$表征猝灭效应强度的一个量。
-除了这两种常见的扩展方式外，还有其它不较常使用的扩展形式，如Wright提出的\cite{wright_scintillation_1953}
+除了这两种常见的扩展方式外，还有其它不较常使用的扩展形式，如Wright提出的\parencite{wright_scintillation_1953}
 \begin{equation}
 	\frac{dL}{dx} = A \ln(1+aZ^2)
 	\label{eq:dynamic_range:wright_law}
@@ -81,7 +81,7 @@ core区域在入射粒子的径迹附近，这里是电离过程发生的主要�
 	\label{fig:dynamic_range:AMS02}
 \end{figure}
 
-由于理论模型的局限性，我们基于AMS02-TOF束流测试的实验结果\cite{bindi_performance_2005}来得到相对论重离子在PSD塑闪条中的光产额差异。
+由于理论模型的局限性，我们基于AMS02-TOF束流测试的实验结果\parencite{bindi_performance_2005}来得到相对论重离子在PSD塑闪条中的光产额差异。
 束流测试在CERN的SPS进行，通过主束轰击Be靶得到不同种类的次级离子，主束使用的是\SI{20}{AGeV/c}和\SI{158}{AGeV/c}的Pb。
 由于AMS02-TOF使用的探测介质与PSD完全一致，都是\SI{10}{mm}的EJ-200，该实验结果可以直接被PSD参考和使用。
 图~\ref{fig:dynamic_range:AMS02}给出了AMS02-TOF得到的光响应曲线，数据点从$Z=1\sim16$。
@@ -308,7 +308,7 @@ MIP原始谱符合朗道分布，使用高斯分布对MIP峰的前半部分进�
 由于MPV值与平均光输出成正比，图\ref{fig:dynamic_range:attenuation}同时也反应了单元条的光传输衰减效应。
 一般来讲，光在塑料闪烁体中的传播满足指数衰减规律，即$exp(-\lambda/x)$。
 但PSD塑闪单元条端头的形状较为复杂（见图~\ref{fig:description:bars}），简单的指数衰减规律不能够描述接近单元条端头的光衰减现象，如图\ref{fig:dynamic_range:attenuation}中红色实线所示。
-对于这类端头结构复杂、长度较长的塑闪条，可以将端头接收到的光分为近端和远端两个部分\cite{atten_taiuti_measurement_1996,atten_karsch_design_2001}：近端部分为从击中位置直接传输过来的闪烁光；远端部分为由击中位置传输到远端后，再反射回来传输到近端的部分闪烁光。
+对于这类端头结构复杂、长度较长的塑闪条，可以将端头接收到的光分为近端和远端两个部分\parencite{atten_taiuti_measurement_1996,atten_karsch_design_2001}：近端部分为从击中位置直接传输过来的闪烁光；远端部分为由击中位置传输到远端后，再反射回来传输到近端的部分闪烁光。
 该模型可以用下面的公式表示：
 \begin{equation}
 A(x)=C_0(e^{-x/\lambda} + \alpha e^{-(2L-x)/\lambda})
