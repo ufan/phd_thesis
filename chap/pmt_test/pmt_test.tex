@@ -43,7 +43,7 @@ PMT的批量测试是在大型探测器研制过程中经常碰到的工作。
 
 图\ref{fig:pmt_test:testbench_schematic}给出了PMT批量测试平台的原理框图。
 该平台最多可以同时对25支PMT进行测试。光脉冲由一个蓝光LED产生，它经过积分球和集束光纤组成的光分配系统被分成25份，被分别传输到待测PMT的入射端面。
-待测PMT都安置在一个固定平台上，而光源和光分配系统被固定在一个三维移动平台上。两个平台相对拜访，这样就实现了对所有待测PMT的光阴极位置扫描。
+待测PMT都安置在一个固定平台上，而光源和光分配系统被固定在一个三维移动平台上。两个平台相对摆放，从而实现了对所有待测PMT的光阴极位置扫描。
 固定平台上同时安置有两支监控PMT，也接受来自光分配系统的两路入射光脉冲。
 在整个测试周期中，两支PMT的位置相对于入射光纤固定不变，因此它们被用于监控LED光源以及整个测试平台性能的稳定性。
 这两个支撑平台以及上面的所有测试设备都被放置在一个大小为$176cm\times100cm\times78cm$的铝合金暗箱中(见图\ref{fig:pmt_test:blackbox})，箱子的内壁用黑色图层覆盖以降低内部的杂散光污染。
@@ -59,16 +59,16 @@ PMT测试平台的大部分辅助设备被都放置在铝合金暗箱的外围�
 这些辅助设备可以被分为四个不同功能模块，分别为：运动控制模块，光脉冲驱动模块，数据获取模块（简称DAQ模块）以及高压供给模块。
 运动控制模块和光驱动模块是和测试平台紧密联系在一起的，而与此相关的设备基本在所有的测试中都可以重复使用。
 相反的，DAQ模块和高压供给模块与需要PMT测试的具体项目紧密联系，一般需要使用该项目定制的仪器设备进行测试。
-作为一个通用的解决方案，我们为测试平台配备了一个基于CAMAC机箱的DAQ模块以及一个基于CAEN SY1527LC机箱的高压供给模块。
+作为一个通用的解决方案，我们为测试平台配备了一个基于CAMAC机箱的DAQ模块以及一个基于CAEN SY1527LC机箱\cite{sy1527lc}的高压供给模块。
 这两个模块可以根据具体情况进行更换，在PSD的PMT性能测试中，我们就将上述CAMAC机箱替换成了PSD专用的地面检测系统（详见\ref{sec:pmt_test:characterization}）。
 
 最后，整个PMT测试平台系统被放置在一个十万级的洁净室中，室内温度被控制在$22\pm2$\si{\celsius}。
 
-\subsection{硬件结构与组成}
+\subsection{关键组件以及相关性能测试}
 \label{sec:pmt_test:testbench_hardware}
 % 总述硬件结构，之后依次介绍各组件以及相关测试结果。
-
 % 主体平台
+PMT测试平台的主体由一个固定平台和一个三维移动平台组成(见图\ref{fig:pmt_test:stages})，暗箱内的所有测试器件都被安置在它们上面。
 \begin{figure}[htbp]
 	\centering
 	\subfloat[][铝合金暗箱]{
@@ -82,16 +82,63 @@ PMT测试平台的大部分辅助设备被都放置在铝合金暗箱的外围�
 	\caption{PMT批量测试平台的主体结构}
 	\label{fig:blindfigure}
 \end{figure}
-
+两个平台的台面各覆盖有一块面积为$1560mm\times250mm$的光学平板。
+平板材质为\SI{2.5}{cm}厚度的不锈钢，因此可以有效抵抗重物放置带来的形变，保持台面上各器件位置的稳定性。
+另外，光学平板上布满成网格排布的、并有M4和M6两种规格的螺纹孔，这不仅方便了台面上器件的安装与拆卸，并且提供了额外的摆放灵活性。
+三维移动平台可以带动台面完成X-Y-Z三个方向的移动，每个方向都用一个步进电机驱动，其最大负载重量为\SI{30}{\kilo\gram}。
+表\ref{tab:pmt_test:motorized_stage}列出了它的基本运动参数。
+可以看到，平台的左右行程和上下行程使其能够对所有直径小于\SI{60}{\milli\meter}的PMT进行全面地光阴极扫描。
+额外的第三维运动主要用于控制光纤与待测PMT之间的距离，在测试时尽量拉近光纤与PMT端面的距离，而在拆卸时拉远它们之间的距离，从而保护光纤不受意外损伤。
+三个方向的步进电机都由一个运动控制器控制\cite{leetro}，并可以利用PCI总线实现远程控制。
+\begin{table}[htb]
+	\centering	
+	\begin{tabulary}{0.6\linewidth}{LC}
+		\toprule[1.5pt]
+		\textbf{项目} & \textbf{数值}	\\ 
+		\midrule[1pt]
+		最小步长		& \SI{1.56}{\micro\meter}	\\
+		左右行程		& \SI{60}{\milli\meter}	\\
+		上下行程		& \SI{70}{\milli\meter}	\\
+		前后行程		& \SI{15}{\milli\meter}	\\
+		\bottomrule[1.5pt]
+	\end{tabulary}
+	\caption{三维移动平台的基本运动参数}
+	\label{tab:pmt_test:motorized_stage}	
+\end{table}
+为了方便操作和固定位置，我们还定制了专用的PMT夹具和光纤夹头，图\ref{fig:pmt_test:fixtures}展示了R4443和光纤固定在测试平台上的状态。
+其中，光纤夹头可以实现水平方向上的微调，便于将光纤对准PMT光阴极中心。
 % 紧固件
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{chap/pmt_test/fig/fixtures.jpg}
-	\caption{PMT紧固件和光纤紧固件}
+	\caption{PMT夹具和光纤夹头}
 	\label{fig:pmt_test:fixtures}
 \end{figure}
 
-% 光源
+% 光源以及驱动
+PMT测试系统使用大功率的蓝光LED（\SI{3}{\watt}, \SIrange{465}{485}{\nano\meter}）作为光源。
+该LED的发光光谱能够与大部分光阴极材料的光谱响应相吻合，而且曾被成功应用到HIRFL-RIBLL2外靶终端的中子墙光刻度系统中\cite{yuyuhong_led}，其功率大小能够满足大量光通路的驱动要求。
+为了使LED产生脉冲光，我们采用通用的脉冲发生器AFG3252\cite{afg3252}产生的方波信号来直接驱动LED发光。
+虽然AFG3252不是专用的LED驱动器，但它的驱动效果能够满足我们的基本需求，如图\ref{fig:pmt_test:led_pulse}所示。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/led_pulse.jpg}
+	\caption{\SI{30}{\nano\second}脉宽，\SI{5}{\nano\second}上升沿/下降沿的方波脉冲驱动LED发光得到的R4443输出波形}
+	\label{fig:pmt_test:led_pulse}
+\end{figure}
+AFG3252的驱动脉冲参数可以在很大的范围内进行调整，而且精度很高，这是专用的LED驱动器达不到，因此可以满足各种各样的光输出要求，增强了PMT测试平台的通用性。
+图\ref{fig:pmt_test:led_response}给出了不同脉宽、不同幅度的方波产生的LED光强变化，可以看到脉冲幅度与LED的输出光强并不成正比，这需要在使用中特别加以注意。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.7\textwidth]{chap/pmt_test/fig/led_response.eps}
+	\caption{LED输出脉冲的光强度与AFG3253脉冲幅度的非线性关系}
+	\label{fig:pmt_test:led_response}
+\end{figure}
+AFG3252的另外一个优点是：它的所有功能都可以在远程进行控制，而且接口丰富，我们可以选择熟悉的方式对其进行控制。
+在PMT批量测试系统中，我们通过网口，并使用SCPI（Standard Commands for Programmable Instruments）命令\cite{afg3000_programmer_manual}对AFG3252进行远程操作。
+
+% 积分球
+由LED灯泡耦合到积分球上构成，见图\ref{fig:pmt_test:light_distribution}。
 \begin{figure}[htbp]
 	\centering
 	\subfloat[][1）LED 2）积分球 3）集束光纤]{
@@ -102,7 +149,7 @@ PMT测试平台的大部分辅助设备被都放置在铝合金暗箱的外围�
 		\label{fig:pmt_test:lightsource_integration}
 		\includegraphics[width=0.49\textwidth]{chap/pmt_test/fig/lightsource_integration.jpg}
 	}		
-	\caption{PMT批量测试平台的光分配系统}
+	\caption{PMT批量测试平台的光源与光分配系统}
 	\label{fig:pmt_test:light_distribution}
 \end{figure}
 
@@ -113,22 +160,8 @@ PMT测试平台的大部分辅助设备被都放置在铝合金暗箱的外围�
 	\label{fig:pmt_test:integrationsphere_uniformity}
 \end{figure}
 
-% 光源驱动器
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/led_pulse.jpg}
-	\caption{输入方波脉冲驱动的LED光得到的R4443原始波形}
-	\label{fig:pmt_test:led_pulse}
-\end{figure}
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.62\textwidth]{chap/pmt_test/fig/led_response.eps}
-	\caption{LED输出脉冲的光强度与AFG3253脉冲幅度的非线性关系}
-	\label{fig:pmt_test:led_response}
-\end{figure}
-
 % 集束光纤
+我们使用集束光纤将来自光源的光脉冲分配到各支PMT，集束光纤耦合在积分球的输出端口，它们一起构成了PMT测试系统的光分配系统。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.7\textwidth]{chap/pmt_test/fig/fiber_difference.eps}
