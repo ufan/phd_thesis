@@ -138,7 +138,8 @@ AFG3252的另外一个优点是：它的所有功能都可以在远程进行控�
 在PMT批量测试系统中，我们通过网口，并使用SCPI（Standard Commands for Programmable Instruments）命令\cite{afg3000_programmer_manual}对AFG3252进行远程操作。
 
 % 积分球
-由LED灯泡耦合到积分球上构成，见图\ref{fig:pmt_test:light_distribution}。
+LED发出的光脉冲通过集束光纤被分配到各支PMT，它与集束光纤之间通过一个\SI{5}{\centi\meter}的积分球耦合。LED、积分球和集束光纤一起构成了PMT测试系统的光分配系统，如图\ref{fig:pmt_test:light_distribution}。
+其中LED通过导热硅胶固定在一个与积分球入射端口适配的底座上，而集束光纤通过三维位移台直接对准积分球出射端口的中心（参加见图\ref{fig:pmt_test:lightsource_integration}）。
 \begin{figure}[htbp]
 	\centering
 	\subfloat[][1）LED 2）积分球 3）集束光纤]{
@@ -152,13 +153,20 @@ AFG3252的另外一个优点是：它的所有功能都可以在远程进行控�
 	\caption{PMT批量测试平台的光源与光分配系统}
 	\label{fig:pmt_test:light_distribution}
 \end{figure}
-
+积分球是一个具有高反射性内表面涂层的空心球体，它是一个理想的光积分器件，入射光在其内部经过多次反射后，能够在其出射端口均匀出射。
+积分器在此处的应用主要出于两点考虑：1）我们希望各条光通路具有相近的光输出强度；2）将
+我们使用的积分球\cite{integrating_sphere}使用的内壁涂层材料为$BaSO_4$，蓝光反射率达到\SI{98.5}{\percent}，因此即便它的半径较小，却仍然能够得到较好的均匀性。
+在LED固定到积分球入射端口后，我们对积分球出射端口的光强度进行了“十”字扫描，结果显示其光均匀性可以达到$\pm\SI{0.5}{\percent}$，如图\ref{fig:pmt_test:integrationsphere_uniformity}所示。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/integrationsphere_uniformity.eps}
 	\caption{\SI{5}{cm}铝合金积分球输出端口的光均匀性}
 	\label{fig:pmt_test:integrationsphere_uniformity}
 \end{figure}
+
+
+
+
 
 % 集束光纤
 我们使用集束光纤将来自光源的光脉冲分配到各支PMT，集束光纤耦合在积分球的输出端口，它们一起构成了PMT测试系统的光分配系统。
