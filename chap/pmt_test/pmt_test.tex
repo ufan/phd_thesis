@@ -64,7 +64,7 @@ PMT测试平台的大部分辅助设备被都放置在铝合金暗箱的外围�
 
 最后，整个PMT测试平台系统被放置在一个十万级的洁净室中，室内温度被控制在$22\pm2$\si{\celsius}。
 
-\subsection{关键组件以及相关性能测试}
+\subsection{硬件组成以及相关性能测试}
 \label{sec:pmt_test:testbench_hardware}
 % 总述硬件结构，之后依次介绍各组件以及相关测试结果。
 % 主体平台
@@ -106,7 +106,7 @@ PMT测试平台的主体由一个固定平台和一个三维移动平台组成(�
 	\label{tab:pmt_test:motorized_stage}	
 \end{table}
 为了方便操作和固定位置，我们还定制了专用的PMT夹具和光纤夹头，图\ref{fig:pmt_test:fixtures}展示了R4443和光纤固定在测试平台上的状态。
-其中，光纤夹头可以实现水平方向上的微调，便于将光纤对准PMT光阴极中心。
+其中，光纤夹头可以实现水平方向上的微调，便于将光纤对准PMT光阴极中心（精度在\SI{0.5}{mm}）。
 % 紧固件
 \begin{figure}[htbp]
 	\centering
@@ -153,10 +153,10 @@ LED发出的光脉冲通过集束光纤被分配到各支PMT，它与集束光�
 	\caption{PMT批量测试平台的光源与光分配系统}
 	\label{fig:pmt_test:light_distribution}
 \end{figure}
-积分球是一个具有高反射性内表面涂层的空心球体，它是一个理想的光积分器件，入射光在其内部经过多次反射后，能够在其出射端口均匀出射。
-积分器在此处的应用主要出于两点考虑：1）我们希望各条光通路具有相近的光输出强度；2）将
-我们使用的积分球\cite{integrating_sphere}使用的内壁涂层材料为$BaSO_4$，蓝光反射率达到\SI{98.5}{\percent}，因此即便它的半径较小，却仍然能够得到较好的均匀性。
-在LED固定到积分球入射端口后，我们对积分球出射端口的光强度进行了“十”字扫描，结果显示其光均匀性可以达到$\pm\SI{0.5}{\percent}$，如图\ref{fig:pmt_test:integrationsphere_uniformity}所示。
+积分球是一个具有高反射性内表面的空心球体，它是一个理想的光积分器件，入射光在其内部经过多次反射后，能够在其出射端口均匀出射。
+积分器在此处的应用主要出于两点考虑：1）我们希望各条光通路具有相近的光输出强度；2）方便积分球与集束光纤之间的耦合操作，减弱LED光源的非均匀性对各光路输出强度差异的影响。
+我们使用的积分球\cite{integrating_sphere}使用的内壁涂层材料为$BaSO_4$，蓝光反射率达到\SI{98.5}{\percent}，因此即便它的半径较小，仍然能够得到较好的均匀性。
+在LED固定到积分球入射端口后，我们对积分球出射端面的光强度进行了“十”字扫描，结果显示其光均匀性可以达到$\pm\SI{0.5}{\percent}$，如图\ref{fig:pmt_test:integrationsphere_uniformity}所示。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/integrationsphere_uniformity.eps}
@@ -164,22 +164,47 @@ LED发出的光脉冲通过集束光纤被分配到各支PMT，它与集束光�
 	\label{fig:pmt_test:integrationsphere_uniformity}
 \end{figure}
 
-
-
-
-
 % 集束光纤
-我们使用集束光纤将来自光源的光脉冲分配到各支PMT，集束光纤耦合在积分球的输出端口，它们一起构成了PMT测试系统的光分配系统。
+PMT批量测试系统使用的集束光纤由35根塑料包层的石英光纤\cite{optical_fibre}集结而成（25根用于待测光通道，2根用于监控光通道，剩余8根备份）。每根光纤的长度为\SI{1.5}{\meter}，纤芯直径为\SI{400}{\micro\meter}，包层厚度\SI{75}{\micro\meter}，而数值孔径达到了$0.37$。
+较大的芯径和数值孔径使得每条光通路都能从积分球中引出足够的光量，并传输到对应的PMT入射端面。
+为了避免机械损伤，光纤的两个端头部位都加装了铝合金套筒进行保护，见图\ref{fig:pmt_test:lightsource_components}。
+光源和光分配系统固定完成后，我们对35条光通路的输出光强差异进行了测试。
+测试使用了两支R4443，一支管子用于监测LED的光强波动，其数值可以对测试结果进行光强校正；另一支管子用于正式测试，它固定不动而待测光纤使用高精度的光纤位移台调整位置，保证每次测试时待测光纤都能对准测试PMT光阴极的相同位置。
+测试中，我们使用了两个不同幅度的LED驱动脉冲设置分别对所有光通路进行了扫描。
+两种设置虽然有将近4倍的光强差，但它们得到的光强差异是在$\pm \SI{0.3}{\percent}$的范围内是完全一致的，结果如图\ref{fig:pmt_test:fiber_difference}所示。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.7\textwidth]{chap/pmt_test/fig/fiber_difference.eps}
 	\caption{集束光纤各通道的光传输差异性}
 	\label{fig:pmt_test:fiber_difference}
 \end{figure}
+测试结果显示，所有光通路的输出光强度差异不大，但并不完全一致，其分布的标准差为\SI{10}{\percent}。
+考虑到积分球的光输出分均匀性只有\SI{0.5}{\percent}，可以认为各光通路的光输出强度差异主要是光纤自身的传输效率差异导致的。
+由于传输效率是光纤的固有特征，其在相当长的一段时间内是比较稳定的，可以认为是个常数。
+假设本次测试中，编号为$fiberid$的光纤输出光强度为$L_{fiberid}$，同时在所有光通道中选择一个作为参考通道，其输出光强度为$L_{ref}$。
+则编号为$fiberid$的光通道的光输出强度差异系数$\tau_{fiberid}$可以定义为：
+\begin{equation}
+	\tau_{fiberid} = \frac{L_{fiberid}}{L_{ref}}
+	\label{eq:pmt_test:lightoutput_difference}
+\end{equation}
+根据上面的叙述，$\tau_{fiberid}$可以被认为是一个常数，它主要用于对测试数据进行光强校正，使得不同光通道的测试结果可以直接进行比较（详见第\ref{sec:pmt_test:characterization}节）。
 
-\subsection{测控软件}
+\subsection{模块化设计的测控软件}
+\label{sec:pmt_test:software}
 % 最好这里做一个归纳性的介绍，具体细节设计放到附录中
-
+PMT批量测试平台的测控软件是系统的重要组成部分，它直接关系到平台的易用性。
+由于该测试平台被设计为是一个通用的测试系统，我们需要考虑很多潜在的测试内容，并且底层硬件需要经常更换或更新(见\ref{sec:pmt_test:testbench_functions}的描述)。
+因此，PMT批量测试平台的测控软件框架采用模块化的设计思路，并对底层硬件进行了封装和虚拟化，从而方便软件进行维护以及扩展。
+测控软件框架基于C++语言编写，并在Windows环境下运行，其内部组件可以被分为以下三个层级：
+\begin{enumerate}
+	\item 设备的抽象层。分别用一个C++的抽象类代表\ref{sec:pmt_test:testbench_functions}节中介绍的四个功能模块，并将各种模块常用的操作抽象出来作为借口函数。任何一个新加入的设备都可以从这四个抽象类中继承出来，并对提供自己接口函数实现。软件框架里的其余部分可以通过这四个抽象类来完成自己的功能，并不涉及其具体实现，从而将底层硬件与顶层功能隔离开来。
+	\item 测试算法与辅助功能库。这一层提供了一些基于上述的设备抽象层实现的一些较为通用的测试用例算法，以及一些管理类和辅助功能类。
+	\item 用户交互层。这一层主要处理和用户的交互，其具体实现与上两层无关，可以基于命令行，也可以基于图形界面。
+\end{enumerate}
+测控软件框架的具体设计细节可以参看附录\ref{appendix:pmttest_software}，此处略去。
+对于PSD的光电倍增管测试来说，我们基于NI-VISA\cite{ni_visa}函数库实现了对PSD地面检测获取系统的控制，以代替通用的CAMAC数据获取模块。
+针对PSD的测试需求，实现了Dy8增益测试、Dy5和Dy8的相对增益测试以及光阴极扫描测试这三个测试算法。
+最后，我们基于PDCurses\cite{pdcurses}开发了一个基于命令行的测控程序，集成了设备控制，状态监控以及日志记录等功能。
 
 \section{R4443裸管的性能测试}
 \label{sec:pmt_test:characterization}
