@@ -238,10 +238,16 @@ PSD中每6/7支PMT组成一个高压分组，共享一路高压通道；而且�
 % 高压分组导致从570支 选194 最后用164
 % 统计信息 20一个run 共28个run 一个月测试完成
 % 测试流程： 预热
-我们使用PMT批量测试平台，共对570只R4443进行了完整的性能测试，图给出了所有待测PMT固定到测试平台后的样子。
+我们使用PMT批量测试平台，共对570只R4443进行了完整的性能测试，图\ref{fig:pmt_test:testbench_withpmt}显示了所有待测PMT固定到测试平台后的样子。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.9\textwidth]{chap/pmt_test/fig/testbench_withpmts.jpg}
+	\caption{PMT安装到PMT批量测试平台后等待测试}
+	\label{fig:pmt_test:testbench_withpmt}
+\end{figure}
 测试分成28个Run进行，每个Run对将近20支管子同时进行测试，在一个月内完成全部测试工作。
 一次Run需要花费5.5个小时，其中包括一个小时的PMT安装/拆卸，两个小时的PMT加电预热以及两个半小时的正式测试。
-测试内容包括Dy8相对增益得测量和Dy58比值的测量，我们还对部分管子进行了光阴极扫描，以考察R4443光阴极不均匀性对测试结果的影响。
+测试内容主要包括Dy8相对增益得测量和Dy58比值的测量，我们还对部分管子进行了光阴极扫描，以考察R4443光阴极不均匀性对测试结果的影响。
 
 % 分压器：可复用
 % 获取系统组成，数据分析，数据库存储
