@@ -217,6 +217,7 @@ PSD使用双打拿极引出信号来实现其动态范围的覆盖，各探测�
 \begin{align}
 	G_{58} &= \frac{G_{dy8}}{G_{dy5}} = \frac{A_{dy8}}{A_{dy5}} V^{\alpha_{dy8}-\alpha_{dy5}}      \\
 		   &= A' V^{\alpha'}
+	\label{eq:pmt_test:dy58_powerlaw}
 \end{align}
 其中，$A'$和$\alpha'$也是常数。
 在本文中，将上述两个关系分别定义为R4443的Dy8增益特性曲线以及R4443的Dy58比值增益特性曲线。
@@ -278,7 +279,12 @@ PSD中每6/7支PMT组成一个高压分组，共享一路高压通道；而且�
 
 由于单光电子方法的上述限制，我们采用了另一种方法对R4443第8打拿极的增益进行测量，即使用相同强度的光脉冲照射PMT，然后根据Dy8输出信号的电荷量大小来确定其增益。
 这种方法得到的结果并不能得到光电倍增管的绝对增益，只能通过比较不同管子间的信号大小得到它们之间的相对增益，因此本文将其称为相对增益测量方法。
-在表述相对增益方法得到的测试结果时，一般选取一支光电倍增管作为参考，取其它管子相对于这支管子的信号比值作为相对增益测量值，以消除测试结果对入射光强度的关联。
+在表述相对增益方法得到的测试结果时，一般选取一支光电倍增管作为参考，取其它管子相对于这支管子的信号比值作为相对增益测量值，以消除测试结果对入射光强度的关联，即：
+\begin{equation}
+	G_{relative} = \frac{L\cdot G_{abs}}{L\cdot G_{ref}} = \frac{G_{abs}}{G_{ref}}
+	\label{eq:pmt_test:relative_gain}
+\end{equation}
+其中，$L$表示入射光强度，$G_{abs}$和$G_{ref}$分别是待测PMT和参考PMT的绝对增益。
 之后，可以对这支参考光电倍增管的具体性能进行更加细致的测试，如绝对增益，这样其它管子的相关性能也就能根据相对增益测量值反推得到。
 在PSD的应用中，我们将参考PMT耦合到塑闪单元条上，通过寻找最佳的MIP响应来确定它的额定工作电压，最终反推出其它管子的额定工作电压（详见第\ref{ch:construction}章）。
 
@@ -299,45 +305,123 @@ PSD中每6/7支PMT组成一个高压分组，共享一路高压通道；而且�
 % 流程、配置介绍
 使用上述方法，我们以\SI{50}{V}为间隔，从\SI{700}{V}到\SI{1000}{V}选取了七个电压点对相对增益进行了扫描，以得到每个管子的Dy8增益特性曲线。
 为了保证不应幅度超出R4443的线性范围而导致测试数据无效，我们使用了5个不同强度的光脉冲进行相对增益的测量。
-数据处理时，我们舍去超出线性范围的幅度测量点，只取在所有电压范围内数据都有效的幅度点进行分析。
-图\ref{fig:pmt_test:gain_vs_voltage}两个
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/gain_vs_voltage.eps}
-	\caption{使用其中一个光强度}
-	\label{fig:pmt_test:gain_vs_voltage}
-\end{figure}
-
+我们发现在线性范围内，不同入射光强度得到的相对增益是一致的，但是随着电压或光强度的增加，Dy8输出信号越来越趋近饱和，此时不同光强得到的相对增益会有差别，如图\ref{fig:pmt_test:gain_twointensity_correlation}所示。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/gain_twointensity_correlation.eps}
-	\caption{Blindfigure}
+	\caption{在\SI{850}{V}工作电压下，最大光强度（Light Intensity 1）和最小光强度(Light Intensity 5)得到的相对增益关联图。可以看到增益很大的管子，最小光强得到的增益要略大于最大光强得到的增益。}
 	\label{fig:pmt_test:gain_twointensity_correlation}
+\end{figure}
+数据处理时，我们舍去接近饱和区域的幅度测量点，只取在所有电压范围内数据都有效的数据点进行分析，最终得到了所有待测管子的增益特性曲线。
+图\ref{fig:pmt_test:gain_vs_voltage}给出了两支PMT的测试结果作为示例，其中实线是使用公式\ref{eq:pmt_test:gain_powerfunction}拟合的结果，它们都能很好地符合幂函数变化规律。
+根据测得的增益特性曲线，我们可以计算出R4443在任意工作电压下PMT的相对增益大小，图\ref{fig:pmt_test:gain_distribution_850}给出了\SI{850}{V}时570只管子的Dy8增益分布。
+\begin{figure}[htbp]
+	\centering
+	\subfloat[][本次测试得到的Dy8增益特性曲线]{
+		\includegraphics[width=0.5\textwidth]{chap/pmt_test/fig/gain_vs_voltage.eps}
+		\label{fig:pmt_test:gain_vs_voltage}
+	}
+	\subfloat[][\SI{850}{V}工作电压下，所有管子的相对增益分布，选择增益最小的管子作为参考PMT]{
+		\includegraphics[width=0.5\textwidth]{chap/pmt_test/fig/gain_distribution_850.eps}
+		\label{fig:pmt_test:gain_distribution_850}
+	}
+	\caption{Dy8相对增益的测量结果}
+	\label{fig:pmt_test:gain_results}
 \end{figure}
 
 % 结果介绍
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/gain_distribution_850.eps}
-	\caption{Blindfigure}
-	\label{fig:pmt_test:gain_distribution_850}
-\end{figure}
-
+我们进一步将本次测试得到的结果与Hamamatsu提供的蓝光灵敏度测量结果进行了比较，如图\ref{fig:pmt_test:gain_vs_bluesensitivity}所示。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/gain_vs_bluesensitivity.eps}
-	\caption{Blindfigure}
+	\caption{本次测试得到的Dy8增益与厂家提供的蓝光灵敏度的关联图。其中横轴是根据测得的增益特性曲线计算出的相对增益，纵轴左边黑色坐标是阳极蓝光灵敏度，右边红色坐标是阴极蓝光灵敏度。}
 	\label{fig:pmt_test:gain_vs_bluesensitivity}
 \end{figure}
-
+为使比较更加准确，我们根据出厂测试使用的分压器和工作电压推出了PSD分压器上应该加载的等效电压，并根据测得的增益特性曲线计算出此时的相对增益。
+并且为了便于比较，这三组数据都对同一支参考管子进行了归一。
+可以看到，我们的结果与阴极蓝光灵敏度的关联性不强，而与阳极蓝光灵敏度具有近似为1的线性关联。
+由于阳极蓝光灵敏度和我们的测量结果都包含了光阴极、聚焦极和电子倍增器的贡献，而阴极蓝光灵敏度只包含光阴极和聚焦极的贡献，该结果也就从侧面证明了相对增益测量方法的有效性和准确性。
 
 \subsection{Dy8和Dy5之间相对增益的测量}
 \label{sec:pmt_test:dy58}
+Dy8与Dy5之间的相对增益测量比较简单：选取一系列不同强度（从弱到强，知道Dy8通道饱和）的光脉冲依次照射待测PMT，每个强度下分别记录Dy8和Dy5的信号大小，最终可以得到Dy8和Dy5的线性关联谱直到Dy8通道饱和，谱图的斜率就是Dy58比值，如图\ref{fig:pmt_test:dy58_example_single}。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/dy58_example_single.eps}
+	\caption{LED测试得到的Dy58曲线}
+	\label{fig:pmt_test:dy58_example_single}
+\end{figure}
+
+同样地，我们以\SI{50}{V}为间隔，从\SI{700}{V}到\SI{1000}{V}选取了七个电压点对Dy58比值进行了扫描。
+将七个电压点的数据整合在一起，使用公式\ref{eq:pmt_test:dy58_powerlaw}进行拟合，就得到了Dy58比值的增益特性曲线。
+图\ref{fig:pmt_test:dy58_example}给出了一个示例，其中黑色圆点、蓝色三角以及红色星点分别是\SI{1000}{V}、\SI{850}{V}以及\SI{700}{V}下测得的Dy58曲线，小图是对七个电压下Dy58比值的幂函数拟合，可以看到数据点与拟合结果符合得非常好。
+\begin{figure}[htbp]
+	\centering
+	\subfloat[][Dy58比值测试的一个示例]{
+		\includegraphics[width=0.49\textwidth]{chap/pmt_test/fig/dy58_example.eps}
+		\label{fig:pmt_test:dy58_example}
+	}
+	\subfloat[][\SI{850}{V}工作电压下所有测试管子的Dy58比值分布]{
+		\includegraphics[width=0.49\textwidth]{chap/pmt_test/fig/dy58_distribution_850V.eps}
+		\label{fig:pmt_test:dy58_distribution_850V}
+	}
+	\caption{Dy58比值的测试结果}
+	\label{fig:pmt_test:dy58_results}
+\end{figure}
+根据得到的增益特性曲线，我们可以计算出任何工作电压下R4443的Dy58比值，图\ref{fig:pmt_test:dy58_distribution_850V}给出了\SI{850}{V}使所有管子的Dy58比值分布。
+
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{chap/pmt_test/fig/dy58_ledvscm.eps}
+	\caption{本次测试得到的Dy58比值与宇宙线测试得到的Dy58比值的比较}
+	\label{fig:pmt_test:dy58_ledvscm}
+\end{figure}
 
 \subsection{光阴极均匀性的测量}
 \label{sec:pmt_test:cathode_scanning}
 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/cathode_uniformity.eps}
+	\caption{Blindfigure}
+	\label{fig:blindfigure}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/cathode_uniformity_distribution.eps}
+	\caption{Blindfigure}
+	\label{fig:blindfigure}
+\end{figure}
+
 \section{PMT批量测试平台在测试中的长期稳定性}
 \label{sec:pmt_test:testbench_performance}
 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/led_stability.eps}
+	\caption{Blindfigure}
+	\label{fig:blindfigure}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/ref_gain_stability.eps}
+	\caption{Blindfigure}
+	\label{fig:blindfigure}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/ref_gain_correlation.eps}
+	\caption{Blindfigure}
+	\label{fig:blindfigure}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/ref_dy58_stability.eps}
+	\caption{Blindfigure}
+	\label{fig:blindfigure}
+\end{figure}
