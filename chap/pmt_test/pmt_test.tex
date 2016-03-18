@@ -380,23 +380,34 @@ Dy8与Dy5之间的相对增益测量比较简单：选取一系列不同强度�
 \end{figure}
 可以看到，宇宙线测试结果相对LED测试结果整体偏小，且分布较窄。
 我们认为这些差异主要是入射光在光阴极上的分布不同引起的：LED测试时，入射光脉冲由光纤引出，光斑较小且只能照射PMT光阴极上某个固定点，而宇宙线测试时入射光是分布到整个光阴极面的。
-即便如此，两个测试结果基本还是重合的，LED的测试结果具有参考价值，我们使用的测试方法有效。
+即便如此，两个测试结果基本还是重合的，LED的测试结果仍然具有参考价值，我们使用的测试方法有效。
 
 \subsection{光阴极均匀性的测量}
 \label{sec:pmt_test:cathode_scanning}
+由于光纤导出的光斑直径不到\SI{1}{mm}，上述测试得到的结果严格来讲只是R4443光阴极中心处的性能参数。
+实际使用中，R4443光阴极的大部分是被入射光覆盖的（大小取决于单元条端面与R4443端面的接触面积），因此其性能参数是所有光阴极位置点累计的结果。
+如果光电倍增管的光阴极均匀性足够好，我们就能使用单个位置点得到的参数来代表整个管子的性能。
+因此，我们也对部分被测R4443的光阴极进行了位置扫描，以考察单点测试结果的有效性。
 
+R4443最小的有效光阴极面积为\SI{10}{mm}。
+利用PMT批量测试平台的光阴极扫描功能，我们在竖直和水平方向上每隔\SI{1}{mm}对待测管子的相对增益进行了测量，图\ref{fig:pmt_test:cathode_uniformity}给出了一个示例结果。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/cathode_uniformity.eps}
-	\caption{Blindfigure}
-	\label{fig:blindfigure}
+	\caption{R4443典型的光阴极均匀性}
+	\label{fig:pmt_test:cathode_uniformity}
 \end{figure}
+可以看到，R4443光阴极中心区域的响应略小于边缘处，而在超过其有效面积后迅速减小到零。
+为了对管子的非均匀性进行评估，我们以光阴极直径\SI{9}{mm}范围内的测量均值为中心值，计算出该范围内所有测量值相对中心值的最大偏差。
+图\ref{fig:pmt_test:cathode_uniformity_distribution}给出了所有被测管子的最大偏差累积在一起的分布图。
+对于PSD的PMT筛选来说（详见第\ref{ch:construction}章），$\pm\SI{10}{\percent}$的最大偏差是可以接受的，
+从图\ref{fig:pmt_test:cathode_uniformity_distribution}可以看到，\SI{75}{\percent}管子的光阴极非均匀性都在这个区间内，因此我们的测试结果可以直接使用。
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/cathode_uniformity_distribution.eps}
-	\caption{Blindfigure}
-	\label{fig:blindfigure}
+	\caption{R4443的光阴极均匀性分布}
+	\label{fig:pmt_test:cathode_uniformity_distribution}
 \end{figure}
 
 \section{PMT批量测试平台在测试中的长期稳定性}
