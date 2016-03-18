@@ -297,11 +297,40 @@ PSD中每6/7支PMT组成一个高压分组，共享一路高压通道；而且�
 \end{equation}
 
 % 流程、配置介绍
-使用上述方法，我们以\SI{50}{V}为间隔，从\SI{700}{V}到\SI{1000}{V}选取了七个电压点对相对增益进行测量，以得到每个管子的Dy8增益特性曲线。
-5个幅度点保证不超线性范围
+使用上述方法，我们以\SI{50}{V}为间隔，从\SI{700}{V}到\SI{1000}{V}选取了七个电压点对相对增益进行了扫描，以得到每个管子的Dy8增益特性曲线。
+为了保证不应幅度超出R4443的线性范围而导致测试数据无效，我们使用了5个不同强度的光脉冲进行相对增益的测量。
+数据处理时，我们舍去超出线性范围的幅度测量点，只取在所有电压范围内数据都有效的幅度点进行分析。
+图\ref{fig:pmt_test:gain_vs_voltage}两个
 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/gain_vs_voltage.eps}
+	\caption{使用其中一个光强度}
+	\label{fig:pmt_test:gain_vs_voltage}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/gain_twointensity_correlation.eps}
+	\caption{Blindfigure}
+	\label{fig:pmt_test:gain_twointensity_correlation}
+\end{figure}
 
 % 结果介绍
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/gain_distribution_850.eps}
+	\caption{Blindfigure}
+	\label{fig:pmt_test:gain_distribution_850}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/gain_vs_bluesensitivity.eps}
+	\caption{Blindfigure}
+	\label{fig:pmt_test:gain_vs_bluesensitivity}
+\end{figure}
+
 
 \subsection{Dy8和Dy5之间相对增益的测量}
 \label{sec:pmt_test:dy58}
