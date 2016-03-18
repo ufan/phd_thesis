@@ -413,18 +413,25 @@ R4443最小的有效光阴极面积为\SI{10}{mm}。
 \section{PMT批量测试平台在测试中的长期稳定性}
 \label{sec:pmt_test:testbench_performance}
 PSD的光电倍增管测试前后持续了将近一个月时间，在这么长的时间跨度内，测试平台的各组件状态可能发生波动。
-因此，需要考察PMT批量测试平台的长期稳定性，以确认我们的测试结果真实可靠。
-PMT批量测试平台具有两个固定不动的监控PMT，每个Run中它们都经历了与被测PMT一样的测试流程，从它们的测试结果中可以提取出平台的性能参数。
+因此，需要考察PMT批量测试平台在这段时间中的稳定性，以确认测试结果真实可靠。
+PMT批量测试平台具有两个固定不动的监控PMT（参看\ref{sec:pmt_test:testbench_functions}节），它们经历了与被测PMT一样的测试流程，从它们的测试结果中可以提取出平台的性能参数。
 
-我们首先考察了LED光源的长期稳定性，结果如图\ref{fig:pmt_test:led_stability}所示。
-可以看到在没有
+首先考察LED光源的长期稳定性。
+使用其中一支监控PMT进行输出光强的校正，观察另一支监控PMT的相对增益测试结果，如图\ref{fig:pmt_test:led_stability}所示。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.65\textwidth]{chap/pmt_test/fig/led_stability.eps}
 	\caption{LED光源的长期稳定性}
 	\label{fig:pmt_test:led_stability}
 \end{figure}
+可以看到，在没有进行光强校正前（图中红线），LED的输出光强有较大的波动；进行光强校正后（图中蓝线），LED输出光强的波动可以控制在$\pm\SI{0.5}{\percent}$内。
+我们认为经过校正的LED光源稳定性非常理想，可以保证测试结果的准确性。
 
+其次考察相对增益测量与Dy58比值测量的稳定性。
+在PMT批量测试平台各组件状态没有发生变化的条件下，不同次Run中测得的监控PMT参数应该是完全一致的。
+因此，监控PMT性能参数分布的标准偏差就可以作为评估测试平台性能稳定性的参数。
+图\ref{fig:pmt_test:ref_stability}综合了在所有28个Run得到的两支监控PMT的相对增益分布以及Dy58比值分布，其中所有测量值都做了归一化处理。
+可以看到，相对增益测量的稳定性为\SI{0.48}{\percent}，而Dy58比值测量的稳定性为\SI{1.6}{\percent}两者数值都很小，意味着PMT批量测试平台的性能非常稳定。
 \begin{figure}[htbp]
 	\centering
 	\subfloat[][相对增益测试的稳定性]{
@@ -436,5 +443,5 @@ PMT批量测试平台具有两个固定不动的监控PMT，每个Run中它们�
 		\label{fig:pmt_test:ref_dy58_stability}
 	}
 	\caption{PMT测试批量测试平台的性能稳定性}
-	\label{fig:ref_stability}
+	\label{fig:pmt_test:ref_stability}
 \end{figure}
