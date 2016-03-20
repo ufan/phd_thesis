@@ -6,12 +6,26 @@
 
 指导塑闪阵列探测器建造的有两条基本原则：一是要实现其功能要求，二是满足其质量要求。
 PSD由探测器主体功能模块，高压扇出模块，前端电子学模块以及机械支撑模块这四部分组成。
-其中，高压扇出模块、前端电子学模块和机械支撑模块都由专业的外包单位负责其生产和质量控制，实验室中我们只负责探测器主体功能模块中各探测单元的生产，主要是PMT的筛选和PMT组件的装配以及塑闪单元条模块的包装。
-最后，我们还在实验室中将上述四个模块组装成探测器整体，完成了塑闪阵列探测器的建造工作。
+其中，高压扇出模块、前端电子学模块和机械支撑模块都由专业的外包单位负责其建造和质量控制，实验室中我们只负责探测器主体功能模块中各探测单元的建造，主要包括是PMT组件以及塑闪单元条组件。
+我们还在实验室中将上述四个模块组装成探测器整体，最终完成了塑闪阵列探测器的建造工作。
 
 \section{PMT的筛选}
-\subsection{筛选方案}
-工厂参数。
+\label{sec:construction:pmt_selection}
+PMT筛选的原则
+
+PMT筛选的原理:宇宙线测试参考管子
+
+工厂参数(暗电流与Drift)
+去除尺寸和外观检查不合格（光阴极和玻管表面有瑕疵）
+去除参与了厂家力学检测
+
+去除极端增益：计算对应于Dy8=700道时的工作电压，去除小于790大于930V的PMT
+确定额定工作电压：设定工作电压为810，840，870，900四个档位，分别计算对应的增益，至少有一个电压在600-800之间
+选择动态范围：由$1000\cdot Dy58 / Gain$计算额定工作电压下的动态范围，选择$600\sim900$之间的
+去除增益随电压变化异常的：计算额定工作电压加90V后的增益相对于原来的比值，选择$1.6\sim 2$之间的
+
+570测试-190挑选焊接-164安装
+
 % 暗电流
 PMT的暗电流是指在完全黑暗且没有入射光的条件下，在光电倍增管内部流动的微小电流。
 由于暗电流会使得探测器的基线展宽、噪声变大，严重的情况下甚至降低探测器的能量分辨率，因此暗电流越小越好。
@@ -23,13 +37,22 @@ R4443的Dy8通道用于覆盖PSD动态范围的低端部分，主要用于$e/\ga
 我们希望Dy8的增益尽量高，使其测得的MIP信号尽量与基线噪声相分离，从而降低$e/\gamma$误判率。
 另一方面，PSD对整体的动态范围有严格的区间要求($\SI{0.1}{MIPs}\sim\SI{1400}{MIPs}$)，过高的Dy8增益会压低Dy5的增益（即提高了Dy58比值），从而降低Dy5对重离子电荷的分辨能力。
 因此
-\subsection{参考单元模块的MIPs响应}
 
 \section{PMT组件的生产}
-\label{sec:construction:pmt_assembly}
-\subsection{与塑闪单元条的匹配}
+\label{sec:construction:pmt_production}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{chap/construction/fig/pmt_production_procedure.eps}
+	\caption{PMT组件的生产流程}
+	\label{fig:construction:pmt_production_procedure}
+\end{figure}
+
 \subsection{结构简介}
+\label{sec:construction:pmt_assembly}
+
 \subsection{生产流程}
+\label{sec:construction:pmt_procedure}
 \begin{enumerate}
 	\item PMT的base焊接，信号线+信号头。
 	\item 检测：电压、电容。
@@ -40,9 +63,14 @@ R4443的Dy8通道用于覆盖PSD动态范围的低端部分，主要用于$e/\ga
 \end{enumerate}
 
 \section{塑闪单元条的生产}
-\subsection{包装与测试}
+\label{sec:construction:bar_production}
+测试与筛选过程与PMT正好相反，因为单元条需要包装后才能测试。
 
-\subsection{筛选结果}
+\subsection{单元条的包装与测试}
+\label{sec:construction:bar_wrapping_and_test}
+
+\subsection{单元条的筛选}
+\label{sec:construction:bar_selection}
 尺寸复核
 热膨胀系数
 技术衰减长度：平滑否-包装是否好，两端相差较大也踢出，大于一个值
@@ -52,6 +80,9 @@ MPV响应？
 
 \section{探测器整体组装}
 \label{sec:construction:psd_assembly}
+
+\subsection{PMT与塑闪单元条的匹配}
+
 \begin{enumerate}
 	\item 布单元条。
 	\item PMT组件加套筒和播磨合金
