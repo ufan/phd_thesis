@@ -64,14 +64,14 @@ DAMPE高压单机只能提供不连续的高压档位且档位间隔为\SI{30}{V
 
 \subsection{PMT组件的结构简介}
 \label{sec:construction:pmt_assembly}
-一个完整的PMT组件包括：R4443裸管，Base电路板，EJ-560硅脂垫片，PMT的铝合金保护套，高压和信号线缆。
-为了更好地保护PMT组件，我们把R4443裸管、Base电路板以及硅脂垫片这三部分封装在一个硅胶保护套中，以减弱火箭发射时产生的剧烈振动和冲击对各部件的影响。
+一个完整的PMT组件包括：R4443裸管，Base电路板，EJ-560硅脂垫片，铝合金保护套，高压和信号线缆。
+为了更好地保护PMT组件，我们使用室温硫化硅橡胶（RTV胶）将R4443裸管、Base电路板以及硅脂垫片这三部分灌封在一个硅胶保护套中，以减弱火箭发射时产生的剧烈振动和冲击对各部件的影响。
 硅胶保护套可以分为两段，分别由不同的材料组成：
 \begin{itemize}
 	\item 避光部分。PMT是光敏器件，虽然PSD的机械结构设计是密封不透光的，为了以防万一，我们还是给光电倍增管设计了专门的避光措施。这部分胶体覆盖整个R4443裸管和硅脂垫片，并将它们连为一体。它由黑色材料构成，可以有效屏蔽外界光干扰。
-	\item 绝缘部分。PSD分压器在工作时需要加载近千伏的高压，而太空中空气密度极低，再加上Base电路板的设计紧凑，板上各元器件间的距离较近，这些都大大增加了高压打火的概率。这部分胶体与前面的避光胶体部分紧密粘连，并完满填充了Base电路板上元器件间的空间。它由绝缘材料组成，从而能够有效防止分压器电路在真空中的高压打火。
+	\item 绝缘部分。PSD分压器在工作时需要加载近千伏的高压，而太空中空气密度极低，再加上Base电路板的设计紧凑，板上各元器件间的距离较近，这些都大大增加了电晕放电甚至高压击穿的概率。这部分胶体与前面的避光胶体部分紧密粘连，并完满填充了Base电路板上元器件间的空间。它由绝缘材料组成，从而能够有效防止分压器电路在真空中的高压打火，保护元器件不受损伤。
 \end{itemize}
-图\ref{fig:construction:pmt_assembly}给出了一个灌胶完成后的完整PMT组件照片，它是PMT组件安装到PSD前的最终状态。
+图\ref{fig:construction:pmt_assembly}给出了一个灌封完成后的完整PMT组件照片，它是PMT组件安装到PSD前的最终状态。
 %其中的信号接头和高压接头是为了方便生产过程中的质量测试临时焊接上去的，正式安装时会减去这些接头，将高压信号电缆直接焊接到高压扇出板和信号转接板上。
 \begin{figure}[htbp]
 	\centering
@@ -82,7 +82,7 @@ DAMPE高压单机只能提供不连续的高压档位且档位间隔为\SI{30}{V
 
 \subsection{PMT组件的生产流程}
 \label{sec:construction:pmt_procedure}
-PMT组件的整个生产流程可以归纳为四个阶段，分别为PMT的性能测试和筛选，PMT组件的生产，PMT组件的环境试验以及PMT组件的，如图\ref{fig:construction:pmt_production_procedure}所示。
+PMT组件的整个生产流程可以归纳为四个阶段，按先后顺序依次为为PMT的性能测试和筛选(Selection)，PMT组件的生产(Production)，PMT组件的环境试验(Environment Test)以及PMT组件的质量鉴定测试(Qualification)，如图\ref{fig:construction:pmt_production_procedure}所示。
 其中，PMT的性能测试和筛选已经在前面的章节中进行了介绍，这里主要对剩下的三个阶段进行一个梳理。
 \begin{figure}[htbp]
 	\centering
@@ -92,24 +92,102 @@ PMT组件的整个生产流程可以归纳为四个阶段，分别为PMT的性�
 \end{figure}
  
 % production phase
+PMT组件的生产包含三个步骤：Base电路板焊接（Soldering），PMT组件灌封(Potting)和PMT组件装配(Assembly)。
+Base电路板焊接是指将R4443裸管与Base的分压器电路板焊接到一起。
+由于后面的灌封流程以及PSD的整体装配对PMT组件的尺寸大小具有严格的要求，我们设计了专门的焊接支架用来控制PMT管身与Base电路板之间以及两块Base电路板自身之间的距离。
+焊接工作由来自山东航天电子技术研究所的专业人员完成，其中的关键步骤如图\ref{fig:construction:soldering}所示。
+焊接完成后，我们从高压信号线端对Base电路板的电阻值和电容值进行了检查，以确定焊接质量是否达标。
+\begin{figure}[htb]
+\centering
+\subfloat[][焊接第一块Base板]{
+	\label{fig:construction:soldering_a}
+	\includegraphics[width=0.32\textwidth]{chap/construction/fig/soldering_a.jpg}
+}
+% \hfill
+\subfloat[][焊接第二块Base板]{
+	\label{fig:construction:soldering_b}
+	\includegraphics[width=0.32\textwidth]{chap/construction/fig/soldering_b.jpg}
+}
+% \subfloat[][焊接完成]{
+% 	\label{fig:construction:soldering_c}
+% 	\includegraphics[width=0.24\textwidth]{chap/construction/fig/soldering_c.jpg}
+% }
+\subfloat[][对焊点进行清洗]{
+	\label{fig:construction:soldering_d}
+	\includegraphics[width=0.32\textwidth]{chap/construction/fig/soldering_d.jpg}
+}
+\caption{R4443的Base电路板焊接流程}
+\label{fig:construction:soldering}
+\end{figure}
+PMT组件灌封是PSD的关键生产步骤之一。为了解决硅橡胶的出气问题，保证灌封质量，一方面我们选取了能在恶劣空间环境下使用、出气率很低的双组分RTV胶作为灌封胶体；另一方面，我们制定了一系列控制措施以保证灌封操作的质量，如灌封前先将胶体放在真空靶室中抽气、设计专门的透明工装以便于观察气泡等等。
+具体的灌封步骤如图\ref{fig:construction:potting}所示，其中需要特别说明的是：我们在安装完硅脂垫片后，在R4443端头耦合面附近又缠绕了几圈Teflon（见图\ref{fig:construction:potting_a}），以防止胶体渗入R4443与硅脂垫片的耦合面，导致影响输入光强度。
+\begin{figure}[htb]
+\centering
+\subfloat[][安装硅脂垫片]{
+	\label{fig:construction:potting_a}
+	\includegraphics[width=0.32\textwidth]{chap/construction/fig/potting_a.jpg}
+}
+\subfloat[][将PMT装入透明灌装工装中]{
+	\label{fig:construction:potting_b}
+	\includegraphics[width=0.32\textwidth]{chap/construction/fig/potting_b.jpg}
+}
+\subfloat[][灌封避光胶部分]{
+	\label{fig:construction:potting_c}
+	\includegraphics[width=0.32\textwidth]{chap/construction/fig/potting_c.jpg}
+}
+//
+\subfloat[][灌封绝缘胶部分]{
+	\label{fig:construction:potting_d}
+	\includegraphics[width=0.32\textwidth]{chap/construction/fig/potting_d.jpg}
+}
+\subfloat[][静置，等待胶体凝固]{
+	\label{fig:construction:potting_e}
+	\includegraphics[width=0.32\textwidth]{chap/construction/fig/potting_e.jpg}
+}
+\subfloat[][完成灌封步骤，拆卸PMT组件]{
+	\label{fig:construction:potting_f}
+	\includegraphics[width=0.32\textwidth]{chap/construction/fig/potting_f.jpg}
+}
+\caption{PMT组件的灌封操作流程}
+\label{fig:construction:potting}
+\end{figure}
+最后，在灌封结束后，我们将铝合金保护套安装到了PMT组件上，同时给高压线和信号线分别焊上了SHV高压接头和SMA信号接头，这就是PMT组件的装配步骤。
+给高压信号线焊上接头是为了方便PSD建造过程中的各种测试，这些接头是临时的，在PSD整体装配时会被剪掉，然后将高压线和信号线直接焊接到高压扇出板和信号转接板上（高压扇出板和信号转接板参看第\ref{ch:description}章)。
 
 % envrioment test
+PMT组件的环境试验包含高低温循环测试和高压打火测试两项内容。
+高低温循环测试时，整个PMT组件被静置在高低温试验箱中，不加电不连线，如图\ref{fig:construction:cycling}所示。
+\begin{figure}[htb]
+\centering
+\subfloat[][高低温试验箱]{
+	\label{fig:construction:cycling_a}
+	\includegraphics[width=0.45\textwidth]{chap/construction/fig/cycling_a.jpg}
+}
+% \hfill
+\subfloat[][PMT组件静置在高低温试验箱内]{
+	\label{fig:construction:cycling_b}
+	\includegraphics[width=0.45\textwidth]{chap/construction/fig/cycling_b.jpg}
+}
+\caption{PMT组件的高低温循环测试}
+\label{fig:construction:cycling}
+\end{figure}
+测试一共进行16个循环，每个循环由一个高温和一个低温组成：高温设置为\SI{45}{\celsius}，保持1.5个小时；低温设置为\SI{-25}{\celsius}，保持2个小时。
+完成高低温测试后，PMT组件马上进行了高压打火测试。
 % HV breakdown
 真空：0Pa $10^-2mbar$左右
 高压：1000V
 时长：一个小时
 
 % cycling
-温度：
-时长：
-循环次数：
+温度：高温45，保持1.5小时；低温-25，保持2小时；
+循环次数：一个高低温算一次循环，一次测试共16个循环
 
 % qualification
  
 \begin{enumerate}
 	\item PMT的base焊接，信号线+信号头。
 	\item 检测：电压、电容。
-	\item 灌胶。
+	\item 灌封。
 	\item 高低温循环。
 	\item 真空高压测试。
 	\item PMT测试平台测试
