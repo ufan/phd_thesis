@@ -62,7 +62,27 @@ DAMPE高压单机只能提供不连续的高压档位且档位间隔为\SI{30}{V
 \section{PMT组件的生产}
 \label{sec:construction:pmt_production}
 
-筛选出的R44434裸管
+\subsection{结构简介}
+\label{sec:construction:pmt_assembly}
+一个完整的PMT组件包括：R4443裸管，Base电路板，EJ-560硅脂垫片，PMT的铝合金保护套，高压和信号线缆。
+为了更好地保护PMT组件，我们把R4443裸管、Base电路板以及硅脂垫片这三部分封装在一个硅胶保护套中，以减弱火箭发射时产生的剧烈振动和冲击对各部件的影响。
+硅胶保护套可以分为两段，分别由不同的材料组成：
+\begin{itemize}
+	\item 避光部分。PMT是光敏器件，虽然PSD的机械结构设计是密封不透光的，为了以防万一，我们还是给光电倍增管设计了专门的避光措施。这部分胶体覆盖整个R4443裸管和硅脂垫片，并将它们连为一体。它由黑色材料构成，可以有效屏蔽外界光干扰。
+	\item 绝缘部分。PSD分压器在工作时需要加载近千伏的高压，而太空中空气密度极低，再加上Base电路板的设计紧凑，板上各元器件间的距离较近，这些都大大增加了高压打火的概率。这部分胶体与前面的避光胶体部分紧密粘连，并完满填充了Base电路板上元器件间的空间。它由绝缘材料组成，从而能够有效防止分压器电路在真空中的高压打火。
+\end{itemize}
+图\ref{fig:construction:pmt_assembly}给出了一个灌胶完成后的完整PMT组件照片，它是PMT组件安装到PSD前的最终状态。
+其中的信号接头和高压接头是为了方便生产过程中的质量测试临时焊接上去的，正式安装时会减去这些接头，将高压信号电缆直接焊接到高压扇出板和信号转接板上。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/construction/fig/pmt_assembly.jpg}
+	\caption{一个完整的PMT组件}
+	\label{fig:construction:pmt_assembly}
+\end{figure}
+
+\subsection{生产流程}
+\label{sec:construction:pmt_procedure}
+
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{chap/construction/fig/pmt_production_procedure.eps}
@@ -70,11 +90,6 @@ DAMPE高压单机只能提供不连续的高压档位且档位间隔为\SI{30}{V
 	\label{fig:construction:pmt_production_procedure}
 \end{figure}
 
-\subsection{结构简介}
-\label{sec:construction:pmt_assembly}
-
-\subsection{生产流程}
-\label{sec:construction:pmt_procedure}
 \begin{enumerate}
 	\item PMT的base焊接，信号线+信号头。
 	\item 检测：电压、电容。
