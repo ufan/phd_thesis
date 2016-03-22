@@ -127,7 +127,7 @@ PMT组件灌封是PSD的关键生产步骤之一。为了解决硅橡胶的出�
 	\label{fig:construction:potting_a}
 	\includegraphics[width=0.32\textwidth]{chap/construction/fig/potting_a.jpg}
 }
-\subfloat[][将PMT装入透明灌装工装中]{
+\subfloat[][将PMT装入透明灌封工装中]{
 	\label{fig:construction:potting_b}
 	\includegraphics[width=0.32\textwidth]{chap/construction/fig/potting_b.jpg}
 }
@@ -155,43 +155,37 @@ PMT组件灌封是PSD的关键生产步骤之一。为了解决硅橡胶的出�
 给高压信号线焊上接头是为了方便PSD建造过程中的各种测试，这些接头是临时的，在PSD整体装配时会被剪掉，然后将高压线和信号线直接焊接到高压扇出板和信号转接板上（高压扇出板和信号转接板参看第\ref{ch:description}章)。
 
 % envrioment test
-PMT组件的环境试验包含高低温循环测试和高压打火测试两项内容。
+PMT组件的环境试验包含高低温循环测试和真空高压打火测试两项内容。
 高低温循环测试时，整个PMT组件被静置在高低温试验箱中，不加电不连线，如图\ref{fig:construction:cycling}所示。
 \begin{figure}[htb]
 \centering
 \subfloat[][高低温试验箱]{
 	\label{fig:construction:cycling_a}
-	\includegraphics[width=0.45\textwidth]{chap/construction/fig/cycling_a.jpg}
+	\includegraphics[width=0.48\textwidth]{chap/construction/fig/cycling_a.jpg}
 }
 % \hfill
 \subfloat[][PMT组件静置在高低温试验箱内]{
 	\label{fig:construction:cycling_b}
-	\includegraphics[width=0.45\textwidth]{chap/construction/fig/cycling_b.jpg}
+	\includegraphics[width=0.48\textwidth]{chap/construction/fig/cycling_b.jpg}
 }
 \caption{PMT组件的高低温循环测试}
 \label{fig:construction:cycling}
 \end{figure}
 测试一共进行16个循环，每个循环由一个高温和一个低温组成：高温设置为\SI{45}{\celsius}，保持1.5个小时；低温设置为\SI{-25}{\celsius}，保持2个小时。
-完成高低温测试后，PMT组件马上进行了高压打火测试。
-% HV breakdown
-真空：0Pa $10^-2mbar$左右
-高压：1000V
-时长：一个小时
-
-% cycling
-温度：高温45，保持1.5小时；低温-25，保持2小时；
-循环次数：一个高低温算一次循环，一次测试共16个循环
+这是模拟了DAMPE卫星轨道环境，考察PMT组件在最恶劣的条件下，对频繁高低温度变化的承受能力。
+完成高低温测试后，PMT组件马上进行了真空高压打火测试，以考察其在真空中是否会发生高压打火或击穿。
+测试使用一个真空靶室来模拟轨道真空环境，靶室使用机械泵抽取真空，并可以通过转接法兰上的SHV双通给内部的PMT组件加载高压。
+测试时，使用黑色避光布包裹整个真空靶室一屏蔽外界光干扰，靶室真空度控制在\SI{10e-2}{mbar}左右，然后给PMT组件Base板加上\SI{1000}{V}的正高压。
+正常情况下，高压通道上的反馈电流应该等于并稳定保持在Base上的微小分压器电流；而发生高压打火或击穿时，反馈电流瞬间变大，并且恢复不到之前的微小数值。
+我们认为，合格的PMT组件应该在上述工作状态下至少保持1个小时以上而不发生高压打火事件。
 
 % qualification
- 
-\begin{enumerate}
-	\item PMT的base焊接，信号线+信号头。
-	\item 检测：电压、电容。
-	\item 灌封。
-	\item 高低温循环。
-	\item 真空高压测试。
-	\item PMT测试平台测试
-\end{enumerate}
+上述环境试验完成后，我们再一次对PMT组件的电阻电容值进行了检查，通过与之前PMT组件焊接完成后的阻容值进行对比，可以初步判断PMT组件的Base电路板是否在上述环境试验中受到损伤。
+为了进一步考察PMT组件整体的功能完整性，我们使用PMT批量测试平台对PMT组件在额定工作档位下的相对增益和Dy58比值进行了测量，这就是PMT组件的质量鉴定测试。
+该测试具有两个目标：1）测试PMT组件是否能够正常工作，其性能指标是否在合理范围内，这是PMT组件质量是否合格的最终测试指标；2）得到最终的PMT组件相对增益一致性和Dy58比值一致性，确认前面的PMT筛选没有问题。
+PMT组件中已经在R4443端面上耦合了一层硅脂垫片，而垫片端面又有一层塑料保护膜，这层保护膜只有在将PMT组件安装到PSD上时才能够去掉。
+这些都会影响到此次测试的结果，因此我们不期望测试结果与PMT性能测试的结果完全一致，只要所有PMT组件每有出现极端异常的结果，我们都认为是正常的。
+图给出了PMT组件质量鉴定测试的结果。
 
 \section{塑闪单元条的生产}
 \label{sec:construction:bar_production}
