@@ -184,24 +184,55 @@ PMT组件的环境试验包含高低温循环测试和真空高压打火测试�
 为了进一步考察PMT组件整体的功能完整性，我们使用PMT批量测试平台对PMT组件在额定工作档位下的相对增益和Dy58比值进行了测量，这就是PMT组件的质量鉴定测试。
 该测试具有两个目标：1）测试PMT组件是否能够正常工作，其性能指标是否在合理范围内，这是PMT组件质量是否合格的最终测试指标；2）得到最终的PMT组件相对增益一致性和Dy58比值一致性，确认前面的PMT筛选没有问题。
 PMT组件中已经在R4443端面上耦合了一层硅脂垫片，而垫片端面又有一层塑料保护膜，这层保护膜只有在将PMT组件安装到PSD上时才能够去掉。
-这些都会影响到此次测试的结果，因此我们不期望测试结果与PMT性能测试的结果完全一致，只要所有PMT组件每有出现极端异常的结果，我们都认为是正常的。
-图给出了PMT组件质量鉴定测试的结果。
+这些都会影响到此次测试的结果，因此我们不期望测试结果与PMT性能测试的结果完全一致，只要PMT组件没有出现极端异常的结果，我们都认为是正常的。
+图\ref{fig:construction:qualification_result}给出了PMT组件质量鉴定测试的结果，可以看到所有PMT组件的性能参数都分布在合理的区间内。。
+\begin{figure}[htb]
+\centering
+\subfloat[][PMT组件的增益分布]{
+	\label{fig:construction:amp_dist_afterpotting}
+	\includegraphics[width=0.48\textwidth]{chap/construction/fig/amp_dist_afterpotting.eps}
+}
+% \hfill
+\subfloat[][PMT组件的Dy58比值分布]{
+	\label{fig:construction:dy58_dist_afterpotting}
+	\includegraphics[width=0.48\textwidth]{chap/construction/fig/dy58_dist_afterpotting.eps}
+}
+\caption{PMT组件的质量鉴定测试结果}
+\label{fig:construction:qualification_result}
+\end{figure}
 
-\section{塑闪单元条的生产}
+\section{塑闪单元条组件的生产}
 \label{sec:construction:bar_production}
-测试与筛选过程与PMT正好相反，因为单元条需要包装后才能测试。
 
 \subsection{单元条的包装与测试}
 \label{sec:construction:bar_wrapping_and_test}
 
-\subsection{单元条的筛选}
+共185根，82+2+7
+
+\begin{figure}[htb]
+\centering
+\subfloat[][宇宙线批量测试平台]{
+	\label{fig:construction:amp_dist_afterpotting}
+	\includegraphics[width=0.48\textwidth]{chap/construction/fig/bar_cosmictest.jpg}
+}
+% \hfill
+\subfloat[][测得的衰减长度分布(两端平均值，单位：cm)]{
+	\label{fig:construction:dy58_dist_afterpotting}
+	\includegraphics[width=0.48\textwidth]{chap/construction/fig/attenuation_dist.png}
+}
+\caption{塑闪单元条组件的宇宙线测试}
+\label{fig:construction:qualification_result}
+\end{figure}
+
+\subsection{塑闪单元条组件的筛选}
 \label{sec:construction:bar_selection}
 尺寸复核
-热膨胀系数
-技术衰减长度：平滑否-包装是否好，两端相差较大也踢出，大于一个值
-响应均匀性
-探测效率
-MPV响应？
+热膨胀系数7.8-8.8e-5
+技术衰减长度：平滑否-包装是否好，两端相差较大也踢出，大于一个值>75cm
+响应均匀性<5
+探测效率>95
+MPV响应（相对光产额）>580
+能量分辨<25
 
 \section{探测器整体组装}
 \label{sec:construction:psd_assembly}
