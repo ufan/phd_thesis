@@ -207,8 +207,25 @@ PMT组件中已经在R4443端面上耦合了一层硅脂垫片，而垫片端面
 \subsection{单元条的包装与测试}
 \label{sec:construction:bar_wrapping_and_test}
 
-共185根，82+2+7
-
+塑闪单元条组件的生产流程如图\ref{fig:construction:bar_production}所示。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/construction/fig/bar_production.eps}
+	\caption{塑闪单元条组件的生产流程}
+	\label{fig:construction:bar_production}
+\end{figure}
+首先，我们对塑闪单元条的尺寸进行了测量，同时检查其外观是否完好无损。PSD的结构设计对单元条的尺寸提出了严格要求，我们希望正式安装的单元条必须满足设计图纸的公差尺寸。
+其次，我们对塑闪单元条进行了热膨胀系数的测量。这是因为PSD在结构上采用了活动端设计来释放塑闪单元条形变应力(详见\ref{sec:description:psd_support}节)，我们希望同一层的单元条之间的热膨胀系数不要相差过大，而导致形变应力堆积在一根或若干根单元条上。
+测试在中航工业兰州飞行控制有限公司的大型高低温实验箱中进行，共对4个不同温度（\SI{-20}{\celsius}，\SI{0}{\celsius}，\SI{20}{\celsius}，\SI{40}{\celsius}）下单元条的长度进行了测量，从而得到了每根条子的热膨胀系数。
+为了保证测量结果的准确性，我们把测量长度用的游标卡尺也放进高低温试验箱中，和被测单元条一起经历温度变化，如图\ref{fig:construction:bar_cylcling}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/construction/fig/bar_cylcling.jpg}
+	\caption{塑闪单元条的热膨胀系数测试}
+	\label{fig:construction:bar_cylcling}
+\end{figure}
+之后，我们对塑闪单元条进行了包装（见下一段），并对包装后的塑闪单元条组件进行了宇宙线测试。
+测试使用专门搭建的塑闪
 \begin{figure}[htb]
 \centering
 \subfloat[][宇宙线批量测试平台]{
@@ -234,6 +251,7 @@ PMT组件中已经在R4443端面上耦合了一层硅脂垫片，而垫片端面
 MPV响应（相对光产额）>580
 能量分辨<25
 
+共185根，82+2+7
 \section{探测器整体组装}
 \label{sec:construction:psd_assembly}
 
