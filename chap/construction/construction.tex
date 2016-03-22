@@ -214,32 +214,63 @@ PMT组件中已经在R4443端面上耦合了一层硅脂垫片，而垫片端面
 	\caption{塑闪单元条组件的生产流程}
 	\label{fig:construction:bar_production}
 \end{figure}
-首先，我们对塑闪单元条的尺寸进行了测量，同时检查其外观是否完好无损。PSD的结构设计对单元条的尺寸提出了严格要求，我们希望正式安装的单元条必须满足设计图纸的公差尺寸。
-其次，我们对塑闪单元条进行了热膨胀系数的测量。这是因为PSD在结构上采用了活动端设计来释放塑闪单元条形变应力(详见\ref{sec:description:psd_support}节)，我们希望同一层的单元条之间的热膨胀系数不要相差过大，而导致形变应力堆积在一根或若干根单元条上。
-测试在中航工业兰州飞行控制有限公司的大型高低温实验箱中进行，共对4个不同温度（\SI{-20}{\celsius}，\SI{0}{\celsius}，\SI{20}{\celsius}，\SI{40}{\celsius}）下单元条的长度进行了测量，从而得到了每根条子的热膨胀系数。
-为了保证测量结果的准确性，我们把测量长度用的游标卡尺也放进高低温试验箱中，和被测单元条一起经历温度变化，如图\ref{fig:construction:bar_cylcling}
+首先，我们对裸塑闪单元条的尺寸进行了测量，同时检查其外观是否完好无损。PSD的结构设计对单元条的尺寸提出了严格要求，正式安装的单元条必须满足设计图纸的公差尺寸。
+其次，我们对这些塑闪单元条进行了热膨胀系数的测量。这是因为PSD在结构上采用了活动端设计来释放塑闪单元条温度形变应力(详见\ref{sec:description:psd_support}节)，同一层的41根单元条之间的热膨胀系数不能相差太大，以致形变应力全部堆积在一根或若干根单元条上。
+测试在中航工业兰州飞行控制有限公司的大型高低温试验箱中进行，共对4个不同温度（\SI{-20}{\celsius}，\SI{0}{\celsius}，\SI{20}{\celsius}，\SI{40}{\celsius}）下单元条的长度进行了测量，从而得到了每根条子的热膨胀系数。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.65\textwidth]{chap/construction/fig/bar_cylcling.jpg}
 	\caption{塑闪单元条的热膨胀系数测试}
 	\label{fig:construction:bar_cylcling}
 \end{figure}
-之后，我们对塑闪单元条进行了包装（见下一段），并对包装后的塑闪单元条组件进行了宇宙线测试。
-测试使用专门搭建的塑闪
+在每个温度点，在单元条的形变稳定后，测试人员进入试验箱内部进行测量操作，所有测量完成后再切换到下一个温度点。
+为了保证测量结果的准确性，我们把测量长度用的游标卡尺也放进高低温试验箱中，跟随被测单元条一起经历温度变化，如图\ref{fig:construction:bar_cylcling}所示。
+
+
+之后，我们对裸单元条进行了正式包装。
+\begin{figure}[htb]
+\centering
+\subfloat[][]{
+	\label{fig:construction:bar_wrapping_a}
+	\includegraphics[width=0.25\textwidth]{chap/construction/fig/wrapping_a.jpg}
+}
+\subfloat[][]{
+	\label{fig:construction:bar_wrapping_b}
+	\includegraphics[width=0.25\textwidth]{chap/construction/fig/wrapping_b.jpg}
+}
+\subfloat[][]{
+	\label{fig:construction:bar_wrapping_c}
+	\includegraphics[width=0.25\textwidth]{chap/construction/fig/wrapping_c.jpg}
+}
+\subfloat[][]{
+	\label{fig:construction:bar_wrapping_d}
+	\includegraphics[width=0.25\textwidth]{chap/construction/fig/wrapping_d.jpg}
+}
+\caption{塑闪单元条的包装步骤}
+\label{fig:construction:bar_wrapping}
+\end{figure}
+由于PSD的塑闪单元条端头采用了特殊的“工”字形设计（详见\ref{sec:description:psd_composition}节），因此端头的包装工艺与单元条主体并不一样：单元条主体内层包裹Tyvek纸，外层包裹黑色热缩管避光；单元条端头内层缠绕Teflon胶带，外层包裹黑色胶带避光。
+具体的包装步骤如图\ref{fig:construction:bar_wrapping}所示，其中：a）使用Tyvek纸包裹单元条主体；b）使用Teflon包裹单元条端头；c）使用黑热缩管包裹单元条主体；d）使用黑色胶带包裹单元条端头。
+
+最后，我们对包装后的塑闪单元条组件进行了宇宙线性能测试。
+测试使用专门搭建的塑闪单元条批量测试平台(见图\ref{fig:construction:bar_testbench}），关于该平台以及此次测试的具体内容和结果在文献\cite{bar_test_2015}中有详细的介绍，这里只做简单介绍。
 \begin{figure}[htb]
 \centering
 \subfloat[][宇宙线批量测试平台]{
-	\label{fig:construction:amp_dist_afterpotting}
+	\label{fig:construction:bar_testbench}
 	\includegraphics[width=0.48\textwidth]{chap/construction/fig/bar_cosmictest.jpg}
 }
-% \hfill
 \subfloat[][测得的衰减长度分布(两端平均值，单位：cm)]{
-	\label{fig:construction:dy58_dist_afterpotting}
+	\label{fig:construction:attenuation_dist}
 	\includegraphics[width=0.48\textwidth]{chap/construction/fig/attenuation_dist.png}
 }
 \caption{塑闪单元条组件的宇宙线测试}
-\label{fig:construction:qualification_result}
+\label{fig:construction:bar_cosmictest}
 \end{figure}
+测试平台具有5个触发位置点，从而能够测量被测塑闪单元条在这5个位置点对垂直入射宇宙线的能量响应，即MIP响应。
+这样就能得到每根单元条的衰减长度，我们一共测量了185根条子，它们的衰减长度分布如图\ref{fig:construction:attenuation_dist}所示。
+由于测试平台使用的读出PMT具有相同的增益\cite{bar_test_2015}，因此通过对测试数据进一步分析和处理，我们还可以得到每根单元条的能量响应均匀性、相对光产额、能量分辨率以及探测效率等参数。
+这些性能参数信息，加上之前得到的尺寸测量数据与热膨胀系数，将作为塑闪单元条组件筛选的重要依据（详见下一节）。
 
 \subsection{塑闪单元条组件的筛选}
 \label{sec:construction:bar_selection}
