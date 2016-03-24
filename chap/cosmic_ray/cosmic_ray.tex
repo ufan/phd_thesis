@@ -57,7 +57,6 @@ MWDC一般由多个漂移单元组成，每个漂移单元都是MWDC进行位置
 	\item 雪崩效应产生的自由电子继续向阳极丝移动，由于距离阳极丝非常近，它们立即被阳极丝收集。
 	\item 与此同时，原初电离以及次级电离产生的正离子继续向阴极丝移动，由于离子的质量大，它们的漂移速度很慢，而且也不会在阴极丝附近产生雪崩效应。
 \end{enumerate}
-% 1）入射粒子使得单元内的气体分子电离，从而产生自由的电子离子对；2）在电场作用下，电离出来的电子被加速并缓慢向阳极丝漂移，而离子则向阴极丝移动；3）由于阳极丝附近电场强度非常大，自由电子漂移到这个区域以后迅速被加速到足够高的能量并能够引发新的电离，这个过程不断地反复地进行，从而产生大量电离电子，这个现象叫作雪崩效应；4）雪崩效应产生的自由电子继续向阳极丝移动，由于距离阳极丝非常近，它们立即被阳极丝收集；5）与此同时，原初电离以及次级电离产生的正离子继续向阴极丝移动，由于离子的质量大，它们的漂移速度很慢，而且也不会在阴极丝附近产生雪崩效应。
 上述各个步骤中，只有大量雪崩电子向阳极丝移动并被迅速吸收这个过程能够使得阳极丝上的电荷分布发生变化并感应出幅度可探测的电流脉冲信号。
 MWDC探测到的也就是这个阳极丝上的感应电流信号，该信号产生时刻与入射粒子穿过漂移单元的时刻的时间差就是原初电离电子的漂移时间。
 由于漂移距离与漂移时间直接关联，通过测量漂移时间可以反推出原初电离位置相对于阳极丝的位置，这就是MWDC进行位置测量的基本原理。
@@ -70,10 +69,28 @@ MWDC探测到的也就是这个阳极丝上的感应电流信号，该信号产�
 X面与Y面成\SI{90}{\degree}排布，它们内部都有80个漂移单元；U面与X面成\SI{30}{\degree}排布，它的内部有106个漂移单元，如图TODO所示。
 漂移单元平面阵列是由两个阴极面和一个阳极面构成的，面间距为\SI{5}{mm}。
 其中，阴极面由直径为\SI{100}{\micro\meter}的铍铜丝紧密排列组成，而阳极面由直径为\SI{100}{\micro\meter}的铍铜丝和直径为\SI{20}{\micro\meter}的镀金钨丝间隔排列组成，如图TODO所示。
+\begin{figure}[htb]
+\centering
+\subfloat[][焊接第一块Base板]{
+	\label{fig:construction:soldering_a}
+	\includegraphics[width=0.48\textwidth]{chap/cosmic_ray/fig/mwdc_planes.png}
+}
+\subfloat[][焊接第二块Base板]{
+	\label{fig:construction:soldering_b}
+	\includegraphics[width=0.48\textwidth]{chap/cosmic_ray/fig/mwdc_wire_pattern.eps}
+}
+\caption{R4443的Base电路板焊接流程}
+\label{fig:construction:soldering}
+\end{figure}
 工作时，所有的铍铜丝加负高压，它们是漂移单元的阴极丝；所有的镀金钨丝接地，它们是漂移单元的阳极丝。
 因此，根据图\ref{}给出的间距，可以得到MWDC的漂移单元是一个截面为$10mm\times 10.5mm$的长方体。
 MWDC探测器的工作气体为$\SI{20}{\percent}CO_2 + \SI{80}{\percent}Ar$，整个漂移腔体用Kapton膜密封，图TODO给出了一个MWDC探测器的实物图。
-
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/cosmic_ray/fig/mwdc.jpg}
+	\caption{MWDC实物图}
+	\label{fig:cosmic_ray:mwdc}
+\end{figure}
 % MWDC的信号处理系统
 MWDC的输出信号幅度较小，为了提高信噪比，我们使用一块基于SFE16芯片的前端电子学板对原始信号进行预处理，然后才将其输出到数据获取系统中进行时间测量(见\ref{sec:cosmic_ray:daq_system}节)。
 SFE16是一款专门用于气体漂移室前端信号处理的低噪声ASIC芯片。
@@ -117,18 +134,48 @@ SFE16是一款专门用于气体漂移室前端信号处理的低噪声ASIC芯�
 
 \subsection{数据获取系统}
 \label{sec:cosmic_ray:daq_system}
-PXI机箱图
-与PSD系统的集成，触发Veto板。
-系统整体图
+% PXI机箱图，触发板，MWDC板，TOF板
+数据获取系统基于PXI总线设计，主要由触发板，时钟板，TOF测量板以及MWDC测量板组成。
+这些板卡都安装在一个6U高，具有15个槽位的PXI机箱中\cite{TODO}，而获取和控制软件安装在机箱第一个槽位的单片机上。
+下面，对这四种板卡的功能进行简单的介绍。
 
+TOF测量板和MWDC测量板是数获取系统进行时间测量的核心模块，其中TOF板用于触发板探测器的时间测量，而MWDC板用于MWDC探测器的时间测量。
+两块测量板都是基于HPTDC芯片设计的，能够在高计数率条件下对时间进行精确测量。
+HPTDC是欧洲核子中心（CERN）开发的一款高性能时间测量ASIC芯片\cite{TODO}。
+与以往核物理实验中常见的起停式时间测量方法不同，HPTDC直接测量输入时间信号的到达时刻，而不是测量输入时间信号与触发信号的时间差。
+HPTDC也需要触发信号，但它并不将触发信号作为时间测量的零点，而是使用触发信号来寻找真实的时间测量值，具体流程如下：
+\begin{enumerate}
+	\item 首先，所有输入到HPTDC的时间信号，不管是真实物理事件产生的还是本底噪声产生的，它们的到达时刻都会被测量并暂时保存到芯片的信号缓存中。
+	\item 之后，触发信号输入到HPTDC中，其到达时刻也被测量并暂时保存到触发信号缓存中。
+	\item 由于触发信号代表真实的物理事件，它的产生时刻与真实待测的时间信号之间必定满足一定的时间关系，其中包括各种电子学和线缆的延迟时间。这个关系可以用一个时间窗口来表示，并可以在实验前通过模拟和测试估算出来。用户在实验开始前，需要将这个关系配置保存到在HPTDC的配置寄存器中。
+	\item 实验中，HPTDC就是根据这个配置好的时间窗口，从信号缓存中已有的时间测量值中找到每个触信号对应的真实时间测量值，并将其输出到读取FIFO中，供获取软件使用。
+\end{enumerate}
+由于HPTDC会将所有满足时间窗口的测量值都提取出来，因此需要仔细调节时间窗口配置以达到每个触发信号只能找到一个测量值的最佳状态。
+这给实验准备提出了更高的要求，但这种测量方法具有死时间小、配置灵活等优点，非常适合复杂探测系统在高计数率条件下的使用。
+HPTDC具有32个测量通道，每个通道的时间测量精度为\SI{100}{\pico\second}；HPTDC也可以工作在精度为\SI{25}{\pico\second}甚高精度模式下，此时每4个测量通道合并成1个测量通道，即此时HPTDC只有8个测量通道。
+TOF板共有16个测量通道，其内部共使用了3片HPTDC，其中两片用于时间测量，工作在甚高精度模式下，一片用于TOT幅度测量（Time-Over-Threshold）,工作在正常模式下。
+MWDC板共有128个测量通道，其内部使用了4片HPTDC，全部工作在正常模式下。
+对于
 % \section{多丝漂移室的宇宙线刻度}
 % \subsection{漂移时间零点的确定}
 % \subsection{从漂移时间谱提取s-t关系:Integration Method}
 % \subsection{迭代修正s-t关系}
 % \subsection{多丝漂移室的性能参数}
+
 \section{PSD的宇宙线标定}
+% 15天，23个/s，一共事例数？ 27%左右的单根丝点火事例
+% 与PSD系统的集成，触发Veto板。
+% 触发板预支设置，击中分布图
+\label{sec:cosmic_ray:cm_test}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/cosmic_ray/fig/cm_test.jpg}
+	\caption{PSD的宇宙线标定测试}
+	\label{fig:cosmic_ray:cm_test}
+\end{figure}
 
 \section{标定结果}
+\label{sec:cosmic_ray:results}
 \subsection{基线噪声}
 加高压与未加高压的结果对比。
 基线中心值。
