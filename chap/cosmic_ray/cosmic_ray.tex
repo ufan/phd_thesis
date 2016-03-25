@@ -200,7 +200,21 @@ PSD和宇宙线标定测试平台的数据获取系统在硬件和软件上都�
 % 触发板预支设置，击中分布图
 测试前，我们还对触发系统的8个读出PMT的工作电压进行了调节和测，原则是：1）在不增加噪声的前提下，尽量升高PMT的工作电压，提高增益系数，达到提高触发效率的目的；2）调节同一块触发板4个角读出PMT的电压，使得它们的增益基本一致，达到不同击中位置的触发效率基本一致的目的。
 最终，在实际测试中，触发系统的宇宙线触发效率达到了\SI{27}{\per\second}，并实现了较好的触发效率均匀性。
-图TODO给出了靶室上方MWDC探测器的宇宙线击中位置分布图以及重建径迹在PSD上的击中位置分布图，靶室下方MWDC探测器也有类似结果。
+图\ref{fig:cosmic_ray:hitposition}给出了靶室上方MWDC探测器的宇宙线击中位置分布图以及重建径迹在PSD上的击中位置分布图，靶室下方MWDC探测器也有类似结果。
+\begin{figure}[htb]
+\centering
+\subfloat[][MWDC的宇宙线击中位置分布]{
+	\label{fig:cosmic_ray:hitposition_mwdc}
+	\includegraphics[width=0.48\textwidth]{chap/cosmic_ray/fig/hitposition_mwdc.png}
+}
+% \hfill
+\subfloat[][PSD的宇宙线击中位置分布]{
+	\label{fig:cosmic_ray:hitposition_psd}
+	\includegraphics[width=0.48\textwidth]{chap/cosmic_ray/fig/hitposition_psd.png}
+}
+\caption{触发系统的触发效率均匀性}
+\label{fig:cosmic_ray:hitposition}
+\end{figure}
 可以看到，击中位置分布呈现出中间多，边缘少的特点，这是因为两块触发板距离较远，中间位置的接收角度远大于边缘位置。
 同时可以看到，击中位置在四周，尤其是4个角上的分布基本均匀，这说明不同位置处的触发效率基本是一致的。
 
