@@ -214,6 +214,7 @@ PSD和宇宙线标定测试平台的数据获取系统在硬件和软件上都�
 \section{PSD的宇宙线标定结果}
 \label{sec:cosmic_ray:results}
 \subsection{基线噪声}
+\label{sec:cosmic_ray:pedestal}
 % 加高压与未加高压的结果对比。
 % 基线中心值。
 % 电子学刻度，噪声转换成电荷TODO
@@ -232,50 +233,118 @@ PSD加上额定工作电压后，我们首先对基线噪声进行了刻度，�
 这表明真空环境并没有给PSD的工作带来影响，PSD的相关设计是合理的。
 
 \subsection{MIP能量响应}
+\label{sec:cosmic_ray:mip}
 % 测量结果的修正叙述
 通过筛选出击中塑闪单元条中间位置\SI{20}{mm}区间的宇宙线事例，我们可以得到PSD每个探测器模块中间位置的MIP能量响应。
-为了得到更加准确的结果，对于每个事例，我们还根据宇宙线径迹的入射角度大小对其沉积能量进行了修正。
+为了得到更加准确的结果，对于每个有效事例，我们还根据宇宙线径迹的入射角度大小对其沉积能量进行了修正。
 这是因为，不同入射角度的宇宙线，它们所穿过的单元条厚度是不一样的。
 由于宇宙线在PSD单元条内的沉积能量与其穿过的单元条厚度成正比，因此不同入射角度的宇宙线在PSD单元条内的沉积能量也是不一样的。
-图给出了X层第21个探测单元模块中间位置的MIP能量响应原始谱，图中已经减去了
 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{chap/cosmic_ray/fig/mip_example.png}
+	\caption{PSD第X层第21个探测单元模块中间位置的MIP能量响应原始谱，其中横轴是ADC道数，纵轴是事例数}
+	\label{fig:cosmic_ray:mip_example}
+\end{figure}
+图\ref{fig:cosmic_ray:mip_example}给出了PSD第X层第21个探测单元模块两端得到的中间位置MIP能量响应原始谱。
+使用朗道函数对上述结果进行拟合（如图中红线所示），可以得到该探测单元模块的MIP能量响应的中心值（即朗道分布的MPV值）和能量分辨率（即朗道分布的Sigma值除以MPV值）。
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+使用上述方法，我们得到了PSD所有探测单元模块的MIP能量响应中心值和能量分辨率，它们的分布如图\ref{fig:cosmic_ray:mip_results}所示。
+可以看到，PSD所有探测单元模块的MIP能量响应中心值集中分布在$[300,450]$道之间，一致性达到了\SI{10}{\percent}；而PSD所有单元的能量分辨率都在\SI{10}{\percent}左右，远远好于PSD的设计要求\SI{25}{\percent}。
+\begin{figure}[htb]
+\centering
+\subfloat[][能量响应一致性]{
+	\label{fig:cosmic_ray:consist_dist}
+	\includegraphics[width=0.48\textwidth]{chap/cosmic_ray/fig/consist_dist.png}
+}
+\subfloat[][MIP能量分辨率]{
+	\label{fig:cosmic_ray:energy_res_dist}
+	\includegraphics[width=0.48\textwidth]{chap/cosmic_ray/fig/energy_res_dist.png}
+}
+\caption{PSD所有探测单元模块的MIP能量响应测试结果}
+\label{fig:cosmic_ray:mip_results}
+\end{figure}
 % 中心MIP拟合示例图
 % 中心值一致性
 % 能量分辨率分布
 
 \subsection{光衰减效应}
-为了得到PSD探测器单元模块不同位置处的MIP能量响应，我们将探测单元模块\SI{820}{mm}的有效探测长度分为41个位置区间，每个区间长度为\SI{20}{mm}。
-根据MWDC探测器确定的入射宇宙线径迹，可以推出宇宙线击中的PSD单元模块以及击中点在该单元条上的位置区间。
-将所有击中同一位置区间的宇宙
+\label{sec:cosmic_ray:attenuation}
+为了考察光衰减效应，我们将探测单元模块\SI{820}{mm}的有效探测长度分为41个位置区间，每个区间长度为\SI{20}{mm}。
+对于每个位置区间，使用\ref{sec:cosmic_ray:mip}节的方法得到该位置的MIP能量响应中心值。
+将41个位置点的能量响应中心值综合在一起，我们就得到了该探测单元模块的光衰减曲线，如图\ref{fig:cosmic_ray:attenuation_example}所示。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.60\textwidth]{chap/cosmic_ray/fig/attenuation_example.pdf}
+	\caption{X层第19个探测单元模块正端得到的光衰减曲线，横轴是击中位置在单元条上的坐标，纵轴是对应位置的MIP能量相应中心值}
+	\label{fig:cosmic_ray:attenuation_example}
+\end{figure}
+图中的蓝线是我们使用公式\ref{eq:dynamic_range:attenuation}对数据点进行拟合的结果，可以看到它可以很好地描述测试数据。
+
+使用上述方法，我们得到了所有探测单元模块两端的光衰减曲线，并根据拟合结果计算了探测单元模块最远端和最近端相对于中间位置的光输出，结果如图\ref{fig:cosmic_ray:atten_dist}所示。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{chap/cosmic_ray/fig/atten_dist.png}
+	\caption{单元条的光衰减效应分布TODO}
+	\label{fig:cosmic_ray:atten_dist}
+\end{figure}
+
+
 \subsection{Dy58比值}
-拟合示例
-分布图，与LED测试值对比
-动态范围计算与分布
+\label{sec:cosmic_ray:dy58}
+% 拟合示例
+% 分布图，与LED测试值对比
+% 动态范围计算与分布
+由于PSD塑闪单元条的各个位置都有有大量的宇宙线击中事例，单元条端头光输出强度变化范围较大，因此我们可以得到很好的Dy58曲线图。
+图\ref{TODO}给出了此次PSD标定测试得到的Dy5与Dy8信号关联图，图中可以清楚地看到Dy8的饱和段，并且两个打拿极之间的线性非常好。
+使用一次函数对其拟合，就得到了该探测通道的Dy58比值。
+图\ref{fig:cosmic_ray:dy58_dist}给出了所有通道的Dy58比值分布图。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/cosmic_ray/fig/dy58_dist.png}
+	\caption{PSD的所有探测通道的Dy58比值分布}
+	\label{fig:cosmic_ray:dy58_dist}
+\end{figure}
 
 \subsection{探测效率}
-探测效率判据
-事例筛选
-结果分布
+\label{sec:cosmic_ray:efficiency}
+% 探测效率判据
+% 事例筛选
+% 结果分布
+PSD探测单元模块的探测效率按照如下步骤分析得到：
+\begin{enumerate}
+	\item 对于每个有效事例，我么根据重建的入射宇宙线径迹，推出PSD上被击中的探测单元模块，并将该单元模块的击中事例数加1.
+	\item 如果该单元模块被击中，我们以5倍的基线噪声（$5\sigma$）为基准，判断该模块是否探测到该事例。如果该单元模块两端测得的信号幅度都大于$5\sigma$，则我们认为该事件被探测到，并将该探测单元模块的探测事例数加1；如果至少有一端的信号幅度小于$5\sigma$，我们则认为该事件没有被探测到，继续进行下个事例的处理。
+	\item 上两个步骤循环反复，直到所有事例被处理完。
+	\item 最后，我们将各个探测单元模块的探测事例数除以击中事例数，就得到了对应单元模块的探测效率。
+\end{enumerate}
+结果显示，PSD所有探测单元模块的探测效率都大于\SI{95}{\percent}，因此满足PSD的设计要求，如图\ref{fig:cosmic_ray:efficiency}所示。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{chap/cosmic_ray/fig/efficiency.eps}
+	\caption{PSD各探测单元模块的探测效率，左边是X层的结果，右边是Y层的结果}
+	\label{fig:cosmic_ray:efficiency}
+\end{figure}
+可以看到，每一层中间位置的探测效率值远高于边缘位置的，这是由于边缘位置的击中事例数较少导致的。
 
 \subsection{位置分辨}
-位置重建原理
-结果
+\label{sec:cosmic_ray:position_resolution}
+% 位置重建原理
+% 结果
+PSD的初步重建较为简单：1）依据\ref{sec:cosmic_ray:efficiency}节的判据，根据PSD自身的信息判断X层和Y层是否有单元模块被击中；2）若干X层和Y层都有单元模块探测到信号，就以它们交叠区域的中心位置作为PSD的宇宙线的击中位置坐标。
+一般来讲，入射宇宙线能够分别在X层和Y层击中一个探测单元模块。
+但由于每一层内相邻塑闪单元条之间有重叠区域，特殊情况下，入射宇宙线也会击中同一层内两根相邻的塑闪单元条，此时这两个探测单元模块都应该有击中信号。
+在这种情况下，我们以相邻单元条的重叠区域中心值为重建位置坐标，从而能够提高位置测量的精度。
 
+由于MWDC的位置测量精度远高于PSD的，我们可以认为根据MWDC重建的宇宙线入射径迹推出的PSD击中位置是真实的击中位置。
+将上述PSD的重建位置坐标与该真实击中位置坐标相减，并将所有事例的结果累积起来，我们就能得到PSD的位置分辨率，结果如图\ref{fig:cosmic_ray:pos_resolution}所示。
+可以看到，X层的位置分辨率为\SI{5.4}{mm}，而Y层的位置分辨率为\SI{6.2}{mm}，它们都满足PSD的设计要求。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{chap/cosmic_ray/fig/pos_resolution.png}
+	\caption{PSD两个探测平面的位置分辨}
+	\label{fig:cosmic_ray:pos_resolution}
+\end{figure}
 % \section{PSD的物理量重建研究}
 % \subsection{能量重建}
 % \subsection{位置重建}
