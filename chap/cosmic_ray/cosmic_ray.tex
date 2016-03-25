@@ -222,9 +222,22 @@ PSD和宇宙线标定测试平台的数据获取系统在硬件和软件上都�
 \section{PSD的宇宙线标定结果}
 \label{sec:cosmic_ray:results}
 \subsection{基线噪声}
-加高压与未加高压的结果对比。
-基线中心值。
-电子学刻度？
+% 加高压与未加高压的结果对比。
+% 基线中心值。
+% 电子学刻度，噪声转换成电荷TODO
+PSD加上额定工作电压后，我们首先对基线噪声进行了刻度，方法如下：使用信号发生器产生频率为\SI{100}{Hz}的周期性触发信号，并将其输入到PSD的地面检测数据获取系统中。
+由于该触发信号与宇宙线击中PSD的事件间偶然符合的概率非常小，这样采集到的数据就是各个电子学通道的基线，而基线的展宽就代表对应电子学通道的噪声大小。
+图\ref{fig:cosmic_ray:sigam_dist}给出了此次测试得到的PSD所有328个探测器通道的基线噪声分布。
+可以看到，PSD的噪声非常小，所有通道的噪声都小于5道。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.6\textwidth]{chap/cosmic_ray/fig/sigam_dist.eps}
+	\caption{PSD所有探测通道的基线噪声分布}
+	\label{fig:cosmic_ray:sigam_dist}
+\end{figure}
+
+在PSD的宇宙线标定期间，我们每天都会进行两次的基线噪声刻度，结果显示PSD的基线噪声非常稳定，基本没有大的波动。
+这表明真空环境并没有给PSD的工作带来影响，PSD的相关设计是合理的。
 
 \subsection{MIP响应}
 中心MIP拟合示例图
