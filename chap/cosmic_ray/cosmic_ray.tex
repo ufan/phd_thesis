@@ -4,17 +4,17 @@ PSD整体装配完成后，我们在实验室对它的各项性能指标进行�
 特别地，我们利用宇宙线对PSD探测单元模块进行了细致的标定测试，得到了一系列的刻度参数结果。
 这些结果是PSD得到的第一批刻度参数数据集，它们是PSD进行初步能量重建的基础。
 
-我们专门研制并搭建了一套宇宙线地面标定系统对PSD整体进行标定测试。
-本章将简单介绍该系统的基本组成以及它在PSD宇宙线标定中的应用，同时给出了PSD地面宇宙线标定的主要结果。
+我们专门研制并搭建了一套宇宙线地面标定测试平台对PSD整体进行标定测试。
+本章将简单介绍该平台的基本组成以及它在PSD宇宙线标定中的应用，同时给出了PSD地面宇宙线标定的主要结果。
 
-\section{宇宙线地面标定系统}
+\section{宇宙线地面标定测试平台}
 \label{sec:cosmic_ray:cm_system}
 \subsection{简介}
 \label{sec:cosmic_ray:introduction}
 % 结构与组成，总装图
 % 基本原理
-宇宙线地面标定系统是专门为了PSD的地面标定而设计和建造的，主要提供了两个功能：1）模拟轨道真空环境；2）确定入射宇宙线径迹。
-该系统的硬件组成如图\ref{fig:cosmic_ray:cm_system}所示，其主体为一个大型真空靶室，靶室大小正好可以容纳整个PSD探测器。
+宇宙线地面标定测试平台专门为了PSD的地面标定而设计和建造的，主要提供了两个功能：1）模拟轨道真空环境；2）确定入射宇宙线径迹。
+该平台的硬件组成如图\ref{fig:cosmic_ray:cm_system}所示，其主体为一个大型真空靶室，靶室大小正好可以容纳整个PSD探测器。
 真空靶室的腔体上部和下部分别放置了一个多丝漂移室探测器（Multi-Wire Drift Chamber，简称MWDC）和一个塑料闪烁体触发板探测器。
 上下两块大面积触发板用于标定入射宇宙线事例，而上下两个MWDC则用于测量入射宇宙线径迹。
 根据得到宇宙线入射径迹，可以推出其在PSD上的击中位置；由于MWDC和触发板的面积都能够覆盖PSD的有效面积，我们能够得到PSD所有位置处的MIP响应，从而实现PSD的精细标定。
@@ -25,7 +25,7 @@ PSD整体装配完成后，我们在实验室对它的各项性能指标进行�
 	\label{fig:cosmic_ray:cm_system}
 \end{figure}
 
-按照功能分类，宇宙线地面标定系统可以被分为真空系统、径迹探测系统、触发系统以及数据获取系统。
+按照功能分类，该测试平台可以被分为真空系统、径迹探测系统、触发系统以及数据获取系统四个功能模块。
 下面，依次对各个分系统进行详细介绍。
 
 \subsection{真空系统}
@@ -65,26 +65,19 @@ MWDC探测到的也就是这个阳极丝上的感应电流信号，该信号产�
 % 基本结构：面积，丝参数，精度。
 % MWDC结构示意图（丝距离，丝面排布）
 % MWDC实物图
-宇宙线标定系统中使用的MWDC探测器由X，Y，U三个方向的漂移单元平面阵列组成，其有效探测面积为$840mm \times 840mm$。
-X面与Y面成\SI{90}{\degree}排布，它们内部都有80个漂移单元；U面与X面成\SI{30}{\degree}排布，它的内部有106个漂移单元，如图TODO所示。
+宇宙线标定测试平台中使用的MWDC探测器由X，Y，U三个方向的漂移单元平面阵列组成，其有效探测面积为$840mm \times 840mm$。
+X面与Y面成\SI{90}{\degree}排布，它们内部都有80个漂移单元；U面与X面成\SI{30}{\degree}排布，它的内部有106个漂移单元，如图\ref{fig:cosmic_ray:mwdc_schematic}中的（a）所示。
 漂移单元平面阵列是由两个阴极面和一个阳极面构成的，面间距为\SI{5}{mm}。
-其中，阴极面由直径为\SI{100}{\micro\meter}的铍铜丝紧密排列组成，而阳极面由直径为\SI{100}{\micro\meter}的铍铜丝和直径为\SI{20}{\micro\meter}的镀金钨丝间隔排列组成，如图TODO所示。
+其中，阴极面由直径为\SI{100}{\micro\meter}的铍铜丝紧密排列组成，而阳极面由直径为\SI{100}{\micro\meter}的铍铜丝和直径为\SI{20}{\micro\meter}的镀金钨丝间隔排列组成，如图\ref{fig:cosmic_ray:mwdc_schematic}中的（b）所示。
 \begin{figure}[htb]
 \centering
-\subfloat[][焊接第一块Base板]{
-	\label{fig:construction:soldering_a}
-	\includegraphics[width=0.48\textwidth]{chap/cosmic_ray/fig/mwdc_planes.png}
-}
-\subfloat[][焊接第二块Base板]{
-	\label{fig:construction:soldering_b}
-	\includegraphics[width=0.48\textwidth]{chap/cosmic_ray/fig/mwdc_wire_pattern.eps}
-}
-\caption{R4443的Base电路板焊接流程}
-\label{fig:construction:soldering}
+\includegraphics[width=0.65\textwidth]{chap/cosmic_ray/fig/mwdc_schematic.png}
+\caption{MWDC内部结构：a）X，Y，U三个方向的漂移单元阵列；b）漂移单元阵列内的丝面排布方式}
+\label{fig:cosmic_ray:mwdc_schematic}
 \end{figure}
 工作时，所有的铍铜丝加负高压，它们是漂移单元的阴极丝；所有的镀金钨丝接地，它们是漂移单元的阳极丝。
 因此，根据图\ref{}给出的间距，可以得到MWDC的漂移单元是一个截面为$10mm\times 10.5mm$的长方体。
-MWDC探测器的工作气体为$\SI{20}{\percent}CO_2 + \SI{80}{\percent}Ar$，整个漂移腔体用Kapton膜密封，图TODO给出了一个MWDC探测器的实物图。
+MWDC探测器的工作气体为$\SI{20}{\percent}CO_2 + \SI{80}{\percent}Ar$，整个漂移腔体用Kapton膜密封，图\ref{fig:cosmic_ray:mwdc}给出了一个MWDC探测器的实物图。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.65\textwidth]{chap/cosmic_ray/fig/mwdc.jpg}
@@ -136,8 +129,8 @@ SFE16是一款专门用于气体漂移室前端信号处理的低噪声ASIC芯�
 \subsection{数据获取系统}
 \label{sec:cosmic_ray:daq_system}
 % PXI机箱图，触发板，MWDC板，TOF板
-数据获取系统基于PXI总线设计，主要由触发板，时钟板，TOF测量板以及MWDC测量板组成。
-这些板卡都安装在一个6U高，具有15个槽位的PXI机箱中\cite{TODO}，而获取和控制软件安装在机箱第一个槽位的单片机上。
+数据获取系统基于PXI总线设计，主要由触发板，时钟板，TOF测量板以及MWDC测量板组成\cite{kanglongfei_thesis,zhoujiawen_thesis}。
+这些板卡都安装在一个6U高，具有15个槽位的PXI机箱中\cite{pxi_chassis}，而获取和控制软件安装在机箱第一个槽位的单片机上，如图\ref{TODO}所示。
 下面，对这四种板卡的功能进行简单的介绍。
 
 TOF测量板和MWDC测量板是数获取系统进行时间测量的核心模块，其中TOF板用于触发板探测器的时间测量，而MWDC板用于MWDC探测器的时间测量。
@@ -179,10 +172,15 @@ TOF测量板在时间测量模块之前还加入了甄别模块。
 % \subsection{迭代修正s-t关系}
 % \subsection{多丝漂移室的性能参数}
 
-\section{PSD的宇宙线标定}
+\section{PSD的宇宙线标定测试配置}
+
 % 15天，23个/s，一共事例数？ 27%左右的单根丝点火事例
+我们使用上述宇宙线地面标定系统对PSD进行了长达半个月的宇宙线标定测试。
+测试时，PSD被安置在真空靶室中，靶室内真空度一直保持在TODO，PSD的各探测单元模块加载额定工作电压。
+整个测试期间，PSD各功能模块工作稳定，也没有发现PSD发生高压打火的现象。
+
 % 与PSD系统的集成，触发Veto板。
-% 触发板预支设置，击中分布图
+PSD和宇宙线标定测试平台的数据获取系统在硬件和软件上都是完全独立的，两者各自获取一份数据并保存在不同的计算机中，如图\ref{fig:cosmic_ray:cm_test}所示。
 \label{sec:cosmic_ray:cm_test}
 \begin{figure}[htbp]
 	\centering
@@ -190,8 +188,23 @@ TOF测量板在时间测量模块之前还加入了甄别模块。
 	\caption{PSD的宇宙线标定测试}
 	\label{fig:cosmic_ray:cm_test}
 \end{figure}
+这就涉及到两个系统的同步问题：我们将同一个触发信号同时分发到两个获取系统中，并期望两者能够同时处理完这个事例，并一起等待下个触发信号的到来。
+为此，我们开发了一块触发Veto板，它接收来自触发系统的宇宙线触发信号，然后将其扇出两路，并分别输出到PSD
+和宇宙线标定测试平台的数据获取系统中。
+与一般的触发分发不同的是，该触发Veto板在接收一个有效触发信号并分发出去后，它在一定的时间间隔内不再接收新的触发信号，即屏蔽这段时间内的所有宇宙线触发事例。
+如果将这个屏蔽时间设置为两个获取系统的最大死时间，我们就可以保证两个系统在接收到下个触发信号前都完成了前一个事例的处理，从而强制实现了两者的同步。
+这种同步方法是被动的，如果屏蔽时间设置的过大，就可能导致部分有效事例丢失。
+实际中，我们将触发Veto板的屏蔽时间设置为\SI{1}{ms}，即PSD获取系统的死时间。
+由于宇宙线事例的触发率远小于\SI{1000}{\per\second}，该屏蔽时间设置基本不会导致事例丢失。
 
-\section{标定结果}
+% 触发板预支设置，击中分布图
+测试前，我们还对触发系统的8个读出PMT的工作电压进行了调节和测，原则是：1）在不增加噪声的前提下，尽量升高PMT的工作电压，提高增益系数，达到提高触发效率的目的；2）调节同一块触发板4个角读出PMT的电压，使得它们的增益基本一致，达到不同击中位置的触发效率基本一致的目的。
+最终，在实际测试中，触发系统的宇宙线触发效率达到了\SI{27}{\per\second}，并实现了较好的触发效率均匀性。
+图TODO给出了靶室上方MWDC探测器的宇宙线击中位置分布图以及重建径迹在PSD上的击中位置分布图，靶室下方MWDC探测器也有类似结果。
+可以看到，击中位置分布呈现出中间多，边缘少的特点，这是因为两块触发板距离较远，中间位置的接收角度远大于边缘位置。
+同时可以看到，击中位置在四周，尤其是4个角上的分布基本均匀，这说明不同位置处的触发效率基本是一致的。
+
+\section{PSD的宇宙线标定结果}
 \label{sec:cosmic_ray:results}
 \subsection{基线噪声}
 加高压与未加高压的结果对比。
