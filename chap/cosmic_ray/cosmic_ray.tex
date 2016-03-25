@@ -201,18 +201,10 @@ PSD和宇宙线标定测试平台的数据获取系统在硬件和软件上都�
 % 触发板预支设置，击中分布图
 测试前，我们还对触发系统的8个读出PMT的工作电压进行了调节和测，原则是：1）在不增加噪声的前提下，尽量升高PMT的工作电压，提高增益系数，达到提高触发效率的目的；2）调节同一块触发板4个角读出PMT的电压，使得它们的增益基本一致，达到不同击中位置的触发效率基本一致的目的。
 最终，在实际测试中，触发系统的宇宙线触发效率达到了\SI{27}{\per\second}，并实现了较好的触发效率均匀性。
-图\ref{fig:cosmic_ray:hitposition}给出了靶室上方MWDC探测器的宇宙线击中位置分布图以及重建径迹在PSD上的击中位置分布图，靶室下方MWDC探测器也有类似结果。
+图\ref{fig:cosmic_ray:hitposition}给出了靶室上方MWDC探测器的宇宙线击中位置分布图，靶室下方的MWDC探测器也有类似结果。
 \begin{figure}[htb]
 \centering
-\subfloat[][MWDC的宇宙线击中位置分布]{
-	\label{fig:cosmic_ray:hitposition_mwdc}
-	\includegraphics[width=0.48\textwidth]{chap/cosmic_ray/fig/hitposition_mwdc.png}
-}
-% \hfill
-\subfloat[][PSD的宇宙线击中位置分布]{
-	\label{fig:cosmic_ray:hitposition_psd}
-	\includegraphics[width=0.48\textwidth]{chap/cosmic_ray/fig/hitposition_psd.png}
-}
+\includegraphics[width=0.6\textwidth]{chap/cosmic_ray/fig/hitposition_mwdc.png}
 \caption{触发系统的触发效率均匀性}
 \label{fig:cosmic_ray:hitposition}
 \end{figure}
@@ -231,7 +223,7 @@ PSD加上额定工作电压后，我们首先对基线噪声进行了刻度，�
 可以看到，PSD的噪声非常小，所有通道的噪声都小于5道。
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.6\textwidth]{chap/cosmic_ray/fig/sigam_dist.eps}
+	\includegraphics[width=0.55\textwidth]{chap/cosmic_ray/fig/sigam_dist.eps}
 	\caption{PSD所有探测通道的基线噪声分布}
 	\label{fig:cosmic_ray:sigam_dist}
 \end{figure}
@@ -239,13 +231,37 @@ PSD加上额定工作电压后，我们首先对基线噪声进行了刻度，�
 在PSD的宇宙线标定期间，我们每天都会进行两次的基线噪声刻度，结果显示PSD的基线噪声非常稳定，基本没有大的波动。
 这表明真空环境并没有给PSD的工作带来影响，PSD的相关设计是合理的。
 
-\subsection{MIP响应}
-中心MIP拟合示例图
-中心值一致性
-能量分辨率分布
+\subsection{MIP能量响应}
+% 测量结果的修正叙述
+通过筛选出击中塑闪单元条中间位置\SI{20}{mm}区间的宇宙线事例，我们可以得到PSD每个探测器模块中间位置的MIP能量响应。
+为了得到更加准确的结果，对于每个事例，我们还根据宇宙线径迹的入射角度大小对其沉积能量进行了修正。
+这是因为，不同入射角度的宇宙线，它们所穿过的单元条厚度是不一样的。
+由于宇宙线在PSD单元条内的沉积能量与其穿过的单元条厚度成正比，因此不同入射角度的宇宙线在PSD单元条内的沉积能量也是不一样的。
+图给出了X层第21个探测单元模块中间位置的MIP能量响应原始谱，图中已经减去了
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% 中心MIP拟合示例图
+% 中心值一致性
+% 能量分辨率分布
 
 \subsection{光衰减效应}
-
+为了得到PSD探测器单元模块不同位置处的MIP能量响应，我们将探测单元模块\SI{820}{mm}的有效探测长度分为41个位置区间，每个区间长度为\SI{20}{mm}。
+根据MWDC探测器确定的入射宇宙线径迹，可以推出宇宙线击中的PSD单元模块以及击中点在该单元条上的位置区间。
+将所有击中同一位置区间的宇宙
 \subsection{Dy58比值}
 拟合示例
 分布图，与LED测试值对比
@@ -260,6 +276,6 @@ PSD加上额定工作电压后，我们首先对基线噪声进行了刻度，�
 位置重建原理
 结果
 
-\section{PSD的物理量重建研究}
-\subsection{能量重建}
-\subsection{位置重建}
+% \section{PSD的物理量重建研究}
+% \subsection{能量重建}
+% \subsection{位置重建}
