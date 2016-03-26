@@ -255,11 +255,11 @@ PSD加上额定工作电压后，我们首先对基线噪声进行了刻度，�
 \centering
 \subfloat[][能量响应一致性]{
 	\label{fig:cosmic_ray:consist_dist}
-	\includegraphics[width=0.48\textwidth]{chap/cosmic_ray/fig/consist_dist.png}
+	\includegraphics[width=0.48\textwidth]{chap/cosmic_ray/fig/consist_dist.eps}
 }
 \subfloat[][MIP能量分辨率]{
 	\label{fig:cosmic_ray:energy_res_dist}
-	\includegraphics[width=0.48\textwidth]{chap/cosmic_ray/fig/energy_res_dist.png}
+	\includegraphics[width=0.48\textwidth]{chap/cosmic_ray/fig/energy_res_dist.eps}
 }
 \caption{PSD所有探测单元模块的MIP能量响应测试结果}
 \label{fig:cosmic_ray:mip_results}
@@ -271,20 +271,23 @@ PSD加上额定工作电压后，我们首先对基线噪声进行了刻度，�
 \subsection{光衰减效应}
 \label{sec:cosmic_ray:attenuation}
 为了考察光衰减效应，我们将探测单元模块\SI{820}{mm}的有效探测长度分为41个位置区间，每个区间长度为\SI{20}{mm}。
-对于每个位置区间，使用\ref{sec:cosmic_ray:mip}节的方法得到该位置的MIP能量响应中心值。
-将41个位置点的能量响应中心值综合在一起，我们就得到了该探测单元模块的光衰减曲线，如图\ref{fig:cosmic_ray:attenuation_example}所示。
+在每个位置区间内，使用\ref{sec:cosmic_ray:mip}节的方法得到该位置的MIP能量响应中心值。
+将这41个位置区间的能量响应中心值综合在一起，我们就得到了探测单元模块的光衰减曲线。
+图\ref{fig:cosmic_ray:attenuation_example}是此次标定测试得到的一个结果示例。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.60\textwidth]{chap/cosmic_ray/fig/attenuation_example.pdf}
 	\caption{X层第19个探测单元模块正端得到的光衰减曲线，横轴是击中位置在单元条上的坐标，纵轴是对应位置的MIP能量相应中心值}
 	\label{fig:cosmic_ray:attenuation_example}
 \end{figure}
-图中的蓝线是我们使用公式\ref{eq:dynamic_range:attenuation}对数据点进行拟合的结果，可以看到它可以很好地描述测试数据。
+我们发现简单形式的指数衰减规律不能够解释PSD的光衰减曲线，尤其在单元条的端头位置。
+因此，我们使用了公式\ref{eq:dynamic_range:attenuation}对上述数据点进行拟合，如图中蓝线所示，该公式可以很好地描述测试数据。
 
-使用上述方法，我们得到了所有探测单元模块两端的光衰减曲线，并根据拟合结果计算了探测单元模块最远端和最近端相对于中间位置的光输出，结果如图\ref{fig:cosmic_ray:atten_dist}所示。
+使用上述方法，我们得到了所有探测单元模块正负两端的光衰减曲线，并使用公式\ref{eq:dynamic_range:attenuation}拟合测试数据。
+根据拟合结果，我们计算了每个探测单元模块最远端和最近端相对于中间位置的光输出强度比值，结果如图\ref{fig:cosmic_ray:atten_dist}所示。可以看到，所有数值都在PSD的设计区间内。
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.95\textwidth]{chap/cosmic_ray/fig/atten_dist.png}
+	\includegraphics[width=0.9\textwidth]{chap/cosmic_ray/fig/atten_dist.png}
 	\caption{单元条的光衰减效应分布TODO}
 	\label{fig:cosmic_ray:atten_dist}
 \end{figure}
