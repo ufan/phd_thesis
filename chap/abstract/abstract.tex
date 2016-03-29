@@ -3,45 +3,40 @@
 % Public domain.
 
 \begin{cabstract}
-	% 中文测试文字。
+% 中文测试文字。
+自从1933年暗物质的概念被首次提出到现在，大量的天文观测结果证实了暗物质的存在。
+今天，暗物质假说已经被天文学家们普遍接受，并在现有的大爆炸宇宙标准模型中扮演重要角色。
+由于在粒子物理的标准模型中找不到符合暗物质基本性质的稳定粒子，暗物质的组成成分和粒子属性一直困扰着人们，不断地激发人们对暗物质研究的兴趣。
+许多超出标准模型的新物理理论都预言了可能的暗物质候选粒子，对暗物质的探测和研究能够检验这些新的理论模型，并有可能导致物理学产生新的革命。
+近年来，国际上开展了大量的暗物质探测实验，它们使用不同的探测技术手段对暗物质问题进行研究，大大加深了人们对暗物质的认知。
 
-	电子排版系统的出现给印刷出版业带来了一场革命，利用电子计算机及各种辅助设备，可以完成从文稿、图表的录入、编辑、修改、组版，直至得到各种不同用途、不同质量的输出结果。利用电子排版系统，可以减轻劳动强度，缩短出版周期。
+暗物质粒子探测卫星（DArk Matter Particle Explorer，简称DAMPE）是中国科学空间先导专项的首批四颗科学卫星之一。
+它基于空间间接探测的方法，通过测量暗物质粒子湮灭或衰变产生的$TeV$量级的高能伽马射线和高能电子能谱来探测和研究暗物质粒子。
+DAMPE于2015年12月17日发射升空并成功进入预定轨道，是目前国际上同类探测器中观测能段范围最宽、能量分辨率最优的空间暗物质粒子探测器。
 
-　　目前世界上有许多电子排版系统。这些系统各有特点，也各有自己的适用范围。TeX 就是一种优秀的电子排版系统。
+塑闪阵列探测器（Plastic Scintillator Detector，简称PSD）是DAMPE粒子探测器的关键子探测之一，它主要有两个功能：1）协助DAMPE的BGO量能器进行$e/\gamma$鉴别；2）进行电荷测量，鉴别$Z=1\sim 20$的入射重离子种类。
+本论文的主要内容围绕着PSD的设计和研制过程展开，主要有以下几个部分组成：
+\begin{itemize}
+  \item PSD通过测量入射粒子沉积能量的大小实现基本功能，而空间应用环境对PSD的整体设计提出了特别的要求，本文第\ref{ch:description}章对PSD的工作原理和设计进行了简单介绍。
+  \item PSD采用模块化设计，由82个探测单元模块组成X、Y相互垂直的两个塑闪阵列平面。为了满足PSD的功能需求，我们估算出每个探测单元模块都需要覆盖\SI{0.1}{MIPs}到\SI{1400}{MIPs}的动态范围区间。为此，我们设计和实现了光电倍增管双打拿极引出的读出方案，并进行了详尽的宇宙线测试和重离子束流测试以验证该设计的合理性。这些工作是第\ref{ch:large_dynmaicrange}章的主要内容。
+  \item 光电倍增管是影响PSD探测单元模块性能关键器件，为了得到最佳的探测器性能，往往需要对PSD的光电倍增管进行详尽地测试。为此，我们专门设计了一套批量PMT测试平台，并用该平台得到了PSD所有候选光电倍增管的增益曲线和Dy58比值增益曲线。这些工作将在第\ref{ch:pmt_test}章进行介绍。
+  \item 空间实验的特殊性要求探测器各组件具有更高的稳定性和可靠性。第\ref{ch:construction}章介绍了PSD的建造过程，主要包括PMT组件和塑闪单元条组件的测试、筛选、生产以及质量控制，以及PSD的整体装配.
+  \item PSD的建造完成后，需要进行完整细致的测试以得到其性能参数。我们专门设计和搭建了一套地面宇宙线标定测试平台，并使用该平台对PSD进行了长时间的宇宙线标定。第\ref{ch:cosmic_ray}章对该平台进行了介绍，同时给出了PSD的宇宙线标定的初步结果，包括基线噪声，MIP响应，能量分辨率，衰减曲线，探测效率以及位置分辨能力。
+\end{itemize}
 
-　　TeX 提供了一套功能强大并且十分灵活的排版语言，它多达 900 多条指令，并且 TeX 有宏功能，用户可以不断地定义自己适用的新命令来扩展 TeX 系统的功能。许多人利用 TeX 提供的宏定义功能对 TeX 进行了二次开发，其中比较著名的有美国数学学会推荐的非常适合于数学家使用的 AMS-TeX 以及适合于一般文章、报告、书籍的 LaTeX 系统。
-
-　　TeX 系统是公认的数学公式排得最好的系统。美国数学学会（AMS） 鼓励数学家们使用 TeX 系统向它的期刊投稿。世界上许多一流的出版社如 Kluwer、Addison-Wesley、牛津大学出版社等也利用 TeX 系统出版书籍和期刊。
-
-　　大部分的 TeX 系统都是免费的。Knuth 教授还公开了他的全部源程序。TeX 系统目前已经在数百种计算机系统上得到实现。TeX 系统的排版结果 DVI（DeVice Independent）文件与输出设备无关。DVI 文件可以显示、打印、照排，几乎可以在所有的输出设备上输出。TeX 排版源文件及结果在各种计算机系统上互相兼容。
 
 \end{cabstract}
 
 % \cleardoublepage
 \begin{eabstract}
-	Test of the English abstract.version 1.3c of this license or (at your option) any later
-    version. This version of this license is in
-       http://www.latex-project.org/lppl/lppl-1-3c.txt
-    and the latest version of this license is in
-       
-       http://www.latex-project.org/lppl.txt
-    and version 1.3 or later is part of all distributions of
-    LaTeX version 2005/12/01 or later.
-    If LaTeX decides to introduce at a point in the document where a  is specified, then no white space is produced. To ensure that white space is produced even at points in the document where page breaking takes place, one should replartain features of LaTeX relating to blank spaces and paragraph indentation which will improve the appearance of the final document. Experienced users of LaTeX will improve the appearance of their documents if they bear these remarks in mind.
+Since first proposed by F. Zwicky in 1933, the existence of dark matter has been confirmed by a large amount of astronomical observations.
+Today, the dark matter hypothesis has been generally accepted by most of the astronomical community and plays a central role in the standard model of Big Bang cosmology.
+As the Standard Model of particle physics doesn't a viable dark matter candidate which posses all the basic properties of dark matter, the composition of dark matter and its particle attribution have puzzled the scientists for a long time and continue to stimulate the interest in dark matter research.
+On the other hand, many new theories beyond the Standard Model have predicted new particles that turn out to be excellent dark matter candidates.
+The detection and study of dark matter could be used to verify these new theory, and may even start a new revolution in physics.
+In recent years, many experiments, using different kinds of detection technologies, have been carried out to study the dark matter problem.
+All these efforts will help the scientists get a deeper understanding of dark matter.
 
-First note that, as a general rule, you should never put a blank space after a left parenthesis or before a right parenthesis. If you were to put a blank space in these places, then you run the risk that LaTeX might start a new line immediately after the left parenthesis or before the right parenthesis, leaving the parenthesis marooned at the beginning or end of a line.
-
-LaTeX has its own rules for deciding the lengths of blank spaces. For instance, LaTeX will put an extra amount of space after a full stop if it considers that the full stop marks the end of a sentence.
-
-The rule adopted by LaTeX is to regard a period (full stop) as the end of a sentence if it is preceded by a lowercase letter. If the period is preceded by an uppercase letter then LaTeX assumes that it is not a full stop but follows the initials of somebody's name.
-
-This works very well in most cases. However LaTeX occasionally gets things wrong. This happens with a number of common abbreviations (as in `Mn `etc.'), and, in particular, in the names of journals given in abbreviated form (e.g., `Proc.
-
-oc.'). The way to overcome this problem is to put a backslash before the blank space in question. Thus we should type
-
-
-LaTeX determines itself how to break up a paragraph into lines, and will occasionally hyphenate long words where this is desirable. However it is sometimes necessary to tell LaTeX not to break at a particular blank space. The special character used for this purpose is ~. It represents a blank space at which LaTeX is not allowed to break between lines. It is often desirable to use ~ in names where the forenames are represented by initials. Thus to obtain `W. R. Hamilton' it is best to type W.~R.~Hamilton. It is also desirable in phrases like `Example 7' and `the length l of the rod', obtained by typing
-
-
+The DArk Matter Particle Explorer (DAMPE) ,
 \end{eabstract}
 
