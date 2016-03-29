@@ -90,16 +90,16 @@ MWDC探测器的工作气体为$\SI{20}{\percent}CO_2 + \SI{80}{\percent}Ar$，�
 MWDC的输出信号幅度较小，为了提高信噪比，我们使用一块基于SFE16芯片的前端电子学板对原始信号进行预处理，然后才将其输出到数据获取系统中进行时间测量(见\ref{sec:cosmic_ray:daq_system}节)。
 SFE16是一款专门用于气体漂移室前端信号处理的低噪声ASIC芯片。
 它将16个测量通道集成在一块芯片上，每个通道都具有信号放大和甄别的功能，因此输出信号可以直接用于时间测量，并适合长距离传输。
-关于SFE16的详细信息可以参考文献\cite{sfe16}。
+关于SFE16的详细信息可以参考文献\parencite{sfe16}。
 
 \subsection{触发系统}
 \label{sec:cosmic_ray:triggering_system}
 % 触发板结构，面积，厚度，四角读出，实物图？
 触发系统由两块完全一样的塑料闪烁体触发板探测器组成。
-触发板探测器使用\SI{30}{mm}厚的塑料闪烁体EJ-200\cite{ej-200}作为探测介质，探测器形状为正方形，有效面积为$825mm \times 825mm$。
+触发板探测器使用\SI{30}{mm}厚的塑料闪烁体EJ-200\parencite{ej-200}作为探测介质，探测器形状为正方形，有效面积为$825mm \times 825mm$。
 塑闪板表面抛光，并在内层包裹Tyvek纸以提高反射效率，而在外层包裹黑胶带以屏蔽外界的光干扰。
 最后，塑闪板的四个角各耦合了一支光电倍增管，用于闪烁光信号读出，如图TODO所示。
-使用的光电倍增管型号为Hamamatsu公司的R7724\cite{r7724}。
+使用的光电倍增管型号为Hamamatsu公司的R7724\parencite{r7724}。
 
 % 触发板的信号处理系统
 触发系统具有两个功能：1）标识入射宇宙线，为数据获取系统提供触发信号；2）用于宇宙线击中时刻的测量，为MWDC漂移时间的计算提供时间零点。
@@ -114,29 +114,29 @@ SFE16是一款专门用于气体漂移室前端信号处理的低噪声ASIC芯�
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.65\textwidth]{chap/cosmic_ray/fig/tof_timeVSposition.png}
-	\caption{触发板的时间测量不均匀性，引自\cite{tang_large_2015}。其中，纵轴是某个角得到的击中时刻，而横轴是击中位置距离这个角的直线距离。拟合直线斜率的倒数就是闪烁光在塑闪板中的有效传播速度。}
+	\caption{触发板的时间测量不均匀性，引自\parencite{tang_large_2015}。其中，纵轴是某个角得到的击中时刻，而横轴是击中位置距离这个角的直线距离。拟合直线斜率的倒数就是闪烁光在塑闪板中的有效传播速度。}
 	\label{fig:cosmic_ray:tof_timeVSposition}
 \end{figure}
 这意味着，我们不能简单地选择一支PMT的时间信号作为时间零点，因为这会带来较大的时间晃动，影响漂移时间的测量精度。
 为了消除时间测量不均匀性，必须综合板上四个角的时间测量信息，以使得时间零点与击中位置无关。
-实际中，我们使用下列形式\cite{annand_large_1987}得到时间零点$T_{eff}$：
+实际中，我们使用下列形式\parencite{annand_large_1987}得到时间零点$T_{eff}$：
 \begin{equation}
 	T_{eff} = \frac{1}{4}\sum^4_{i=1}T_i - \frac{v_{eff}}{8d}[(T_3-T_1)^2+(T_4-T_2)^2]
 	\label{eq:cosmic_ray:tof_time}
 \end{equation}
 其中，$v_{eff}$是闪烁光在塑闪板中有效传输速度，$d$是塑闪板的对角线长度，$T_1\sim T_4$是塑闪板四个角的时间测量值，并且$T_1$和$T_3$是对角，而$T_2$和$T_4$也是对角。
-测试发现，使用公式\ref{eq:cosmic_ray:tof_time}得到的塑闪板时间分辨率可以达到\SI{350}{\pico\second}\cite{tang_large_2015}。
+测试发现，使用公式\ref{eq:cosmic_ray:tof_time}得到的塑闪板时间分辨率可以达到\SI{350}{\pico\second}\parencite{tang_large_2015}。
 
 \subsection{数据获取系统}
 \label{sec:cosmic_ray:daq_system}
 % PXI机箱图，触发板，MWDC板，TOF板
-数据获取系统基于PXI总线设计，主要由触发板，时钟板，TOF测量板以及MWDC测量板组成\cite{kanglongfei_thesis,zhoujiawen_thesis}。
-这些板卡都安装在一个6U高，具有15个槽位的PXI机箱中\cite{pxi_chassis}，而获取和控制软件安装在机箱第一个槽位的单片机上，如图\ref{TODO}所示。
+数据获取系统基于PXI总线设计，主要由触发板，时钟板，TOF测量板以及MWDC测量板组成\parencite{kanglongfei_thesis,zhoujiawen_thesis}。
+这些板卡都安装在一个6U高，具有15个槽位的PXI机箱中\parencite{pxi_chassis}，而获取和控制软件安装在机箱第一个槽位的单片机上，如图\ref{TODO}所示。
 下面，对这四种板卡的功能进行简单的介绍。
 
 TOF测量板和MWDC测量板是数获取系统进行时间测量的核心模块，其中TOF板用于触发板探测器的时间测量，而MWDC板用于MWDC探测器的时间测量。
 两块测量板都是基于HPTDC芯片设计的，能够在高计数率条件下对时间进行精确测量。
-HPTDC是欧洲核子中心（CERN）开发的一款高性能时间测量ASIC芯片\cite{TODO}。
+HPTDC是欧洲核子中心（CERN）开发的一款高性能时间测量ASIC芯片\parencite{TODO}。
 与以往核物理实验中常见的起停式时间测量方法不同，HPTDC直接测量输入时间信号的到达时刻，而不是测量输入时间信号与触发信号的时间差。
 HPTDC也需要触发信号，但它并不将触发信号作为时间测量的零点，而是使用触发信号来寻找真实的时间测量值，具体流程如下：
 \begin{enumerate}

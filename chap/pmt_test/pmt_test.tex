@@ -49,7 +49,7 @@ PMT测试平台的大部分辅助设备被都放置在铝合金暗箱的外围�
 这些辅助设备可以被分为四个不同功能模块，分别为：运动控制模块，光脉冲驱动模块，数据获取模块（简称DAQ模块）以及高压供给模块。
 运动控制模块和光驱动模块是和测试平台紧密联系在一起的，而与此相关的设备基本在所有的测试中都可以重复使用。
 相反的，DAQ模块和高压供给模块与需要PMT测试的具体项目紧密联系，一般需要使用该项目定制的仪器设备进行测试。
-作为一个通用的解决方案，我们为测试平台配备了一个基于CAMAC机箱的DAQ模块以及一个基于CAEN SY1527LC机箱\cite{sy1527lc}的高压供给模块。
+作为一个通用的解决方案，我们为测试平台配备了一个基于CAMAC机箱的DAQ模块以及一个基于CAEN SY1527LC机箱\parencite{sy1527lc}的高压供给模块。
 这两个模块可以根据具体情况进行更换，在PSD的PMT性能测试中，我们就将上述CAMAC机箱替换成了PSD专用的地面检测系统（详见\ref{sec:pmt_test:characterization}）。
 
 最后，整个PMT测试平台系统被放置在一个十万级的洁净室中，室内温度被控制在$22\pm2$\si{\celsius}。
@@ -79,7 +79,7 @@ PMT测试平台的主体由一个固定平台和一个三维移动平台组成(�
 表\ref{tab:pmt_test:motorized_stage}列出了它的基本运动参数。
 可以看到，平台的左右行程和上下行程使其能够对所有直径小于\SI{60}{\milli\meter}的PMT进行全面地光阴极扫描。
 额外的第三维运动主要用于控制光纤与待测PMT之间的距离，在测试时尽量拉近光纤与PMT端面的距离，而在拆卸时拉远它们之间的距离，从而保护光纤不受意外损伤。
-三个方向的步进电机都由一个运动控制器控制\cite{leetro}，并可以利用PCI总线实现远程控制。
+三个方向的步进电机都由一个运动控制器控制\parencite{leetro}，并可以利用PCI总线实现远程控制。
 \begin{table}[htb]
 	\centering	
 	\begin{tabulary}{0.6\linewidth}{LC}
@@ -107,8 +107,8 @@ PMT测试平台的主体由一个固定平台和一个三维移动平台组成(�
 
 % 光源以及驱动
 PMT测试系统使用大功率的蓝光LED（\SI{3}{\watt}, \SIrange{465}{485}{\nano\meter}）作为光源。
-该LED的发光光谱能够与大部分光阴极材料的光谱响应相吻合，而且曾被成功应用到HIRFL-RIBLL2外靶终端的中子墙光刻度系统中\cite{yuyuhong_led}，其功率大小能够满足大量光通路的驱动要求。
-为了使LED产生脉冲光，我们采用通用的脉冲发生器AFG3252\cite{afg3252}产生的方波信号来直接驱动LED发光。
+该LED的发光光谱能够与大部分光阴极材料的光谱响应相吻合，而且曾被成功应用到HIRFL-RIBLL2外靶终端的中子墙光刻度系统中\parencite{yuyuhong_led}，其功率大小能够满足大量光通路的驱动要求。
+为了使LED产生脉冲光，我们采用通用的脉冲发生器AFG3252\parencite{afg3252}产生的方波信号来直接驱动LED发光。
 虽然AFG3252不是专用的LED驱动器，但它的驱动效果能够满足我们的基本需求，如图\ref{fig:pmt_test:led_pulse}所示。
 \begin{figure}[htbp]
 	\centering
@@ -125,7 +125,7 @@ AFG3252的驱动脉冲参数可以在很大的范围内进行调整，而且精�
 	\label{fig:pmt_test:led_response}
 \end{figure}
 AFG3252的另外一个优点是：它的所有功能都可以在远程进行控制，而且接口丰富，我们可以选择熟悉的方式对其进行控制。
-在PMT批量测试系统中，我们通过网口，并使用SCPI（Standard Commands for Programmable Instruments）命令\cite{afg3000_programmer_manual}对AFG3252进行远程操作。
+在PMT批量测试系统中，我们通过网口，并使用SCPI（Standard Commands for Programmable Instruments）命令\parencite{afg3000_programmer_manual}对AFG3252进行远程操作。
 
 % 积分球
 LED发出的光脉冲通过集束光纤被分配到各支PMT，它与集束光纤之间通过一个\SI{5}{\centi\meter}的积分球耦合。LED、积分球和集束光纤一起构成了PMT测试系统的光分配系统，如图\ref{fig:pmt_test:light_distribution}。
@@ -145,7 +145,7 @@ LED发出的光脉冲通过集束光纤被分配到各支PMT，它与集束光�
 \end{figure}
 积分球是一个具有高反射性内表面的空心球体，它是一个理想的光积分器件，入射光在其内部经过多次反射后，能够在其出射端口均匀出射。
 积分器在此处的应用主要出于两点考虑：1）我们希望各条光通路具有相近的光输出强度；2）方便积分球与集束光纤之间的耦合操作，减弱LED光源的非均匀性对各光路输出强度差异的影响。
-我们使用的积分球\cite{integrating_sphere}使用的内壁涂层材料为$BaSO_4$，蓝光反射率达到\SI{98.5}{\percent}，因此即便它的半径较小，仍然能够得到较好的均匀性。
+我们使用的积分球\parencite{integrating_sphere}使用的内壁涂层材料为$BaSO_4$，蓝光反射率达到\SI{98.5}{\percent}，因此即便它的半径较小，仍然能够得到较好的均匀性。
 在LED固定到积分球入射端口后，我们对积分球出射端面的光强度进行了“十”字扫描，结果显示其光均匀性可以达到$\pm\SI{0.5}{\percent}$，如图\ref{fig:pmt_test:integrationsphere_uniformity}所示。
 \begin{figure}[htbp]
 	\centering
@@ -155,7 +155,7 @@ LED发出的光脉冲通过集束光纤被分配到各支PMT，它与集束光�
 \end{figure}
 
 % 集束光纤
-PMT批量测试系统使用的集束光纤由35根塑料包层的石英光纤\cite{optical_fibre}集结而成（25根用于待测光通道，2根用于监控光通道，剩余8根备份）。每根光纤的长度为\SI{1.5}{\meter}，纤芯直径为\SI{400}{\micro\meter}，包层厚度\SI{75}{\micro\meter}，而数值孔径达到了$0.37$。
+PMT批量测试系统使用的集束光纤由35根塑料包层的石英光纤\parencite{optical_fibre}集结而成（25根用于待测光通道，2根用于监控光通道，剩余8根备份）。每根光纤的长度为\SI{1.5}{\meter}，纤芯直径为\SI{400}{\micro\meter}，包层厚度\SI{75}{\micro\meter}，而数值孔径达到了$0.37$。
 较大的芯径和数值孔径使得每条光通路都能从积分球中引出足够的光量，并传输到对应的PMT入射端面。
 为了避免机械损伤，光纤的两个端头部位都加装了铝合金套筒进行保护，见图\ref{fig:pmt_test:lightsource_components}。
 光源和光分配系统固定完成后，我们对35条光通路的输出光强差异进行了测试。
@@ -192,9 +192,9 @@ PMT批量测试平台的测控软件是系统的重要组成部分，它直接�
 	\item 用户交互层。这一层主要处理和用户的交互，其具体实现与上两层无关，可以基于命令行，也可以基于图形界面。
 \end{enumerate}
 测控软件框架的具体设计细节可以参看附录\ref{appendix:pmttest_software}，此处略去。
-对于PSD的光电倍增管测试来说，我们基于NI-VISA\cite{ni_visa}函数库实现了对PSD地面检测获取系统的控制，以代替通用的CAMAC数据获取模块。
+对于PSD的光电倍增管测试来说，我们基于NI-VISA\parencite{ni_visa}函数库实现了对PSD地面检测获取系统的控制，以代替通用的CAMAC数据获取模块。
 针对PSD的测试需求，实现了Dy8增益测试、Dy5和Dy8的相对增益测试以及光阴极扫描测试这三个测试算法。
-最后，我们基于PDCurses\cite{pdcurses}开发了一个命令行交互的测控程序，集成了设备控制，状态监控以及日志记录等功能。
+最后，我们基于PDCurses\parencite{pdcurses}开发了一个命令行交互的测控程序，集成了设备控制，状态监控以及日志记录等功能。
 
 \section{PSD对光电倍增管的测试需求}
 \label{sec:pmt_test:test_requirement}
