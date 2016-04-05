@@ -152,9 +152,7 @@ DAMPE粒子探测器是暗物质粒子探测卫星的主要载荷，它是一个
 \end{enumerate}
 
     
-\subsection{性能指标}
-DAMPE卫星将运行于\SI{500}{\kilo\meter}的太阳同步轨道，设计寿命大于三年，其中前两年为巡天模式，最后一年为定点观测模式。
-卫星整体功耗为\SI{350}{W}，重量为\SI{1400}{kg}。
+\subsection{DAMPE粒子探测器的性能设计指标}
 
 DAMPE粒子探测器的性能指标分为高能电子、高能伽马射线以及高能宇宙线重离子三个部分：
 \begin{enumerate}
@@ -208,7 +206,28 @@ DAMPE粒子探测器的性能指标分为高能电子、高能伽马射线以及
 	\end{threeparttable}
 \end{table}
 
-\subsection{DAMPE的结构与组成}
+\subsection{DAMPE卫星的轨道、飞行程序与工作模式}
+
+DAMPE卫星整体功耗为\SI{350}{W}，重量为\SI{1400}{kg}，设计寿命为三年\parencite{psd_tdr}。
+它将运行于离地\SI{500}{\kilo\meter}的太阳同步轨道，轨道基本参数为：偏心率为0；轨道倾角为\SI{97.406}{\degree}；轨道周期为95分钟；降交点地方时为UTC 6:30 AM。
+
+图\ref{fig:introduction:flight_program}给出了DAMPE卫星的完整飞行程序。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{chap/introduction/fig/flight_program.png}
+	\caption{DAMPE卫星的飞行阶段划分}
+	\label{fig:introduction:flight_program}
+\end{figure}
+在完成对地捕获后，卫星开始进入两个月的在轨测试阶段，此时DAMPE粒子探测器正式加电进入工作模式。
+测试阶段完成后，卫星就正式交付使用，进入科学观测阶段。
+此时，DAMPE卫星主要具有以下两种工作模式：
+\begin{itemize}
+	\item 巡天探测模式。此阶段卫星姿态稳定对地，本体+Z轴指向地心，+X轴指向飞行方向，+Y轴指向轨道法向的反方向，使得DAMPE粒子探测器能够对全天区进行大范围观测。此阶段时间预计为2年。
+	\item 定向探测模式。根据前一阶段巡天观测得到的数据，分析出暗物质可能存在的重点区域。此阶段卫星采用准惯性定向方式，对准重点区域或对准银心所在的维度进行准惯性观测。
+\end{itemize}
+
+
+\subsection{DAMPE粒子探测器的结构与组成}
 DAMPE粒子探测器由四个子探测器系统组成，分别是塑闪阵列探测器，硅径迹探测器，BGO量能器和中子探测器，
 图\ref{fig:introduction:dampe_structure}给出了它的结构示意图。
 \begin{figure}[htb]
@@ -223,26 +242,45 @@ DAMPE粒子探测器由四个子探测器系统组成，分别是塑闪阵列探
 PSD由X、Y两层相互垂直的塑料闪烁体单元条平面阵列组成，有效探测面积为$820mm\times 820mm$。
 PSD是本论文的主体内容，因此这里只对其进行简单介绍，有关PSD内部结构更详细的信息请参看第\ref{ch:description}章。
 
-硅径迹探测器(Silicon-Tungsten Tracker，简称STK)位于PSD下方，它的主要功能有：1）测量入射带电粒子的轨迹；2）利用电子对效应，将入射的高能$\gamma$转化为正负电子对，这一点和FERMI-LAT的设计类似；3）鉴别$Z=1\sim 26$入射重离子，和PSD的电荷测量互为备份。
-STK的径迹探测和电荷测量由6层径迹探测平面完成，每一层探测探测平面进一步由X、Y两个方向上的单面硅微条探测器组成。
+硅径迹探测器(Silicon-Tungsten Tracker，简称STK)位于PSD下方\parencite{stk_dampe}，它的主要功能有：1）测量入射带电粒子的轨迹；2）利用电子对效应，将入射的高能$\gamma$转化为正负电子对，这一点和FERMI-LAT的设计类似；3）鉴别$Z=1\sim 26$入射重离子，和PSD的电荷测量互为备份。
+STK的径迹探测和电荷测量由6层径迹探测平面完成（见图\ref{fig:introduction:stk_combined}(a)），每一层探测探测平面进一步由X、Y两个方向上的单面硅微条探测器组成。
 其中，在第2，3，4层的径迹探测平面上还布置了\SI{1}{mm}的钨板，用于高能$\gamma$的转化。
-每个单面硅微条探测器由16个Ladder组成，每个Ladder进一步由4块小的方形硅微条探测器串联而成。
+每个单面硅微条探测器由16个Ladder组成，每个Ladder进一步由4块小的方形硅微条探测器串联而成，如图\ref{fig:introduction:stk_combined}(b)所示。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.7\textwidth]{chap/introduction/fig/stk_combined.jpg}
+	\caption{a）STK的一个Ladder；b）组装完成后，STK的六层径迹探测平面}
+	\label{fig:introduction:stk_combined}
+\end{figure}
 这些小的硅微条探测器是STK的最小组成单元，其面积大小为$95mm\times 95mm$，因此可以得到整个STK的有效探测面积为$760mm \times 760mm$。
 小型硅微条探测器的硅基地厚度为$\SI{320}{\micro\meter}$，上面分布有768路宽度为$\SI{121}{\micro\meter}$的硅微条。
 STK对硅微条探测器的读出方式为隔条读出，因此每个Ladder具有389路输出信号，而整个STK共有73728路输出信号。
 由于记录了输出信号的幅度信息，STK可以采用电荷分配的方法对击中位置进行重建。
 对于所有的入射角度，STK的位置测量精度可以达到\SI{80}{\micro\meter}，而当入射角度小于\SI{40}{\degree}时，甚至可以达到\SI{50}{\micro\meter}。
 
-BGO量能器(BGO Calorimeter，简称BGO)位于卫星的中部，它是DAMPE粒子探测器主体功能模块，用于对所有入射宇宙线粒子尤其是高能电子和高能伽马射线的能量进行测量。
+BGO量能器(BGO Calorimeter，简称BGO)位于卫星的中部\parencite{bgo_zhangzhiyong_thesis}，它是DAMPE粒子探测器主体功能模块，用于对所有入射宇宙线粒子尤其是高能电子和高能伽马射线的能量进行测量。
 另外，利用电磁簇射和强子簇射在量能器内部横向发展和纵向发展的不同，BGO可以用于强子（主要是质子）和$e/\gamma$的粒子鉴别，同时结合PSD的反符合功能完成$e$和$\gamma$的鉴别。
 最后，BGO也将为DAMPE粒子探测器的提供触发信号，从而有效降低宇宙线本底质子事例的触发率。
-BGO量能器由14层锗酸铋晶体阵列组成，约对应31个辐射长度和1.6个核作用长度。
+BGO量能器由14层锗酸铋晶体阵列组成（见图\ref{fig:introduction:bgo}），约对应31个辐射长度和1.6个核作用长度。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/introduction/fig/bgo.png}
+	\caption{在振动台上等待力学测试的BGO量能器}
+	\label{fig:introduction:bgo}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.9\textwidth]{chap/introduction/fig/nud.png}
+	\caption{中子探测器的机械设计图与组装前的实物照片}
+	\label{fig:introduction:nud}
+\end{figure}
 每层晶体阵列由22根尺寸为$25mm\times 25mm \times 600mm$的晶体单元条紧密排列而成，且相邻两层晶体阵列的排列方向相互垂直，以提供簇射发展的X-Y位置信息，从而形成一个三维的图像量能器。
 BGO量能器采用双端读出的方法，在每根单元条两端各耦合一支光电倍增管，用于闪烁光信号的读出。
 因此，BGO量能器一共使用308根BGO晶体和616支光电倍增管。
 
 
-中子探测器(Neutron Detector，简称NUD)位于卫星最底部，它的主要功能是测量宇宙线中的强子(主要为质子)与NUD前面的探测器物质（主要是BGO量能器）发生作用产生的次级中子。
+中子探测器(Neutron Detector，简称NUD)位于卫星最底部\parencite{changjin_introduction_2014}，它的主要功能是测量宇宙线中的强子(主要为质子)与NUD前面的探测器物质（主要是BGO量能器）发生作用产生的次级中子。
 高能质子在BGO中的强子簇射会产生大量的高能中子，而高能电子主要是电磁簇射，产生的中子数目很少，通过判断NUD内是否有能量沉积，可以进一步提高BGO鉴别质子和电子的能力\parencite{changjin_nud_2015}。
 NUD采用厚度为\SI{10}{mm}的掺硼塑料闪烁体作为探测介质，有效探测面积为$\SI{693}{mm}\times\SI{693}{mm}$。
-它由四块独立的正方形塑闪烁体构成其探测整体，并且每块塑料闪烁体都分别去除一个角以耦合一个光电倍增管进行信号读出。
+它由四块独立的正方形塑闪烁体构成其探测整体，并且每块塑料闪烁体都分别去除一个角以耦合一个光电倍增管进行信号读出，如图\ref{fig:introduction:nud}所示。
