@@ -280,7 +280,7 @@ R4443-MOD2是R4443的升级版本，主要替换了光阴极材料，使得其�
 根据模拟计算结果\parencite{psd_tdr}，PSD探测器单元模块处的磁场强度小于\SI{5}{Gauss}，因此R4443外部只需缠绕一层玻莫合金就可以屏蔽外部磁场对它的干扰。
 为了提高可靠性，R4443外部灌封了硅胶保护层以进行力学减震，同时PMT整体将安装到一个铝合金保护套中并固定在探测器支撑结构上（详见第\ref{sec:description:psd_support}节）。
 \begin{longtabu} to 0.6\linewidth{lX}
-	\caption{R4443 Mod2的主要性能参数\label{tab:description:r4443}}\\
+	\caption{R4443-MOD2的主要性能参数\label{tab:description:r4443}}\\
 	\toprule[1.5pt]
 	\textbf{性能参数} & \textbf{典型值} \\ 
 	\midrule
@@ -320,26 +320,53 @@ R4443-MOD2是R4443的升级版本，主要替换了光阴极材料，使得其�
 硅脂垫片材料使用的是Eljen公司的EJ-560，其性能参数见表\ref{tab:description:ej560}。
 EJ-560的折射率与R4443入射窗玻璃和塑料闪烁体的折射率非常接近，从而可以提高光耦合效率。
 另外，硅脂垫片是一种弹性材料，使用它可以避免单元条与PMT之间的刚性接触，并释放塑闪单元条的温度形变产生的应力压迫，从而起到保护PMT的作用。
+\newpage
+\begin{longtabu} to 0.6\linewidth{lX}
+	\caption{EJ-560主要性能参数\label{tab:description:ej560}}\\
+	\toprule[1.5pt]
+	\textbf{物理性能} & \textbf{典型值} \\ 
+	\midrule
+	\endfirsthead
+	
+	%\toprule[1.5pt]
+	\multicolumn{2}{ c }{续表\ref{tab:description:ej560}}\\
+	%性能参数 & 典型值 \\ 
+	\midrule
+	\endhead
+	
+	%\bottomrule[1.5pt]
+	\endfoot
+	
+	\bottomrule[1.5pt]
+	\endlastfoot
+	
+	厚度            & \SI{3}{\milli\meter}                      \\
+	密度            & \SI{1.03}{\g\per\cubic\centi\meter}       \\
+	硬度（A型邵氏硬度计）   & 16$\sim$24                           \\
+	折射率           & 1.43                                      \\
+	工作温度范围        & \SI{-40}{\celsius}$\sim$\SI{70}{\celsius} \\
+	热膨胀系数         & \SI{3E-4}{\per\celsius}                   \\ 
+\end{longtabu}
 
-\begin{table}[htb]
-	\centering
-	\caption{EJ-560主要性能参数}
-	\label{tab:description:ej560}
+% \begin{table}[htb]
+% 	\centering
+% 	\caption{EJ-560主要性能参数}
+% 	\label{tab:description:ej560}
 	
-	\begin{tabulary}{0.6\linewidth}{LC}
-		\toprule[1.5pt]
-		\textbf{物理性能} & \textbf{典型值}                              \\ 
-		\midrule[1pt]
-		厚度            & \SI{3}{\milli\meter}                      \\
-		密度            & \SI{1.03}{\g\per\cubic\centi\meter}       \\
-		硬度（A型邵氏硬度计）   & 16$\sim$24                                \\
-		折射率           & 1.43                                      \\
-		工作温度范围        & \SI{-40}{\celsius}$\sim$\SI{70}{\celsius} \\
-		热膨胀系数         & \SI{3E-4}{\per\celsius}                   \\ 
-		\bottomrule[1.5pt]
-	\end{tabulary}
+% 	\begin{tabulary}{0.6\linewidth}{LC}
+% 		\toprule[1.5pt]
+% 		\textbf{物理性能} & \textbf{典型值}                              \\ 
+% 		\midrule[1pt]
+% 		厚度            & \SI{3}{\milli\meter}                      \\
+% 		密度            & \SI{1.03}{\g\per\cubic\centi\meter}       \\
+% 		硬度（A型邵氏硬度计）   & 16$\sim$24                                \\
+% 		折射率           & 1.43                                      \\
+% 		工作温度范围        & \SI{-40}{\celsius}$\sim$\SI{70}{\celsius} \\
+% 		热膨胀系数         & \SI{3E-4}{\per\celsius}                   \\ 
+% 		\bottomrule[1.5pt]
+% 	\end{tabulary}
 	
-\end{table}
+% \end{table}
 
 \section{高压扇出功能模块}
 \label{sec:description:psd_hv}
@@ -509,17 +536,20 @@ PSD的主承力结构由4组梁结构和底板连接为一个整体组成，主�
 
 最后，两个塑闪阵列平面间以及上层塑闪阵列平面与顶板间还各有一块碳纤维盖板，用于保护塑闪单元条。
 
-\section{主要技术指标}
+\section{主要技术指标与关键技术、工艺}
 \label{sec:description:psd_requirements}
 
 根据DAMPE粒子探测器整体的物理需求，PSD需要满足如下性能指标：
 \begin{enumerate}[noitemsep,topsep=0pt]
-	\item 有效探测面积$\SI{820}{\milli\meter}\times\SI{820}{\milli\meter}$。DAMPE是单方向的探测器，它只关心从顶部入射的粒子。由于位于DAMPE探测器最顶端，PSD的有效探测面积决定了DAMPE的视场大小,因此PSD也是DAMPE中面积最大的子探测器系统。
-	\item 探测单元模块实现电子和重离子（$Z=1\sim20$）的沉积能量测量。根据\ref{sec:description:psd_principle}节的描述，不同入射粒子在PSD中的能量沉积相差巨大，这对PSD的探测单元模块提出了大动态范围的要求。另外，为了有效区分电子信号和噪声本底（光子不在PSD中产生信号），探测单元还需要有较高的信噪比。PSD探测单元模块的读出设计和实验验证将在第\ref{ch:large_dynmaicrange}章进行详细讨论。
-	\item 探测单元模块的电荷分辨优于\SI{25}{\percent}。为了对重离子进行有效鉴别，探测器的分辨率需要满足一定条件。由于塑料闪烁体材料本身的限制，PSD探测单元的分辨率确定为对$Z=1$的粒子（对于$Z>1$的重离子，探测器响应很难在实验室条件下进行验证）的$\sigma$好于\SI{25}{\percent}。在相对论能区，所有$Z=1$的粒子与MIPs粒子具有类似的能量沉积，这个要求可以转化为对MIPs粒子的能量分辨好于\SI{25}{\percent}。
-	\item 空间分辨好于\SI{2}{\centi\meter}。径迹探测并不是PSD的主要功能，DAMPE的主要径迹探测器是STK。在径迹寻找和重建过程中，STK需要BGO和PSD提供额外的位置信息以便更有效地找到并验证真实迳迹。因此PSD的位置信息不需要特别精确，最终被确定为\SI{2}{\centi\meter}。
-	\item 对MIPs粒子的探测效率高于\SI{95}{\percent}。这是$e/\gamma$鉴别提出的要求，它包含两部分内容：一是对带电粒子的探测器效率高于\SI{95}{\percent}，二是对光子的误判率低于\SI{5}{\percent}。
+	\item 有效探测面积$\SI{820}{\milli\meter}\times\SI{820}{\milli\meter}$。DAMPE是单方向的探测器，它只关心从顶部入射的粒子。由于PSD位于DAMPE探测器最顶端，它的有效探测面积决定了DAMPE的视场大小,因此PSD也是DAMPE中面积最大的子探测器系统。
+	\item 探测单元模块实现电子和重离子（$Z=1\sim20$）的沉积能量测量。根据\ref{sec:description:psd_principle}节的描述，不同入射粒子在PSD中的能量沉积相差巨大，这需要PSD的探测单元模块具有较大的读出动态范围。另外，为了有效区分电子信号和噪声本底（光子不在PSD中产生信号），探测单元模块还需要有较高的信噪比。PSD探测单元模块的读出设计将在第\ref{ch:large_dynmaicrange}章进行详细讨论。
+	\item 探测单元模块的电荷分辨优于\SI{25}{\percent}。为了对重离子进行有效鉴别，探测器的能量分辨率需要满足一定条件。由于塑料闪烁体材料本身的限制，PSD探测单元模块的能量分辨率要求被确定为：对$Z=1$的粒子（对于$Z>1$的重离子，探测器响应很难在实验室条件下进行验证）好于\SI{25}{\percent}。
+	在相对论能区，所有$Z=1$的粒子与MIPs粒子具有类似的能量沉积，因此这个要求可以转化为对MIPs粒子的能量分辨率好于\SI{25}{\percent}。
+	\item 各探测单元模块的MIP能量响应一致性好于\SI{25}{\percent}。PSD的整体性能是各探测单元模块归一化的结果，不同单元之间较好的能量响应一致性有利于PSD整体性能的优化。
+	\item 空间分辨好于\SI{2}{\centi\meter}。径迹探测并不是PSD的主要功能，DAMPE的主要径迹探测器是STK。但在径迹寻找和重建过程中，STK需要BGO和PSD提供的额外位置信息作为“种子”，同时PSD的位置信息也可以用于真实迳迹的验证。
+	因此，PSD的位置信息不需要特别精确，其分辨率最终被确定为\SI{2}{\centi\meter}。
+	\item 对MIPs粒子的探测效率高于\SI{95}{\percent}。
+	这是$e/\gamma$鉴别提出的要求，它包含两部分内容：一是对带电粒子的探测器效率高于\SI{95}{\percent}，二是对光子的误判率低于\SI{5}{\percent}。
 \end{enumerate}
-
 
 
