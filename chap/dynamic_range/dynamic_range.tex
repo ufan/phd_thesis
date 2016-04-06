@@ -225,11 +225,11 @@ Dy8的典型增益为$4.71\times10^4$，对于\SI{1}{MIP}的输出信号电荷�
 而在标准工作电压下，Dy5和Dy8间的典型相对增益值约为63。
 这个值略大于设计值35，但它满足我们的设计要求，而且也可以改变工作电压对其进行调节。
 
-\subsection{分压器电路的设计}
+\subsection{分压器电路与Base板的设计}
 \label{sec:dynamic_range:hv_divider}
-光电倍增管的分压器具有两个基本功能：1.给PMT提供工作电压，并按一定的比例合理分配各光阴极、打拿极和阳极间的电势差；2.电流信号引出。
+光电倍增管的分压器具有两个基本功能：1）给PMT提供工作电压，并按一定的比例合理分配各光阴极、打拿极和阳极间的电势差；2）电流信号引出。
 一般的分压器电路都是从阳极引出电流信号，不能够满足PSD的读出需求，因此我们对R4443的分压器电路进行了重新设计，如图\ref{fig:dynamic_range:divider}所示。
-其中，打拿极9、打拿极10与阳极串联在一起，在工作中并不使用；而打拿极5和打拿极8处各增加了一段引出电路，用于电流信号的引出。
+其中，打拿极9、打拿极10与阳极串联在一起，它们处于同电位，实际工作中并不起倍增作用；而打拿极5和打拿极8处各增加了一段引出电路，用于电流信号的引出。
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{chap/dynamic_range/fig/divider.eps}
@@ -249,7 +249,17 @@ Dy8的典型增益为$4.71\times10^4$，对于\SI{1}{MIP}的输出信号电荷�
 隔直电容采用冗余设计，即由两个电容串联组成（即打拿极5支路的$C_8/C_9$和打拿极8支路的$C_{11}/C_{12}$）。
 这样，在一个隔直电容失效后，另一个隔直电容还能继续保护后续电路，提高了系统可靠性和安全性。
 
-TODO：\emph{双绞线，实物图，电路板设计}
+% TODO：\emph{双绞线，实物图，电路板设计}
+由于PSD内部的空间限制，Base电路板采用紧凑设计，整个分压器电路被布置到两片面积为$18mm\times 33.5mm$的PCB板上，如图\ref{fig:dynamic_range:base_pcb}所示。
+两块PCB板上下叠放以减少占用空间，而R4443的引脚直接焊接到PCB板上。
+每块PCB板内部包含四层覆铜层，上下表面两层用于走线和元器件焊接，中间两层分别用于安全地和热传导。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.65\textwidth]{chap/dynamic_range/fig/base_pcb.jpg}
+	\caption{Base电路板实物图}
+	\label{fig:dynamic_range:base_pcb}
+\end{figure}
+另外，Base板的信号线和高压线都使用同轴电缆以提高抗电磁干扰能力。
 
 \section{大动态范围读出方案的原理验证}
 \label{sec:dynamic_range:verification}
@@ -257,10 +267,6 @@ TODO：\emph{双绞线，实物图，电路板设计}
 测试结果显示，该读出方案完全满足PSD大动态范围的需求。
 本节将对这些测试进行简单介绍，并给出测试结果。
 由于PSD探测单元模块两端得到了相似的测试结果，为了叙述方便，下文中只对其中一端的结果进行了介绍。
-
-TODO：\emph{探测器单元模块实物图}
-% \subsection{LED的测试}
-% \label{sec:dynamic_range:led}
 
 \subsection{宇宙线测试}
 \label{sec:dynamic_range:cosmic_ray}
