@@ -507,12 +507,19 @@ PSD的主承力结构由4组梁结构和底板连接为一个整体组成，主�
 底板中间的凸台上具有由由碳纤维方管隔断的凹槽结构，槽体近似与塑闪单元条等宽，用于保护塑闪单元条。
 每根梁的主体由三层铝合金组件构成, 其内部具有两排(一排21个，一排20个)“工”字形和圆柱形组成的凹槽结构，用于固定41个塑闪单元模块的一端。
 “工”字形凹槽与塑闪单元条的“工”字形端头适配，用于固定塑闪单元条；圆柱形孔结构紧连“工”字形槽结构，用于安装PMT组件。
-
+图\ref{fig:description:pmt_protection}给出了PMT组件安装在PSD结构上的示意图。
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.7\linewidth]{chap/description/fig/bottom_plate}
 \caption{PSD主承力结构}
 \label{fig:description:bottom_plate}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.8\textwidth]{chap/description/fig/pmt_protection.eps}
+	\caption{PMT的安装示意图}
+	\label{fig:description:pmt_protection}
 \end{figure}
 
 每个塑闪阵列平面由两组梁结构固定，并被分为固定端和活动端，见图\ref{fig:description:girders}。
@@ -538,7 +545,7 @@ PSD的主承力结构由4组梁结构和底板连接为一个整体组成，主�
 
 \section{主要技术指标与关键技术、工艺}
 \label{sec:description:psd_requirements}
-
+\subsection{主要性能指标}
 根据DAMPE粒子探测器整体的物理需求，PSD需要满足如下性能指标：
 \begin{enumerate}[noitemsep,topsep=0pt]
 	\item 有效探测面积$\SI{820}{\milli\meter}\times\SI{820}{\milli\meter}$。DAMPE是单方向的探测器，它只关心从顶部入射的粒子。由于PSD位于DAMPE探测器最顶端，它的有效探测面积决定了DAMPE的视场大小,因此PSD也是DAMPE中面积最大的子探测器系统。
@@ -552,4 +559,13 @@ PSD的主承力结构由4组梁结构和底板连接为一个整体组成，主�
 	这是$e/\gamma$鉴别提出的要求，它包含两部分内容：一是对带电粒子的探测器效率高于\SI{95}{\percent}，二是对光子的误判率低于\SI{5}{\percent}。
 \end{enumerate}
 
-
+\subsection{关键工艺与技术}
+塑闪单元条温度形变适应结构设计、探测单元模块大动态范围读出设计以及PMT组件灌封工艺是PSD的关键技术与重要工艺。
+塑闪单元条温度形变适应通过PSD支撑结构上活动端与固定端梁组成的五维约束结构予以解决，详见\ref{sec:description:psd_support}节。
+在PSD的方案阶段，该结构设计的可行性和合理性通过软件仿真分析、模拟件试验以及结构件的高低温试验得到了充分的验证。
+PMT组件的灌封是指将PSD的光电倍增管和Base电路板灌封室温硫化硅橡胶（RTV胶），这样不仅可以防止分压器电路在真空中的电晕放电，还可以保护光电倍增管不受外界应力的损伤。
+灌封工艺直接决定了灌封质量好坏，为此我们选取了能在恶劣空间环境下使用、出气率很低的双组分RTV胶进行试验，通过真空靶室抽气、专门设计的透明工装以及其它质量控制措施，有效解决了硅橡胶的出气问题，从而成功控制了灌胶质量。
+PMT组件的灌封流程在\ref{sec:construction:pmt_production}节有介绍。
+探测单元模块的大动态范围读出是PSD的功能要求决定的。
+PSD采用了光电倍增管双打拿极信号引出，并将输出信号分别输出到FEE不同测量通道的读出方案以拓宽其读出动态范围。
+由于读出设计直接影响PSD的探测性能，大动态范围读出的设计与验证过程将在下一章进行详细论述。
