@@ -169,7 +169,7 @@
 	chapter={
 		format = {\zihao{4}\bfseries\centering},
 % 		beforeskip = {0bp}, afterskip = {0bp},
-		beforeskip = {1.3em}, 
+		beforeskip = {0.0em}, 
                 afterskip = {1.8em},
 		pagestyle = {hfmain}
 	},
@@ -334,7 +334,7 @@
 	\markboth{\eabstractname}{}
 	\thispagestyle{plain}
 	\begin{center}
-		{\sffamily\@etitle}\\
+		{\sffamily\bf\large\@etitle}\\
 		{\@eauthor} ({\@emajor})\\
 		{\label@ementor}{\@ementor}\\[2em]
 	\end{center}

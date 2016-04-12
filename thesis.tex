@@ -41,15 +41,15 @@
 % 设定文档的基本信息。
 % \ctexset{today=big}
 \impthssinfo{
-	cthesisname = {博士研究生学位论文}, ethesisname = {Doctor Thesis},
-	ctitle = {用于空间暗物质探测的塑闪阵列探测器的设计与研制},
-	etitle = {Design and development of a plastic scintillator detector for the dark matter search in space},
+	cthesisname = {暗物质探测卫星塑闪阵列探测器的设计与研制}, ethesisname = {Doctor Thesis},
+	ctitle = {暗物质探测卫星塑闪阵列探测器的设计与研制},
+	etitle = {Design and Development of the Plastic Scintillator Detector of DArk Matter Particle Explorer},
 	cauthor = {周勇},
 	eauthor = {Zhou Yong},
 	studentid = {0123456789},
 	date = {\today},
 	school = {中国科学院大学研究生院},
-	cmajor = {粒子物理与原子核物理}, emajor = {Nuclear and Particle Physics},
+	cmajor = {粒子物理与原子核物理}, emajor = {Particle Physics and Nuclear Physics},
 	direction = {实验核物理},
 	cmentor = {孙志宇教授}, ementor = {Prof.\ Sun Zhiyu},
 	ckeywords = {暗物质，塑料闪烁体，PSD， DAMPE， 大动态范围，宇宙线标定，光电倍增管}, 
@@ -110,21 +110,21 @@
 	% 自动生成封面。
 %	\maketitle
 	% 从pdf载入封面
- 	% \input{cover/cover_cn.tex}
- 	% \null\newpage
- 	% \input{cover/cover_en.tex}
- 	% \null\newpage
+ 	\input{cover/cover_cn.tex}
+ 	\null\newpage
+ 	\input{cover/cover_en.tex}
+ 	\null\newpage
 
 	% 版权声明。
 	% \input{cover/copyright}
-	% \input{cover/ucas_copyright}
-	% \null\newpage
+	\input{cover/ucas_copyright}
+	\null\newpage
 	% 原创性声明和使用授权说明。
 	% \input{cover/originauth}
-	% \input{cover/ucas_originauth}
-	% \null\newpage
+	\input{cover/ucas_originauth}
+	\null\newpage
 	% 致谢。
-	% \input{./chap/acknowledge/acknowledge}
+	\input{./chap/acknowledge/acknowledge}
 	
 	%%%%%%%%%%%%%%%%%%%%%
 	%%% 中英文摘要,目录 %%%
@@ -150,15 +150,18 @@
 	\include{./chap/construction/construction}
 	%
 	\include{chap/cosmic_ray/cosmic_ray}
+	%
+	% \include{chap/environment_test/environment_test}
 	% 各章节。
 	% \include{chap/heavy_ion/heavy_ion}
+
 	% 结论
 	\include{chap/conclusion/conclusion}
 
 	% special chapter没有章节编号，在目录中显示
 % 	\subimport*{chap/special}{}
 	% 正文中的附录部分。
-	\appendix
+	
 	% 排版参考文献列表。
 	\printbibliography[
 		% 使“参考文献”出现在目录中；如果同时要使参考文献列表参与章节编号，
@@ -171,12 +174,15 @@
 		% 在这样的情况下，请去掉所有的 sorting 选项，否则可能出错。
 		% 此外，biblatex 3.0 中 \printbibliography 的 sorting 选项失效，
 		% 详见 biblatex-caspervector 的文档。
-		sorting = ecnty
+		% sorting = ecnty
 	]
 	% 各附录。
+	% \appendix
 	% \include{./chap/appendix/app1}
-	%\include{./chap/appendix/app2}
+	% \include{./chap/appendix/app2}
 	
+	% 已发表论文
+	\include{chap/publication/publication}
 	
 	% 以下为正文之后的部分，默认不进行章节编号。
 	\backmatter
