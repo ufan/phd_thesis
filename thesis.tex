@@ -38,6 +38,11 @@
 % 对于 linespread 值的计算过程有兴趣的同学可以参考 impthss-extra.sty。
 \renewcommand*{\bibfont}{\zihao{5}\linespread{1.27}\selectfont}
 
+% 用于控制显示作者的数量
+\makeatletter
+\newcommand\Setmaxbibnames[1]{\renewcommand\blx@maxbibnames{#1}}
+\makeatletter
+
 % 设定文档的基本信息。
 % \ctexset{today=big}
 \impthssinfo{
