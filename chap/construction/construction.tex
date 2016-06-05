@@ -331,22 +331,21 @@ PSD采用模块化设计，各个功能模块间的接口明确且耦合程度�
 	\item 布置金属导电胶带。这是为了将整个PSD结构地连接在一起，以提高PSD的抗电磁干扰能力，降低基线噪声展宽。
 	\item 安装塑闪单元条组件。两个探测平面，共4层塑闪单元条组件，逐层进行安装。安装时先固定该方向上的两组梁结构，然后将单元条逐一安装到对应的底板或盖板条形凹槽中，其位置由铝合金梁结构上的“工”型凹槽决定。
 	\item 安装PMT组件。安装前，先在PMT组件的管体周围缠绕一层玻莫合金，然后将PMT组件轻轻推进梁结构上的PMT孔洞。PMT组件位置调整合适后，再将其上的铝合金保护套用螺丝固定到梁结构上。为了确定PMT组件在安装过程中没有受到损伤以及确定PMT与塑闪单元条的耦合是否正常，在PMT组件安装完成后，进行下一步安装操作前，我们给每个PMT组件加上额定工作电压，使用宇宙线对其进行功能完整性检测。由于塑闪单元条组件也已经安装，此时可以得到各个单元模块的MIP响应，结果如图\ref{fig:construction:mipVSstrip}所示。图中将同一探测平面两端的结果综合在了一起，正端在下，负端在上，其中横轴是该探测平面内的探测单元模块编号，纵轴是减去基线的原始ADC道数。可以看到，所有模块都能够正常工作，而且各模块间具有较好的能量响应一致性。
-	\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.6\textwidth,angle=-90]{chap/construction/fig/mipVSstrip.pdf}
-	\caption{塑闪单元条与PMT组件全部安装到位后的宇宙线检测结果}
-	\label{fig:construction:mipVSstrip}
-	\end{figure}
-
-	\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.65\textwidth]{chap/construction/fig/psd.jpg}
-	\caption{PSD整体装配完成后的样子}
-	\label{fig:construction:psd}
-	\end{figure}
-
 	\item 电装。主要是将PMT组件上的高压线和信号线分别焊接到高压扇出板和信号转接板上，焊接工作由来自山东航天电子技术研究所的专业人员完成。
 	\item 安装FEE机箱。FEE机箱是前端电子学板、信号转接板以及高压扇出板的载体。这一步主要是将前端电子学板和信号转接板连接在一起，并固定FEE机箱。
 	\item 封顶。主要是安装顶部盖板以及四周的角板，完成PSD整体的密封，这是PSD总装的最后一步。
 \end{enumerate}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.58\textwidth,angle=-90]{chap/construction/fig/mipVSstrip.pdf}
+	\caption{塑闪单元条与PMT组件全部安装到位后的宇宙线检测结果}
+	\label{fig:construction:mipVSstrip}
+\end{figure}
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.6\textwidth]{chap/construction/fig/psd.jpg}
+	\caption{PSD整体装配完成后的样子}
+	\label{fig:construction:psd}
+\end{figure}
 PSD整体装配完成后的最终外观如图\ref{fig:construction:psd}所示。

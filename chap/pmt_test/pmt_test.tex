@@ -81,6 +81,8 @@ PMT测试平台的主体由一个固定平台和一个三维移动平台组成(�
 额外的第三维运动主要用于控制光纤与待测PMT之间的距离，在测试时尽量拉近光纤与PMT端面的距离，而在拆卸时拉远它们之间的距离，从而保护光纤不受意外损伤。
 三个方向的步进电机都由一个运动控制器控制\parencite{leetro}，并可以利用PCI总线实现远程控制。
 \begin{table}[htb]
+	\caption{三维移动平台的基本运动参数}
+	\label{tab:pmt_test:motorized_stage}
 	\centering	
 	\begin{tabulary}{0.6\linewidth}{LC}
 		\toprule[1.5pt]
@@ -91,9 +93,7 @@ PMT测试平台的主体由一个固定平台和一个三维移动平台组成(�
 		上下行程		& \SI{70}{\milli\meter}	\\
 		前后行程		& \SI{15}{\milli\meter}	\\
 		\bottomrule[1.5pt]
-	\end{tabulary}
-	\caption{三维移动平台的基本运动参数}
-	\label{tab:pmt_test:motorized_stage}	
+	\end{tabulary}	
 \end{table}
 为了方便操作和固定位置，我们还定制了专用的PMT夹具和光纤夹头，图\ref{fig:pmt_test:fixtures}展示了R4443和光纤固定在测试平台上的状态。
 其中，光纤夹头可以实现水平方向上的微调，便于将光纤对准PMT光阴极中心（精度在\SI{0.5}{mm}）。

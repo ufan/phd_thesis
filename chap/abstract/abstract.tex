@@ -4,53 +4,48 @@
 
 \begin{cabstract}
 % 中文测试文字。
-自从1933年暗物质的概念被首次提出到现在，大量的天文观测结果证实了暗物质的存在。
-今天，暗物质假说已经被天文学家们普遍接受，并在现有的大爆炸宇宙标准模型中扮演重要角色。
-由于在粒子物理的标准模型中找不到符合暗物质基本性质的稳定粒子，暗物质的组成成分和粒子属性一直困扰着人们，不断地激发人们对暗物质研究的兴趣。
-许多超出标准模型的新物理理论都预言了可能的暗物质候选粒子，对暗物质的探测和研究能够检验这些新的理论模型，并有可能导致物理学产生新的革命。
-近年来，国际上开展了大量的暗物质探测实验，它们使用不同的探测技术手段对暗物质问题进行研究，大大加深了人们对暗物质的认知。
+自1933年暗物质概念首次被提出到现在，大量的天文观测结果证实了暗物质的存在。
+虽然暗物质假说已经被天文学家普遍接受，并在标准的大爆炸宇宙学模型（$\Lambda$CDM模型）中扮演重要角色，但暗物质的组成及其粒子属性问题依然困扰着人们，不断激发科学家们的研究兴趣。
+粒子物理的标准模型（The Standard Model）中不存在符合暗物质基本性质的候选粒子；另一方面，许多超出标准模型的新物理理论都预言了可能的暗物质粒子。
+因此，对暗物质粒子进行探测和实验研究有可能导致新的物理学革命。
 
-暗物质粒子探测卫星（DArk Matter Particle Explorer，简称DAMPE）是中国科学院空间先导专项的首批四颗科学卫星之一。
-它基于空间间接探测的方法，通过测量暗物质粒子湮灭或衰变产生的$TeV$量级的高能伽马射线和高能电子能谱来探测和研究暗物质粒子。
-DAMPE于2015年12月17日发射升空并成功进入预定轨道。
-它是目前国际上同类探测器中观测能段范围最宽、能量分辨率最优的空间暗物质粒子探测器。
+暗物质粒子探测卫星（DArk Matter Particle Explorer，简称DAMPE）是我国独立提出并自主研制的空间暗物质探测项目，是目前国际上观测能段范围最宽、能量分辨率最优的空间暗物质粒子探测器。
+它基于间接探测的方法，通过测量空间中暗物质粒子湮灭或衰变产生的$TeV$量级的高能伽马射线和电子能谱来研究暗物质粒子。
 
-塑闪阵列探测器（Plastic Scintillator Detector，简称PSD）是DAMPE粒子探测器的关键子探测之一，它主要有两个功能：1）协助DAMPE的BGO量能器进行$e/\gamma$鉴别；2）进行电荷测量，鉴别$Z=1\sim 20$的入射重离子种类。
-本论文的主要内容围绕着PSD的设计和研制过程展开，主要有以下几个部分组成：
+塑闪阵列探测器（Plastic Scintillator Detector，简称PSD）是DAMPE的关键子探测器之一，它主要有两个功能：1）协助BGO量能器进行高能$e/\gamma$鉴别；2）对$Z=1\sim 20$的宇宙线重离子进行鉴别。
+本论文的工作围绕PSD的设计和研制过程展开，主要内容有：
 \begin{itemize}
-  \item PSD采用模块化设计，由82个探测单元模块组成X、Y相互垂直的两个塑闪阵列平面。PSD通过测量入射粒子沉积能量的大小实现基本功能，而空间应用环境对PSD的整体设计提出了特别的要求，本文第\ref{ch:description}章对PSD的工作原理和总体设计进行了简单介绍。
-  \item 大动态范围读出是PSD的关键技术之一，它直接影响PSD的探测器性能。为满足PSD的功能需求，我们估算出PSD每个探测单元模块都需要覆盖\SI{0.1}{MIPs}到\SI{1400}{MIPs}的动态范围区间。为此，我们设计并实现了光电倍增管双打拿极引出的读出方案，并进行了详尽的宇宙线测试和重离子束流测试以验证该设计的合理性。这些工作是第\ref{ch:large_dynmaicrange}章的主要内容。
-  \item 光电倍增管是影响PSD探测单元模块性能关键器件，而光电倍增管往往具有较强的个体差异性。为了得到最佳的探测器性能，本论文对PSD的光电倍增管进行了详尽的性能测试。为此，我们专门设计了一套批量PMT测试平台，并用该平台得到了PSD所有候选光电倍增管的增益曲线和Dy58比值增益曲线。这些工作将在第\ref{ch:pmt_test}章进行介绍。
-  \item 空间实验的特殊性要求探测器各组件具有更高的稳定性和可靠性。本论文第\ref{ch:construction}章介绍了PSD的建造过程，主要包括PMT组件和塑闪单元条组件的测试、筛选、生产以及质量控制，以及PSD的整体组装.
-  \item PSD的建造完成后，需要进行完整细致的测试以得到其性能参数。我们专门设计和搭建了一套地面宇宙线标定测试平台，并使用该平台对PSD进行了长时间的宇宙线标定。第\ref{ch:cosmic_ray}章对该平台进行了介绍，同时给出了PSD宇宙线标定的初步结果，包括基线噪声，MIP响应，能量分辨率，衰减曲线，探测效率以及位置分辨能力。
+  \item PSD选择塑料闪烁体作为探测介质，通过测量入射粒子沉积能量的大小实现其基本功能。为了降低$e/\gamma$误判率，PSD采用了模块化设计，由82个探测单元模块组成X、Y相互垂直的两个塑闪阵列平面。为了适应空间应用环境以及火箭发射过程，我们从力、热、电三个方面出发，对PSD各组件和功能模块进行了细致的设计。第\ref{ch:description}章对PSD的工作原理和总体设计进行了简单介绍。
+  \item 大动态范围读出是PSD的关键技术之一。根据PSD的功能需求，我们估算出PSD探测单元模块需要覆盖\SI{0.1}{MIPs}到\SI{1400}{MIPs}的动态范围，并完成了基于光电倍增管双打拿极引出的读出方案设计。我们对该方案进行了详尽的宇宙线测试和重离子束流测试，验证了其设计合理性。这些工作是第\ref{ch:large_dynmaicrange}章的主要内容。
+  \item PSD使用光电倍增管作为读出器件，为了得到最佳的探测器性能，需要对使用的光电倍增管进行详尽的性能测试。为此，我们设计并搭建了一套PMT批量测试平台，并用该平台得到了PSD所有候选光电倍增管的相对增益特性曲线和Dy58比值增益特性曲线。第\ref{ch:pmt_test}章对这部分工作进行了详细介绍。
+  \item 空间实验的特殊环境要求PSD各组件具有更好的稳定性和可靠性。为此，我们制定了一套严格的质量控制程序，并应用到PSD组件生产和整体装配过程中。第\ref{ch:construction}章详细介绍了PSD的建造过程，特别是PMT组件和塑闪单元条组件的测试、筛选、生产以及质量控制。
+  \item PSD的建造完成后，需要进行完整细致的测试以得到其性能参数。我们专门设计和搭建了一套地面宇宙线标定测试平台，并用该平台对PSD进行了宇宙线标定。第\ref{ch:cosmic_ray}章对该平台进行了介绍，同时给出了PSD宇宙线标定的初步结果，包括基线噪声，MIP响应，能量分辨率，衰减曲线，探测效率以及位置分辨能力。
 \end{itemize}
 
+DAMPE已于2015年12月17日发射升空并成功进入预定轨道。在轨测试显示，PSD工作稳定，各项性能指标满足设计要求并与地面测试结果一致。
 
 \end{cabstract}
 
 % \cleardoublepage
 \begin{eabstract}
 Since first proposed by F. Zwicky in 1933, the existence of dark matter has been confirmed by a large amount of astronomical observations.
-Today, the dark matter hypothesis has been generally accepted by most of the astronomical community and plays a central role in the standard model of Big Bang cosmology.
-As the Standard Model of particle physics doesn't a viable dark matter candidate which posses all the basic properties of dark matter, the composition of dark matter and its particle attribution have puzzled the scientists for a long time and continue to stimulate the interest in dark matter research.
-On the other hand, many new theories beyond the Standard Model have predicted new particles that turn out to be excellent dark matter candidates.
-The detection and study of dark matter could be used to verify these new theory, and may even start a new revolution in physics.
-In recent years, many experiments, using different kinds of detection technologies, have been carried out to study the dark matter problem.
-All these efforts will help the scientists get a deeper understanding of dark matter.
+Although the dark matter hypothesis has been accepted by most of the astronomical community and plays a central role in the standard Big Bang cosmology model~(i.e. $\Lambda$CDM model), the composition and particle nature of dark matter have puzzled the scientists for a long time and continue to stimulate the interest in dark matter research.
+The Standard Model of particle physics doesn't have a viable dark matter candidate which posses all the basic properties of dark matter; on the other hand, many new theories beyond the Standard Model have predicted new particles that turn out to be excellent dark matter candidates.
+Thus, the detection and study of dark matter particle could be used to verify these new theory, and may even start a new revolution in physics.
 
-The DArk Matter Particle Explorer (DAMPE) is one of the four space science missions of the “Strategic Pioneer Program on Space Science” of the Chinese Academy of Sciences. It is based on the indirect detection method to search and study dark matter by recording the energy spectrum of high-energy gamma ray and electron in the TeV regime, which might be the products of dark matter annihilation or decay.
-DAMPE was launched on 17 December 2015 and entered its orbit successfully.
-It is one of the most powerful dark matter particle detectors in space, with the broadest energy convering range and highest energy resolution.
+The DArk Matter Particle Explorer (DAMPE) is a satellite-borne dark matter exploration program which is proposed and developed by China independently. It is one of the most powerful dark matter particle detectors in space, with the broadest energy convering range and highest energy resolution. Based on the indirect detection method, DAMPE aims to search and study dark matter particle by recording the energy spectrum of high-energy gamma ray and electron in the $TeV$ scale, which might be the products of dark matter annihilation or decay.
 
 The Plastic Scintillator Detector (PSD) is one of the key sub-detectors of DAMPE.
-It provides two functions as follows: 1) $e/\gamma$ identification in association with the BGO calorimeter of DAMPE; 2) charge measurement for cosmic ions with $Z=1\sim 20$.
-The major work of this thesis is about the design and development process of PSD, and it can be grouped as follows:
+It provides two functions as follows: 1) $e/\gamma$ identification in combination with the BGO calorimeter of DAMPE; 2) charge measurement for cosmic ions with $Z=1\sim 20$.
+The major work of this doctoral thesis is about the design and development of PSD, which is structured as follows:
 \begin{itemize}
-  \item The functions of PSD are realized by measuring the deposited energy of incidenct particle in it. On the other hand, the application in space environment imposes special requirements for the design of PSD. Chapter~2 of this thesis gives a brief introduction about the working principle together with the design of PSD.
-  \item PSD is based on modular design, and consists of 82 detector unit modules which form two plastic scintillator layers that are perpendicular to each other. To accomplish the function requirements of PSD, it is estimated that each detecor unit module should cover a dynamic range from \SI{0.1}{MIPs} to \SI{1400}{MIPs}. Thus, we designed and implemented a readout scheme based on the double-dynodes signal extraction from the photomultiplier tube. This readout scheme has also been tested thoroughly using cosmic ray and relativistic heavy ion beams to verify its performance. These work is presented in Chapter~3.
-  \item The photomultiplier tube is the most critical component affecting the performance of PSD detector unit module. To obtain the optimal performance, it's common to carry out a detailed photomultiplier tube characterization. Therefore, we designed a dedicated PMT test bench and used it to obtain the characteristic curve of gain and dy58 ration of all the candidate photomultiplier tubes of PSD. All these work is presented in Chapter~4.
-  \item Spaceborne experiments usually demand higher stability and reliability of the detector components. Chapter~5 presents the contruction process of PSD, which includes the test, selection, production and qualification of the PMT submodule and the plastic scintillator submodule, and the assembly of the whole PSD detector.
-  \item After the assembly, PSD needs a complete and detailed test to obtain its performance parameters. For this purpose, we have designed and developed a dedicated test bench for the cosmic ray calibration and used it for PSD cosmic ray calibration on ground. Chapter~6 gives a short introduction about this test bench, and presents the preliminary results of PSD calibration including pedestal noise, MIP response, energy resolution, attenuation curve, detection efficiency and position resolution.
+  \item PSD adopts plastic scintillator as the detection material and accomplishes its functionalities by measuring the deposited energy of incidenct particle in it. To reduce the rate of $e/\gamma$ misidentification, PSD adopts a modular design strategy and consists of 82 detector modules which form two layers that are perpendicular to each other. On the other hand, the application in space environment imposes special requirements for the design of PSD. Chapter~2 gives a brief introduction about the working principle together with the design of PSD.
+  \item The large dynamic range readout design is one of the key technologies of PSD. Based on PSD's functionalities, it was estimated that each detector module should cover a dynamic range from \SI{0.1}{MIPs} to \SI{1400}{MIPs}. Thus, we designed and implemented a readout scheme based on the double-dynodes signal extraction from the photomultiplier tube. This design was tested and verified thoroughly using both cosmic ray and relativistic heavy ion beams. These work are presented in Chapter~3.
+  \item PSD adopts the photomultiplier tube~(PMT) as the readout device. To obtain the optimal detector performance, it's common to carry out a detailed PMT characterization before usage. We designed and built a dedicated PMT test bench, and measured the characteristic curve against voltage of the relative gain and dy58 ratio of all the candidate PMTs of PSD. These work are described in Chapter~4.
+  \item Space-borne experiments demand higher stability and reliability of the components of PSD. We have established a strict quality control procedure and applied it in the PSD construction process. Chapter~5 gives a detailed description about this process, with a focus on the test, selection, production and qualification of the PMT and the plastic scintillator bar submodule.
+  \item After the assembly, PSD needs a complete and detailed test to obtain its performance parameters. For this purpose, we built a dedicated test bench for the cosmic ray calibration of PSD on ground. Chapter~6 gives a short description about this test bench, and presents the preliminary results of PSD calibration including pedestal noise, MIP response, energy resolution, attenuation curve, detection efficiency and position resolution.
 \end{itemize}
+
+DAMPE was launched on 17 December 2015 and entered its orbit successfully. During the in-orbit tests, the performance of PSD was stable and satisfies all the design requirements.
 \end{eabstract}
 
