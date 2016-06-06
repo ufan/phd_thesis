@@ -197,16 +197,17 @@ PSD和宇宙线标定测试平台的数据获取系统在硬件和软件上都�
 实际中，我们将触发Veto板的屏蔽时间设置为\SI{1}{ms}，即PSD获取系统的死时间。
 由于宇宙线事例的触发率远小于\SI{1000}{\per\second}，该屏蔽时间设置基本不会导致事例丢失。
 
-% 触发板预支设置，击中分布图
-测试前，我们还对触发系统的8个读出PMT的工作电压进行了调节和测，原则是：1）在不增加噪声的前提下，尽量升高PMT的工作电压，提高增益系数，达到提高触发效率的目的；2）调节同一块触发板4个角读出PMT的电压，使得它们的增益基本一致，达到不同击中位置的触发效率基本一致的目的。
-最终，在实际测试中，触发系统的宇宙线触发效率达到了\SI{27}{\per\second}，并实现了较好的触发效率均匀性。
-图\ref{fig:cosmic_ray:hitposition}给出了靶室上方MWDC探测器的宇宙线击中位置分布图，靶室下方的MWDC探测器也有类似结果。
-\begin{figure}[htb]
+\begin{figure}[!h]
 \centering
 \includegraphics[width=0.6\textwidth]{chap/cosmic_ray/fig/hitposition_mwdc.png}
 \caption{触发系统的触发效率均匀性}
 \label{fig:cosmic_ray:hitposition}
 \end{figure}
+
+% 触发板预支设置，击中分布图
+测试前，我们还对触发系统的8个读出PMT的工作电压进行了调节和测，原则是：1）在不增加噪声的前提下，尽量升高PMT的工作电压，提高增益系数，达到提高触发效率的目的；2）调节同一块触发板4个角读出PMT的电压，使得它们的增益基本一致，达到不同击中位置的触发效率基本一致的目的。
+最终，在实际测试中，触发系统的宇宙线触发效率达到了\SI{27}{\per\second}，并实现了较好的触发效率均匀性。
+图\ref{fig:cosmic_ray:hitposition}给出了靶室上方MWDC探测器的宇宙线击中位置分布图，靶室下方的MWDC探测器也有类似结果。
 可以看到，击中位置分布呈现出中间多，边缘少的特点，这是因为两块触发板距离较远，中间位置的接收角度远大于边缘位置。
 同时可以看到，击中位置在四周，尤其是4个角上的分布基本均匀，这说明不同位置处的触发效率基本是一致的。
 
@@ -327,6 +328,12 @@ PSD加上额定工作电压后，我们首先对基线噪声进行了刻度，�
 % 探测效率判据
 % 事例筛选
 % 结果分布
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.95\textwidth]{chap/cosmic_ray/fig/efficiency.eps}
+	\caption{PSD各探测单元模块的探测效率，左边是X层的结果，右边是Y层的结果}
+	\label{fig:cosmic_ray:efficiency}
+\end{figure}
 PSD探测单元模块的探测效率按照如下步骤分析得到：
 \begin{enumerate}
 	\item 对于每个有效事例，我么根据重建的入射宇宙线径迹，推出PSD上被击中的探测单元模块，并将该单元模块的击中事例数加1.
@@ -335,12 +342,6 @@ PSD探测单元模块的探测效率按照如下步骤分析得到：
 	\item 最后，我们将各个探测单元模块的探测事例数除以击中事例数，就得到了对应单元模块的探测效率。
 \end{enumerate}
 结果显示，PSD所有探测单元模块的探测效率都大于\SI{95}{\percent}，因此满足PSD的设计要求，如图\ref{fig:cosmic_ray:efficiency}所示。
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.95\textwidth]{chap/cosmic_ray/fig/efficiency.eps}
-	\caption{PSD各探测单元模块的探测效率，左边是X层的结果，右边是Y层的结果}
-	\label{fig:cosmic_ray:efficiency}
-\end{figure}
 可以看到，每一层中间位置的探测效率值远高于边缘位置的，这是由于边缘位置的击中事例数较少导致的。
 
 \subsection{位置分辨}
@@ -352,15 +353,16 @@ PSD的初步重建较为简单：1）依据\ref{sec:cosmic_ray:efficiency}节的
 但由于每一层内相邻塑闪单元条之间有重叠区域，特殊情况下，入射宇宙线也会击中同一层内两根相邻的塑闪单元条，此时这两个探测单元模块都应该有击中信号。
 在这种情况下，我们以相邻单元条的重叠区域中心值为重建位置坐标，从而能够提高位置测量的精度。
 
-由于MWDC的位置测量精度远高于PSD的，我们可以认为根据MWDC重建的宇宙线入射径迹推出的PSD击中位置是真实的击中位置。
-将上述PSD的重建位置坐标与该真实击中位置坐标相减，并将所有事例的结果累积起来，我们就能得到PSD的位置分辨率，结果如图\ref{fig:cosmic_ray:pos_resolution}所示。
-可以看到，X层的位置分辨率为\SI{5.4}{mm}，而Y层的位置分辨率为\SI{6.2}{mm}，它们都满足PSD的设计要求。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{chap/cosmic_ray/fig/pos_resolution.png}
 	\caption{PSD两个探测平面的位置分辨}
 	\label{fig:cosmic_ray:pos_resolution}
 \end{figure}
+由于MWDC的位置测量精度远高于PSD的，我们可以认为根据MWDC重建的宇宙线入射径迹推出的PSD击中位置是真实的击中位置。
+将上述PSD的重建位置坐标与该真实击中位置坐标相减，并将所有事例的结果累积起来，我们就能得到PSD的位置分辨率，结果如图\ref{fig:cosmic_ray:pos_resolution}所示。
+可以看到，X层的位置分辨率为\SI{5.4}{mm}，而Y层的位置分辨率为\SI{6.2}{mm}，它们都满足PSD的设计要求。
+
 % \section{PSD的物理量重建研究}
 % \subsection{能量重建}
 % \subsection{位置重建}
